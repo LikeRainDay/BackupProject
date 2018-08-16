@@ -29,12 +29,12 @@
       <module name="andy-common-entity" target="1.8" />
       <module name="andy-common-feign" target="1.8" />
       <module name="andy-common-utils" target="1.8" />
-      <module name="andy-commons" target="1.5" />
-      <module name="andy-core" target="1.5" />
+      <module name="andy-commons" target="1.8" />
+      <module name="andy-core" target="1.8" />
       <module name="andy-ecology" target="1.8" />
       <module name="andy-server" target="1.8" />
       <module name="AndyProject" target="1.8" />
-      <module name="core-jpa" target="1.5" />
+      <module name="core-jpa" target="1.8" />
       <module name="core-redis" target="1.8" />
       <module name="ecology-config" target="1.8" />
       <module name="ecology-consul" target="1.8" />
