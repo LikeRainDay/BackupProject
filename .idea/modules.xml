@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/andy-core/core-jpa/core-jpa.iml" filepath="$PROJECT_DIR$/andy-core/core-jpa/core-jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-core/core-redis/core-redis.iml" filepath="$PROJECT_DIR$/andy-core/core-redis/core-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-config/ecology-config.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-config/ecology-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-consul/ecology-consul.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-consul/ecology-consul.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-getway/ecology-getway.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-getway/ecology-getway.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-oauth2/ecology-oauth2.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-oauth2/ecology-oauth2.iml" />
     </modules>
