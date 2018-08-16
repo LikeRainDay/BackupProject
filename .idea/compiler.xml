@@ -6,18 +6,32 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="andy-common-bean" />
+        <module name="andy-common-dao" />
+        <module name="andy-common-entity" />
+        <module name="andy-common-feign" />
+        <module name="andy-common-utils" />
         <module name="andy-commons" />
         <module name="andy-core" />
         <module name="andy-ecology" />
         <module name="andy-server" />
+        <module name="ecology-getway" />
+        <module name="ecology-oauth2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="andy-common-bean" target="1.8" />
+      <module name="andy-common-dao" target="1.8" />
+      <module name="andy-common-entity" target="1.8" />
+      <module name="andy-common-feign" target="1.8" />
+      <module name="andy-common-utils" target="1.8" />
       <module name="andy-commons" target="1.8" />
       <module name="andy-core" target="1.8" />
       <module name="andy-ecology" target="1.8" />
       <module name="andy-server" target="1.8" />
       <module name="AndyProject" target="1.8" />
+      <module name="ecology-getway" target="1.8" />
+      <module name="ecology-oauth2" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

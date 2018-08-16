@@ -10,7 +10,13 @@
 
     <name>andy-commons</name>
     <description>公用组件内容</description>
-
+    <modules>
+        <module>andy-common-bean</module>
+        <module>andy-common-entity</module>
+        <module>andy-common-dao</module>
+        <module>andy-common-feign</module>
+        <module>andy-common-utils</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

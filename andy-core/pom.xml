@@ -10,7 +10,10 @@
 
     <name>andy-core</name>
     <description>核心模块</description>
-
+    <modules>
+        <module>core-jpa</module>
+        <module>core-redis</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

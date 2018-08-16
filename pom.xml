@@ -10,6 +10,13 @@
 
     <name>andy-ecology</name>
     <description>SpirngCloud生态</description>
+    <modules>
+        <module>andy-commons</module>
+        <module>andy-core</module>
+        <module>andy-ecology</module>
+        <module>andy-server</module>
+    </modules>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>

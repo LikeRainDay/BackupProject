@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-common-bean/andy-common-bean.iml" filepath="$PROJECT_DIR$/andy-commons/andy-common-bean/andy-common-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-common-dao/andy-common-dao.iml" filepath="$PROJECT_DIR$/andy-commons/andy-common-dao/andy-common-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-common-entity/andy-common-entity.iml" filepath="$PROJECT_DIR$/andy-commons/andy-common-entity/andy-common-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-common-feign/andy-common-feign.iml" filepath="$PROJECT_DIR$/andy-commons/andy-common-feign/andy-common-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-common-utils/andy-common-utils.iml" filepath="$PROJECT_DIR$/andy-commons/andy-common-utils/andy-common-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-commons.iml" filepath="$PROJECT_DIR$/andy-commons/andy-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-core/andy-core.iml" filepath="$PROJECT_DIR$/andy-core/andy-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-ecology/andy-ecology.iml" filepath="$PROJECT_DIR$/andy-ecology/andy-ecology.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-server/andy-server.iml" filepath="$PROJECT_DIR$/andy-server/andy-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-core/core-jpa/core-jpa.iml" filepath="$PROJECT_DIR$/andy-core/core-jpa/core-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-core/core-redis/core-redis.iml" filepath="$PROJECT_DIR$/andy-core/core-redis/core-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-config/ecology-config.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-config/ecology-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-getway/ecology-getway.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-getway/ecology-getway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-ecology/ecology-oauth2/ecology-oauth2.iml" filepath="$PROJECT_DIR$/andy-ecology/ecology-oauth2/ecology-oauth2.iml" />
     </modules>
   </component>
 </project>
