@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndyProject.iml" filepath="$PROJECT_DIR$/AndyProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-commons.iml" filepath="$PROJECT_DIR$/andy-commons/andy-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-core/andy-core.iml" filepath="$PROJECT_DIR$/andy-core/andy-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-ecology/andy-ecology.iml" filepath="$PROJECT_DIR$/andy-ecology/andy-ecology.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andy-server/andy-server.iml" filepath="$PROJECT_DIR$/andy-server/andy-server.iml" />
+    </modules>
+  </component>
+</project>
