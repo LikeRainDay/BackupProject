@@ -20,9 +20,9 @@ class JestClientUtil {
      * date 2018/8/17 下午11:22
      */
     fun createJestClient(): JestClient {
-        if (jestClient == null){
-            synchronized(this){
-                if (jestClient == null){
+        if (jestClient == null) {
+            synchronized(this) {
+                if (jestClient == null) {
                     val jestClientFactory = JestClientFactory()
 
                     val httpClientConfig = HttpClientConfig

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="andy" />
         <module name="andy-common-bean" />
         <module name="andy-common-dao" />
         <module name="andy-common-entity" />
@@ -17,6 +18,7 @@
         <module name="andy-ecology" />
         <module name="andy-server" />
         <module name="AndyProject" />
+        <module name="core" />
         <module name="datasource-elasticsearch" />
         <module name="datasource-jpa" />
         <module name="datasource-redis" />
