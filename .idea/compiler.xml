@@ -16,6 +16,7 @@
         <module name="andy-ecology" />
         <module name="andy-server" />
         <module name="AndyProject" />
+        <module name="core-elasticsearch" />
         <module name="core-jpa" />
         <module name="core-redis" />
         <module name="ecology-config" />

@@ -1,0 +1,8 @@
+spring:
+  elasticsearch:
+    jest:
+      uris: http://localhost:9200
+      username:
+      password:
+      read-timeout: 20000ms
+      connection-timeout: 20000ms
