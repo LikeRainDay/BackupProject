@@ -19,7 +19,9 @@
     </parent>
     <modules>
         <module>ecology-consul</module>
-
+        <module>ecology-config</module>
+        <module>ecology-getway</module>
+        <module>ecology-oauth2</module>
     </modules>
 
 
@@ -52,8 +54,7 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

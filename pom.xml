@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy</groupId>
-    <artifactId>andy-ecology</artifactId>
+    <artifactId>andy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>andy-ecology</name>
+    <name>andy</name>
     <description>SpirngCloud生态</description>
     <modules>
         <module>andy-commons</module>
@@ -54,8 +54,7 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
