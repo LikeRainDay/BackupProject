@@ -6,7 +6,7 @@
     <groupId>com.andy</groupId>
     <artifactId>andy-ecology</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>andy-ecology</name>
     <description>Demo project for Spring Boot</description>

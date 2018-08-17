@@ -6,7 +6,7 @@
     <groupId>com.andy</groupId>
     <artifactId>andy-commons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>andy-commons</name>
     <description>公用组件内容</description>

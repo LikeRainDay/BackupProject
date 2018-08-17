@@ -6,7 +6,7 @@
     <groupId>com.andy</groupId>
     <artifactId>andy-ecology</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>andy-ecology</name>
     <description>SpringCloud 生态</description>

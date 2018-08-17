@@ -6,7 +6,7 @@
     <groupId>com.andy.datasource</groupId>
     <artifactId>andy-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>andy-datasource</name>
     <description>核心模块</description>
