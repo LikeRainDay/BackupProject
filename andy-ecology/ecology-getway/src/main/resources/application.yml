@@ -22,6 +22,10 @@ zuul:
     ratelimit-api:
       path: /ratelimit-api/**
       serviceId: service-client
+    auth:
+      path: /auth
+      sensitiveHeaders:
+      serviceId: ecology-oauth2
   ratelimit:
     key-prefix: ratelimit-api
     # 启动限流服务
@@ -36,3 +40,12 @@ zuul:
       refresh-interval: 60
       # 限流类型
       type: url
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:${server.port}/auth/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
+      client-id: webapp
+    resource:
+      user-info-uri: http://localhost:${server.port}/auth/user
+      prefer-token-info: false
