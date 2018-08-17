@@ -5,16 +5,34 @@ spring:
     consul:
       host: localhost
       #  Consul监听端口8500
-      port: 32769
+      port: 8500
       discovery:
         # 配置服务注册到Consul上
         register: true
         # 配置服务健康检测地址  供Consul 调用
         health-check-path: /health
         # consul 健康检测频率
-        health-check-interval: 2s
+        health-check-interval: 15s
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}
   application:
     name: ecology-getway
-
+zuul:
+  routes:
+    ratelimit-api:
+      path: /ratelimit-api/**
+      serviceId: service-client
+  ratelimit:
+    key-prefix: ratelimit-api
+    # 启动限流服务
+    enabled: true
+    behind-proxy: true
+    default-policy:
+      # 请求数量
+      limit: 100
+      # 请求总时间
+      quota: 20
+      # 统计窗口刷新时间
+      refresh-interval: 60
+      # 限流类型
+      type: url

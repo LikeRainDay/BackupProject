@@ -19,10 +19,12 @@
         <module name="core-jpa" />
         <module name="core-redis" />
         <module name="ecology-config" />
-        <module name="ecology-consul" />
         <module name="ecology-getway" />
         <module name="ecology-oauth2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ecology-consul" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -18,7 +18,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
-        <module>ecology-consul</module>
         <module>ecology-config</module>
         <module>ecology-getway</module>
         <module>ecology-oauth2</module>
