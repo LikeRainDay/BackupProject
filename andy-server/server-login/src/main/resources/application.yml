@@ -17,4 +17,11 @@ spring:
         instance-id: ${spring.application.name}
   application:
     name: server-login
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://loaclhost:10000/auth/user
+      prefer-token-info: false
+      service-id: ecology-oauth2
+
 
