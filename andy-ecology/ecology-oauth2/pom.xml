@@ -43,11 +43,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.andy.datasource</groupId>-->
-            <!--<artifactId>datasource-jpa</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.andy.datasource</groupId>
+            <artifactId>datasource-jpa</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.andy.datasource</groupId>
             <artifactId>datasource-redis</artifactId>
