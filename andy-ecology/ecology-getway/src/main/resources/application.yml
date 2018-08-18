@@ -24,15 +24,12 @@ zuul:
   routes:
     ratelimit-api:
       path: /ratelimit-api/**
-#      strip-prefix: true
       serviceId: service-client
     login:
-       path: /login/**
-       #      strip-prefix: true
-       serviceId: server-login
+      path: /login/**
+      serviceId: server-login
     auth:
       path: /auth/**
-#      strip-prefix: true
       sensitiveHeaders:
       serviceId: ecology-oauth2
   ratelimit:
