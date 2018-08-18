@@ -1,8 +1,7 @@
 package com.andy.ecologygetway.config
 
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 
@@ -14,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * History:
  */
 @Configuration
-@Order(1000)
+@EnableOAuth2Sso
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
     /**

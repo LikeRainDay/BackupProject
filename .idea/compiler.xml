@@ -19,6 +19,7 @@
         <module name="ecology-config" />
         <module name="ecology-getway" />
         <module name="ecology-oauth2" />
+        <module name="server-login" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

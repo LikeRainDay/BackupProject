@@ -1,4 +1,4 @@
-package com.andy.ecologyoauth2
+package com.andy.server.serverlogin
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 
 @SpringBootApplication
 @EnableDiscoveryClient
-class EcologyOauth2Application
+class ServerLoginApplication
 
 fun main(args: Array<String>) {
-    runApplication<EcologyOauth2Application>(*args)
+    runApplication<ServerLoginApplication>(*args)
 }

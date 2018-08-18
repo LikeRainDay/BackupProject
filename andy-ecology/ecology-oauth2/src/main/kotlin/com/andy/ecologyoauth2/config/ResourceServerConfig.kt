@@ -1,6 +1,7 @@
 package com.andy.ecologyoauth2.config
 
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse
  */
 @Configuration
 @EnableResourceServer
+//@Order(3)
 class ResourceServerConfig : ResourceServerConfigurerAdapter(){
 
     override fun configure(http: HttpSecurity?) {
@@ -31,18 +33,20 @@ class ResourceServerConfig : ResourceServerConfigurerAdapter(){
 //                .exceptionHandling()
 //                .accessDeniedHandler(OAuth2AccessDeniedHandler())
         http!!
-                .csrf()
-                .disable()
-                .exceptionHandling()
-                .authenticationEntryPoint { request, response, authException ->
-                    response
-                            .sendError(HttpServletResponse.SC_UNAUTHORIZED)
-                }
+                .requestMatchers().anyRequest()
                 .and()
                 .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic()
+                .antMatchers("/oauth/*").permitAll()
+//                .exceptionHandling()
+//                .authenticationEntryPoint { request, response, authException ->
+//                    response
+//                            .sendError(HttpServletResponse.SC_UNAUTHORIZED)
+//                }
+//                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .httpBasic()
     }
 }
