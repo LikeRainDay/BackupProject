@@ -20,5 +20,5 @@ class ClientDetailsToScopeXrefEntity: AbstractAuditable<Long>() {
     @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "scope_id")
-    lateinit var scop: ScopeEntity
+    lateinit var scope: ScopeEntity
 }

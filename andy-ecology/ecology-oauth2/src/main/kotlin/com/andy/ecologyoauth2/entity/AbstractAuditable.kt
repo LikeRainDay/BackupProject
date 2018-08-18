@@ -15,7 +15,6 @@ import javax.persistence.MappedSuperclass
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
-@Entity
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class AbstractAuditable<PK : Serializable>: AbstractPersistable<PK>() {

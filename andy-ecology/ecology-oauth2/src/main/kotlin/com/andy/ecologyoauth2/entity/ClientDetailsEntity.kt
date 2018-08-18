@@ -39,7 +39,7 @@ class ClientDetailsEntity: AbstractAuditable<Long>() {
     lateinit var redirectUris: Set<RedirectUrlEntity>
 
 
-    @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
-    lateinit var clientLimit: Set<ClientDetailsLimitEntity>
+    @OneToOne(mappedBy = "clientDetail", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
+    lateinit var clientLimit: ClientDetailsLimitEntity
 
 }

@@ -1,37 +1,22 @@
 package com.andy.ecologyoauth2.entity
 
-import org.hibernate.annotations.ColumnDefault
+import org.hibernate.annotations.Where
 import javax.persistence.*
 import javax.validation.constraints.NotNull
-import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
 
 @Entity
-@Table(name = "users")
+@Table(name = "user_role_xref")
 class UserRoleXrefEntity: AbstractAuditable<Long>() {
-    companion object {
-        const val NAME_REGEX: String = "^[A-Za-z0-9_]*$"
-    }
 
     @NotNull
-    @Size(max = 50)
-    @Pattern(regexp = NAME_REGEX)
-    @Column(name = "username", unique = true, nullable = false, length = 50)
-    lateinit var username: String
+    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(cascade = [CascadeType.REFRESH, CascadeType.DETACH], fetch = FetchType.EAGER)
+    lateinit var user: UserEntity
 
     @NotNull
-    @Size(min = 60, max = 60)
-    @Column(name = "password_hash", length = 60, nullable = false)
-    lateinit var password: String
+    @ManyToOne(cascade = [CascadeType.REFRESH, CascadeType.DETACH], fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    @Where(clause = "disabled = False")
+    lateinit var role: RoleEntity
 
-    @NotNull
-    @Column(nullable = false)
-    @ColumnDefault("False")
-    var disable: Boolean = false
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
-    lateinit var roles: Set<UserRoleXrefEntity>
-
-    @OneToMany(mappedBy = "authority", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
-    lateinit var authorities: Set<UserAuthorityXrefEntity>
 }
