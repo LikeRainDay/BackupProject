@@ -4,6 +4,8 @@ import com.andy.ecologyoauth2.dao.AccessTokenRepository
 import com.andy.ecologyoauth2.dao.RefreshTokenRepository
 import com.andy.ecologyoauth2.entity.AccessTokenEntity
 import com.andy.ecologyoauth2.entity.RefreshTokenEntity
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.oauth2.common.OAuth2AccessToken
 import org.springframework.security.oauth2.common.OAuth2RefreshToken
@@ -24,6 +26,8 @@ import java.util.stream.Collectors
 @Transactional
 class DatabaseTokenStoreService: TokenStore {
 
+    private val log: Logger = LoggerFactory.getLogger(DatabaseTokenStoreService::class.java)
+
     @Autowired
     private lateinit var accessTokenRepository: AccessTokenRepository
 
@@ -32,11 +36,11 @@ class DatabaseTokenStoreService: TokenStore {
 
     private val authenticationKeyGenerator: AuthenticationKeyGenerator = DefaultAuthenticationKeyGenerator()
 
-    override fun readAuthenticationForRefreshToken(token: OAuth2RefreshToken?): OAuth2Authentication {
+    override fun readAuthenticationForRefreshToken(token: OAuth2RefreshToken?): OAuth2Authentication? {
         return readAuthentication(token?.value)
     }
 
-    override fun readAuthentication(token: String?): OAuth2Authentication {
+    override fun readAuthentication(token: String?): OAuth2Authentication? {
         return accessTokenRepository.findOneByTokenId(token!!).map {
             return@map it.authentication
         }.orElse(null)
@@ -95,11 +99,11 @@ class DatabaseTokenStoreService: TokenStore {
 
     }
 
-    override fun readAuthentication(token: OAuth2AccessToken?): OAuth2Authentication {
+    override fun readAuthentication(token: OAuth2AccessToken?): OAuth2Authentication? {
         return readAuthentication(token?.value)
     }
 
-    override fun readRefreshToken(tokenValue: String?): OAuth2RefreshToken {
+    override fun readRefreshToken(tokenValue: String?): OAuth2RefreshToken? {
         return refreshTokenRepository.findOneByTokenId(tokenValue!!).map {
             return@map it.token
         }.orElse(null)
@@ -119,7 +123,7 @@ class DatabaseTokenStoreService: TokenStore {
         accessTokenRepository.deleteByRefreshTokenTokenId(refreshToken!!.value)
     }
 
-    override fun readAccessToken(tokenValue: String?): OAuth2AccessToken {
+    override fun readAccessToken(tokenValue: String?): OAuth2AccessToken? {
         return accessTokenRepository.findOneByTokenId(tokenValue!!).map {
             return@map it.token
         }.orElse(null)
@@ -141,7 +145,7 @@ class DatabaseTokenStoreService: TokenStore {
         refreshTokenRepository.save(entityToSave)
     }
 
-    override fun getAccessToken(authentication: OAuth2Authentication?): OAuth2AccessToken {
+    override fun getAccessToken(authentication: OAuth2Authentication?): OAuth2AccessToken? {
         val authenticationKey = authenticationKeyGenerator.extractKey(authentication)
         return accessTokenRepository.findOneByAuthenticationId(authenticationKey).map {
             return@map it.token

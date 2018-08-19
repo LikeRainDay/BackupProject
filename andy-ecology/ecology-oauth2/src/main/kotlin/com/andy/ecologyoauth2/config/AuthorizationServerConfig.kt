@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer
 import org.springframework.security.oauth2.provider.approval.ApprovalStore
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore
+import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore
 
 /**
@@ -27,8 +28,8 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
 
-    @Autowired
-    private lateinit var tokenStoreService: DatabaseTokenStoreService
+//    @Autowired
+//    private lateinit var tokenStoreService: DatabaseTokenStoreService
 
     @Autowired
     private lateinit var oAuth2DatabaseClientDetailsService: OAuth2DatabaseClientDetailsService
@@ -38,10 +39,9 @@ class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
 
 
     @Bean
-    fun tokenStore(): ApprovalStore {
-        val tokenApprovalStore = TokenApprovalStore()
-        tokenApprovalStore.setTokenStore(tokenStoreService)
-        return tokenApprovalStore
+    fun tokenStore(): TokenStore {
+       return DatabaseTokenStoreService()
+//        return InMemoryTokenStore()
     }
 
     override fun configure(security: AuthorizationServerSecurityConfigurer?) {
@@ -56,6 +56,6 @@ class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
     override fun configure(endpoints: AuthorizationServerEndpointsConfigurer?) {
         endpoints!!
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStoreService)
+                .tokenStore(tokenStore())
     }
 }

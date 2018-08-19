@@ -19,6 +19,9 @@ class JsonPersistenceConverters<IN> {
      * @return   返回Json 数据
      */
     fun convertToJson(input: IN): String? {
+        log.info("当前需要转化的json为：$input  " )
+
+
         if (input == null)
             return null
         try {
@@ -38,6 +41,7 @@ class JsonPersistenceConverters<IN> {
      * @return   对应输入类型的实体
      */
     fun convertFromJson(json: String, typeOfInput: Class<IN>): IN? {
+        log.info("当前需要转化的json为：$json   --- 类型为：${typeOfInput.name}" )
         if (StringUtils.isEmpty(json))
             return null
         try {
