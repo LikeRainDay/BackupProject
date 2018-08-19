@@ -21,7 +21,6 @@ class OAuth2RefreshTokenPersistenceConverters: AttributeConverter<OAuth2RefreshT
         return@JsonPersistenceConverters objectMapper
     }
 
-
     override fun convertToDatabaseColumn(p0: OAuth2RefreshToken?): String {
         return jsonPersistenceConverters.convertToJson(p0!!)!!
     }

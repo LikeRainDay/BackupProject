@@ -5,6 +5,11 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.util.StringUtils
 
+/**
+ * describe: Json 转化
+ * author 候帅
+ * date 2018/8/19 下午9:21
+ */
 class JsonPersistenceConverters<IN> {
 
     private val log: Logger = LoggerFactory.getLogger(JsonPersistenceConverters::class.java)
