@@ -59,12 +59,14 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
 
     override fun configure(http: HttpSecurity?) {
+//        http!!
+//                .anonymous()
+//                .disable()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
         http!!
-                .anonymous()
-                .disable()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
+                .cors().disable()
     }
 
     override fun configure(web: WebSecurity?) {

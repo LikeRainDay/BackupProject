@@ -1,8 +1,6 @@
 package com.andy.ecologygetway.config
 
-import org.apache.juli.WebappProperties
 import org.springframework.boot.autoconfigure.security.SecurityProperties
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

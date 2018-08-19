@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.filter
+package com.andy.ecologygetway.fallback
 
 
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -53,7 +53,7 @@ class ServiceFallbackProvider:FallbackProvider {
             }
 
             override fun getBody(): InputStream {
-                val msg = "{\"message\":\"当前您访问的内容不可用\", \"code\":\"500\" }"
+                val msg = "当前服务不可用"
                 return ByteArrayInputStream(ObjectMapper().writeValueAsString(msg).toByteArray())
             }
         }

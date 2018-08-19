@@ -47,3 +47,7 @@ spring:
     show-sql: false
   profiles:
     include: default-user-and-roles_route
+ribbon:
+  eager-load:
+    enabled: false
+
