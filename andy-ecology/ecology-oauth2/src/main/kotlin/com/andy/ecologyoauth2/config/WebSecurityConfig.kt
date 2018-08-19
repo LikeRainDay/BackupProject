@@ -49,20 +49,22 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
 
     override fun configure(http: HttpSecurity?) {
-        http!!
-                .exceptionHandling()
-                .accessDeniedPage("/login.html?authorization_error=true")
-                .and()
-                .logout()
-                .permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/login.html")
-                .permitAll()
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
+        http!!.cors().disable()
+
+//        http!!
+//                .exceptionHandling()
+//                .accessDeniedPage("/login.html?authorization_error=true")
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login.html")
+//                .permitAll()
+//                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
     }
 
     override fun configure(web: WebSecurity?) {

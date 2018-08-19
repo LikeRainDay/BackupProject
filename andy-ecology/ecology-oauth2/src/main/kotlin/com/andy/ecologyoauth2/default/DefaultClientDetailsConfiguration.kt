@@ -59,9 +59,8 @@ class DefaultClientDetailsConfiguration: InitializingBean {
                     return@map grantTypeEntity
                 }.collect(Collectors.toList())
 
-        grantTypeRepository.saveAll(collect)
-
         if (grantTypeRepository.count().toInt() == 0){
+
             grantTypeRepository.saveAll(collect)
         }
 
