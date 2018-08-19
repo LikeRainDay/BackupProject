@@ -54,9 +54,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
 
     override fun updateClientSecret(clientId: String?, secret: String?) {
         val clientDetailsEntity = clientDetailsRepository.findOneByClientId(clientId!!).orElseThrow { NoSuchClientException("Client id not found") }
-//        clientDetailsEntity.clientSecret = secret!!
         clientDetailsEntity.clientSecret = passwordEncoder.encode(secret)
-
         clientDetailsRepository.save(clientDetailsEntity)
     }
 
@@ -73,7 +71,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
         }
         val clientDetailsEntity = ClientDetailsEntity()
         clientDetailsEntity.clientId = clientDetails.clientId
-        clientDetailsEntity.clientSecret = clientDetails.clientSecret
+        clientDetailsEntity.clientSecret = passwordEncoder.encode(clientDetails.clientSecret)
         clientDetailsEntity.accessTokenValiditySeconds = clientDetails.accessTokenValiditySeconds
         clientDetailsEntity.refreshTokenValiditySeconds = clientDetails.refreshTokenValiditySeconds
 
