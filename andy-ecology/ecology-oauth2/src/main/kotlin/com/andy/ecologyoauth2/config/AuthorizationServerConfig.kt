@@ -28,9 +28,6 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
 
-//    @Autowired
-//    private lateinit var tokenStoreService: DatabaseTokenStoreService
-
     @Autowired
     private lateinit var oAuth2DatabaseClientDetailsService: OAuth2DatabaseClientDetailsService
 
@@ -41,7 +38,6 @@ class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
     @Bean
     fun tokenStore(): TokenStore {
        return DatabaseTokenStoreService()
-//        return InMemoryTokenStore()
     }
 
     override fun configure(security: AuthorizationServerSecurityConfigurer?) {

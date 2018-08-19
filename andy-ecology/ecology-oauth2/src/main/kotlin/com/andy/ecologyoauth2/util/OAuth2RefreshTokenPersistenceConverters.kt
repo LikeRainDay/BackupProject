@@ -1,5 +1,7 @@
 package com.andy.ecologyoauth2.util
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.module.SimpleModule
 import org.springframework.security.oauth2.common.OAuth2RefreshToken
 import javax.persistence.AttributeConverter
 
@@ -10,7 +12,14 @@ import javax.persistence.AttributeConverter
  */
 class OAuth2RefreshTokenPersistenceConverters: AttributeConverter<OAuth2RefreshToken, String> {
 
-    private val jsonPersistenceConverters = JsonPersistenceConverters<OAuth2RefreshToken>()
+    private val jsonPersistenceConverters = JsonPersistenceConverters<OAuth2RefreshToken>{
+        val objectMapper = ObjectMapper()
+        val module = SimpleModule()
+        module.addSerializer(OAuth2RefreshToken::class.java, OAuth2RefreshTokenJackson2SerializerDeserializer.Companion.OAuth2RefreshTokenJackson2Serializer())
+        module.addDeserializer(OAuth2RefreshToken::class.java, OAuth2RefreshTokenJackson2SerializerDeserializer.Companion.OAuth2RefreshJackson2Deserializer())
+        objectMapper.registerModule(module)
+        return@JsonPersistenceConverters objectMapper
+    }
 
 
     override fun convertToDatabaseColumn(p0: OAuth2RefreshToken?): String {

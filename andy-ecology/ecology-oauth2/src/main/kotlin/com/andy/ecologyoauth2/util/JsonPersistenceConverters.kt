@@ -1,6 +1,6 @@
 package com.andy.ecologyoauth2.util
 
-import org.codehaus.jackson.map.ObjectMapper
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.util.StringUtils
@@ -9,7 +9,17 @@ class JsonPersistenceConverters<IN> {
 
     private val log: Logger = LoggerFactory.getLogger(JsonPersistenceConverters::class.java)
 
-    private val objectMapper: ObjectMapper = ObjectMapper()
+    private var  objectMapper: ObjectMapper
+
+
+    constructor(){
+        objectMapper = ObjectMapper()
+    }
+
+    constructor(listener: () -> ObjectMapper){
+        objectMapper = listener.invoke()
+    }
+
 
     /**
      * describe: 将输入数据转化为JSON
@@ -19,9 +29,6 @@ class JsonPersistenceConverters<IN> {
      * @return   返回Json 数据
      */
     fun convertToJson(input: IN): String? {
-        log.info("当前需要转化的json为：$input  " )
-
-
         if (input == null)
             return null
         try {
@@ -41,7 +48,6 @@ class JsonPersistenceConverters<IN> {
      * @return   对应输入类型的实体
      */
     fun convertFromJson(json: String, typeOfInput: Class<IN>): IN? {
-        log.info("当前需要转化的json为：$json   --- 类型为：${typeOfInput.name}" )
         if (StringUtils.isEmpty(json))
             return null
         try {

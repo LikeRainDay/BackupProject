@@ -63,6 +63,8 @@ class DatabaseTokenStoreService: TokenStore {
                         refreshTokenEntity.token = token.refreshToken
                         refreshTokenEntity.authentication = authentication!!
 
+                        log.info("当前传入的RefreshToken为： ${token.refreshToken.toString()}")
+
                         refreshTokenRepository
                                 .save(refreshTokenEntity)
                     }
