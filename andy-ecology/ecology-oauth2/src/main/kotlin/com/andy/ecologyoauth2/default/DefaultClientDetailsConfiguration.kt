@@ -76,26 +76,13 @@ class DefaultClientDetailsConfiguration: InitializingBean {
             scopeRepository.saveAll(scopeArray)
         }
 
-        var clientDetails = BaseClientDetails("api", null, API_SCOPES, API_GRANT_TYPES, null)
+        clientDetails("api", "api")
 
-        clientDetails.clientSecret = "api"
-        clientDetails.registeredRedirectUri = Collections.emptySet()
-        clientDetails.refreshTokenValiditySeconds = TimeConstant.REFRESH_TOKEN_SECOUND.toInt()
-        clientDetails.accessTokenValiditySeconds = TimeConstant.ACCESS_TOKEN_SECOUND.toInt()
+
+        val details = clientDetails("open_api", "open_api")
 
         try {
-            oAuth2DatabaseClientDetailsService.addClientDetails(clientDetails)
-        } catch (e: ClientAlreadyExistsException) {
-            log.warn(e.message)
-        }
-
-        clientDetails = BaseClientDetails("open_api", null, API_SCOPES, API_GRANT_TYPES, null)
-        clientDetails.clientSecret = "open_api"
-        clientDetails.registeredRedirectUri = Collections.emptySet()
-
-        try {
-            oAuth2DatabaseClientDetailsService.addClientDetails(clientDetails)
-            val detailsEntity = clientDetailsRepository.findOneByClientId(clientDetails.clientId).get()
+            val detailsEntity = clientDetailsRepository.findOneByClientId(details.clientId).get()
             val limitEntity = ClientDetailsLimitEntity()
             limitEntity.intervalInMills = 100000L
             limitEntity.limits = 3L
@@ -105,5 +92,27 @@ class DefaultClientDetailsConfiguration: InitializingBean {
         } catch (e: Exception) {
             log.warn(e.message)
         }
+    }
+
+    /**
+     * describe: 增加 clientID  和 SeretID
+     * author 候帅
+     * date 2018/8/19 下午2:07
+     * @param clientId 客户ID
+     * @param secretId  安全ID
+     * @return   基础客户端信息
+     */
+    private fun clientDetails(clientId: String, secretId: String): BaseClientDetails {
+        val details = BaseClientDetails(clientId, null, API_SCOPES, API_GRANT_TYPES, null)
+        details.clientSecret = secretId
+        details.registeredRedirectUri = Collections.emptySet()
+        details.refreshTokenValiditySeconds = TimeConstant.REFRESH_TOKEN_SECOUND.toInt()
+        details.accessTokenValiditySeconds = TimeConstant.ACCESS_TOKEN_SECOUND.toInt()
+        try {
+            oAuth2DatabaseClientDetailsService.addClientDetails(details)
+        } catch (e: Exception) {
+            log.warn(e.message)
+        }
+        return details
     }
 }

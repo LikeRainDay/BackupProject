@@ -34,12 +34,12 @@ abstract class AbstractAuditable<PK : Serializable>: AbstractPersistable<PK>() {
     @NotNull
     @CreatedDate
     @Column(name = "created_date", updatable = false, nullable = false)
-    var createdDate: ZonedDateTime = ZonedDateTime.now()
+     var createdDate: ZonedDateTime = ZonedDateTime.now()
 
     @Size(max = 50)
     @LastModifiedBy
     @Column(name = "last_modified_by", length = 50)
-    var lastModifiedBy: String = UUID.randomUUID().toString()
+    lateinit var lastModifiedBy: String
 
     @LastModifiedDate
     @Column(name = "last_modified_date")

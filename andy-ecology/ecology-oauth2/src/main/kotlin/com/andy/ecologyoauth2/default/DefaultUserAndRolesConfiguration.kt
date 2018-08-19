@@ -69,25 +69,33 @@ class DefaultUserAndRolesConfiguration: InitializingBean {
             userRepository.save(userEntity)
         }
 
+
+        // 避免重复加入
         defaultRoleEntity.stream().forEach {
-            val userRoleXrefEntity = UserRoleXrefEntity()
-            userRoleXrefEntity.user = defaultAdminUserEntity
-            userRoleXrefEntity.role = it
-            userRoleXrefRepository.save(userRoleXrefEntity)
+            val findIsPeplace = userRoleXrefRepository.findIsPeplace(it, defaultAdminUserEntity)
+            if (!findIsPeplace.isPresent){
+                val userRoleXrefEntity = UserRoleXrefEntity()
+                userRoleXrefEntity.user = defaultAdminUserEntity
+                userRoleXrefEntity.role = it
+                userRoleXrefRepository.save(userRoleXrefEntity)
+            }
         }
 
-        userRepository.findOneByUsername(DEFAULT_USER_USERNAME).orElseGet {
+        val defaultUserRole = userRepository.findOneByUsername(DEFAULT_USER_USERNAME).orElseGet {
             val userEntity = UserEntity()
             userEntity.username = DEFAULT_USER_USERNAME
             userEntity.password = passwordEncoder.encode(DEFAULT_USER_PASSWORD)
-            roleRepository.findOneByName("USER").ifPresent {
-                val userRoleXrefEntity = UserRoleXrefEntity()
-                userRoleXrefEntity.user = userEntity
-                userRoleXrefEntity.role = it
-                userEntity.roles = Collections.singleton(userRoleXrefEntity)
-            }
             return@orElseGet userRepository.save(userEntity)
         }
 
+        defaultRoleEntity.stream().forEach {
+            val findIsPeplace = userRoleXrefRepository.findIsPeplace(it, defaultUserRole)
+            if (!findIsPeplace.isPresent){
+                val userRoleXrefEntity = UserRoleXrefEntity()
+                userRoleXrefEntity.user = defaultUserRole
+                userRoleXrefEntity.role = it
+                userRoleXrefRepository.save(userRoleXrefEntity)
+            }
+        }
     }
 }
