@@ -53,7 +53,7 @@ class ServiceFallbackProvider:FallbackProvider {
             }
 
             override fun getBody(): InputStream {
-                val msg = "当前您访问的内容不可用"
+                val msg = "{\"message\":\"当前您访问的内容不可用\", \"code\":\"500\" }"
                 return ByteArrayInputStream(ObjectMapper().writeValueAsString(msg).toByteArray())
             }
         }

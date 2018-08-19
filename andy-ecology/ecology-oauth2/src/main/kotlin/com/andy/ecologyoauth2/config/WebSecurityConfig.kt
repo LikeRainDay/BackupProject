@@ -47,7 +47,8 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
-        auth!!.userDetailsService(userDetail())
+        auth!!
+                .userDetailsService(userDetail())
                 .passwordEncoder(passwordEncoder())
     }
 

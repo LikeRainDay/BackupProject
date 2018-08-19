@@ -46,12 +46,13 @@ zuul:
       refresh-interval: 60
       # 限流类型
       type: url
+  ignored-services: '*'
 security:
   oauth2:
     client:
       access-token-uri: http://localhost:${server.port}/auth/oauth/token
       user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
-      client-id: webapp
+      client-id: api
     resource:
       user-info-uri: http://localhost:${server.port}/auth/user
       prefer-token-info: false
