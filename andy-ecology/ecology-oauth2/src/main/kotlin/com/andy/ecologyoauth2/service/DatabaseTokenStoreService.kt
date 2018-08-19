@@ -12,8 +12,8 @@ import org.springframework.security.oauth2.provider.token.AuthenticationKeyGener
 import org.springframework.security.oauth2.provider.token.DefaultAuthenticationKeyGenerator
 import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.stream.Collectors
-import javax.transaction.Transactional
 
 /**
  * describe: 自定义Token存储

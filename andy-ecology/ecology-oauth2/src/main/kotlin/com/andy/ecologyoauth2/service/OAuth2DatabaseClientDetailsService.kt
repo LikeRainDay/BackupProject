@@ -10,10 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.oauth2.provider.*
 import org.springframework.security.oauth2.provider.client.BaseClientDetails
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 import java.util.stream.Collectors
 import java.util.stream.Collectors.*
-import javax.transaction.Transactional
 
 @Service
 class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrationService {

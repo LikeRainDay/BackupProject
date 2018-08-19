@@ -1,5 +1,4 @@
 package com.andy.ecologyoauth2.entity
-
 import javax.persistence.*
 
 
