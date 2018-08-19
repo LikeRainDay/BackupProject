@@ -5,6 +5,7 @@ import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler
 import javax.servlet.http.HttpServletResponse
 
 /**
@@ -16,37 +17,20 @@ import javax.servlet.http.HttpServletResponse
  */
 @Configuration
 @EnableResourceServer
-//@Order(3)
 class ResourceServerConfig : ResourceServerConfigurerAdapter(){
 
     override fun configure(http: HttpSecurity?) {
-//        http!!
-//                .anonymous()
-//                .disable()
-//                .requestMatchers()
-//                .antMatchers("/api/**")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/api/**")
-//                .fullyAuthenticated()
-//                .and()
-//                .exceptionHandling()
-//                .accessDeniedHandler(OAuth2AccessDeniedHandler())
         http!!
-                .requestMatchers().anyRequest()
+                .anonymous()
+                .disable()
+                .requestMatchers()
+                .antMatchers("/api/**")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/*").permitAll()
-//                .exceptionHandling()
-//                .authenticationEntryPoint { request, response, authException ->
-//                    response
-//                            .sendError(HttpServletResponse.SC_UNAUTHORIZED)
-//                }
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .httpBasic()
+                .antMatchers("/api/**")
+                .fullyAuthenticated()
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(OAuth2AccessDeniedHandler())
     }
 }

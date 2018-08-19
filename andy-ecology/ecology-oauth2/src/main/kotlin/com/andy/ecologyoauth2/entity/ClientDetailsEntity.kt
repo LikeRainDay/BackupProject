@@ -24,19 +24,19 @@ class ClientDetailsEntity: AbstractAuditable<Long>() {
 
 
     @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
-    lateinit var authorizedGrantTypeXrefs: Set<ClientDetailToAuthorizedGrantTypeXrefEntity>
+    lateinit var authorizedGrantTypeXrefs: MutableSet<ClientDetailsToAuthorizedGrantTypeXrefEntity>
 
 
     @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
-    lateinit var scopeXrefs: Set<ClientDetailsToScopeXrefEntity>
+    lateinit var scopeXrefs: MutableSet<ClientDetailsToScopeXrefEntity>
 
 
     @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
-    lateinit var resourceIdXrefs: Set<ClientDetailsToResourceIdXrefEntity>
+    lateinit var resourceIdXrefs: MutableSet<ClientDetailsToResourceIdXrefEntity>
 
 
     @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])
-    lateinit var redirectUris: Set<RedirectUrlEntity>
+    lateinit var redirectUris: MutableSet<RedirectUrlEntity>
 
 
     @OneToOne(mappedBy = "clientDetail", fetch = FetchType.EAGER, orphanRemoval = true, cascade = [CascadeType.ALL])

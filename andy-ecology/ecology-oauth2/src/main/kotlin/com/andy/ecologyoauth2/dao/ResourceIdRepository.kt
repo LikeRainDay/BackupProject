@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
 
-interface ResourceRepository: JpaRepository<ResourceIdEntity, Long> {
+interface ResourceIdRepository: JpaRepository<ResourceIdEntity, Long> {
 
     fun findOneByValue(value: String): Optional<ResourceIdEntity>
 }

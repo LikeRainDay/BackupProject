@@ -11,5 +11,5 @@ class GrantTypeEntity: AbstractAuditable<Long>() {
     lateinit var value: String
 
     @OneToMany(mappedBy = "grantType", fetch = FetchType.LAZY)
-    lateinit var clientDetailToAuthorizedGrantTypeXrefEntity: Set<ClientDetailToAuthorizedGrantTypeXrefEntity>
+    lateinit var clientDetailToAuthorizedGrantTypeXrefEntity: Set<ClientDetailsToAuthorizedGrantTypeXrefEntity>
 }

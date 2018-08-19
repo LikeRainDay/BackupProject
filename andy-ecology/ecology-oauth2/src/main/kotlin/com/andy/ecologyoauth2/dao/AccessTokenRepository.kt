@@ -14,6 +14,8 @@ interface AccessTokenRepository: JpaRepository<AccessTokenEntity, Long> {
 
     fun deleteByRefreshTokenTokenId(refreshTokenId: String)
 
+    fun deleteByTokenId(tokenId: String)
+
     fun findAllByClientIdAndUserName(clientId: String, userName: String): List<AccessTokenEntity>
 
     fun findAllByClientId(clientId: String): List<AccessTokenEntity>

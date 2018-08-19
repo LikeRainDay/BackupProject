@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "client_details_grant_type_xref")
-class ClientDetailToAuthorizedGrantTypeXrefEntity: AbstractAuditable<Long>() {
+class ClientDetailsToAuthorizedGrantTypeXrefEntity: AbstractAuditable<Long>() {
 
     @NotNull
     @ManyToOne(optional = false)
