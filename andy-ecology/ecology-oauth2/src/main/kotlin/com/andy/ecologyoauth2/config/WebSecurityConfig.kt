@@ -30,7 +30,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
  */
 @Configuration
 @EnableWebSecurity
-@Order(2)
+@Order(SecurityProperties.BASIC_AUTH_ORDER - 2)
 class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     private var log: Logger = LoggerFactory.getLogger(WebSecurityConfig::class.java)
