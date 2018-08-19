@@ -25,12 +25,14 @@ zuul:
     ratelimit-api:
       path: /ratelimit-api/**
       serviceId: service-client
+      sensitiveHeaders: "*"
     login:
       path: /login/**
+      sensitiveHeaders: "*"
       serviceId: server-login
     auth:
       path: /auth/**
-      sensitiveHeaders:
+      sensitiveHeaders: "*"
       serviceId: ecology-oauth2
   ratelimit:
     key-prefix: ratelimit-api
@@ -47,6 +49,7 @@ zuul:
       # 限流类型
       type: url
   ignored-services: '*'
+  add-proxy-headers: true
 security:
   oauth2:
     client:
