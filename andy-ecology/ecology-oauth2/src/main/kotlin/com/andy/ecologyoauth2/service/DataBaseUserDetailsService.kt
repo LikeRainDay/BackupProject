@@ -3,6 +3,8 @@ package com.andy.ecologyoauth2.service
 import com.andy.ecologyoauth2.dao.AccessTokenRepository
 import com.andy.ecologyoauth2.dao.ClientDetailsRepository
 import com.andy.ecologyoauth2.dao.UserRepository
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
@@ -23,6 +25,8 @@ import java.util.stream.Collectors
 @Service
 class DataBaseUserDetailsService :UserDetailsService {
 
+    private val log: Logger = LoggerFactory.getLogger(DataBaseUserDetailsService::class.java)
+
     companion object {
         private const val ROLE_PREFIX: String = "ROLE_"
     }
@@ -37,6 +41,7 @@ class DataBaseUserDetailsService :UserDetailsService {
     private lateinit var clientDetailsRepository: ClientDetailsRepository
 
     override fun loadUserByUsername(username: String?): UserDetails {
+
         return userRepository.findOneByUsername(username!!)
                 .map {
                     return@map User(it.username, it.password, it.roles.stream()

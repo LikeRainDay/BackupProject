@@ -46,7 +46,7 @@ class DatabaseTokenStoreService: TokenStore {
 
         val tokenId = token!!.value
 
-        var refreshToken: RefreshTokenEntity?
+        val refreshToken: RefreshTokenEntity?
 
         val authenticationKey = authenticationKeyGenerator.extractKey(authentication)
 

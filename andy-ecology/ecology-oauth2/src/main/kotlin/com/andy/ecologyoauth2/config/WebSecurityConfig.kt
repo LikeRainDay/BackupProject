@@ -1,6 +1,8 @@
 package com.andy.ecologyoauth2.config
 
 import com.andy.ecologyoauth2.service.DataBaseUserDetailsService
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.context.annotation.Bean
@@ -15,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 
@@ -27,11 +30,16 @@ import org.springframework.security.crypto.password.PasswordEncoder
  */
 @Configuration
 @EnableWebSecurity
-@Order(SecurityProperties.BASIC_AUTH_ORDER - 2)
+@Order(2)
 class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
-    @Autowired
-    private lateinit var userDetailsService: DataBaseUserDetailsService
+    private var log: Logger = LoggerFactory.getLogger(WebSecurityConfig::class.java)
+
+    @Bean
+    fun userDetail():UserDetailsService {
+        return DataBaseUserDetailsService()
+    }
+
 
     @Bean
     fun passwordEncoder(): PasswordEncoder {
@@ -39,7 +47,8 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
-        auth!!.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
+        auth!!.userDetailsService(userDetail())
+                .passwordEncoder(passwordEncoder())
     }
 
     @Bean
@@ -49,22 +58,12 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
 
     override fun configure(http: HttpSecurity?) {
-        http!!.cors().disable()
-
-//        http!!
-//                .exceptionHandling()
-//                .accessDeniedPage("/login.html?authorization_error=true")
-//                .and()
-//                .logout()
-//                .permitAll()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login.html")
-//                .permitAll()
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest()
-//                .authenticated()
+        http!!
+                .anonymous()
+                .disable()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
     }
 
     override fun configure(web: WebSecurity?) {

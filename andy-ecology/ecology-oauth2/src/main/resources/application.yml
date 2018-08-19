@@ -44,6 +44,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
   profiles:
     include: default-user-and-roles_route

@@ -5,6 +5,8 @@ import com.andy.ecologyoauth2.dao.GrantTypeRepository
 import com.andy.ecologyoauth2.dao.ResourceIdRepository
 import com.andy.ecologyoauth2.dao.ScopeRepository
 import com.andy.ecologyoauth2.entity.*
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.oauth2.provider.*
@@ -17,6 +19,8 @@ import java.util.stream.Collectors.*
 
 @Service
 class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrationService {
+
+    private val log: Logger = LoggerFactory.getLogger(OAuth2DatabaseClientDetailsService::class.java)
 
     @Autowired
     private lateinit var clientDetailsRepository: ClientDetailsRepository
@@ -50,7 +54,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
 
     override fun updateClientSecret(clientId: String?, secret: String?) {
         val clientDetailsEntity = clientDetailsRepository.findOneByClientId(clientId!!).orElseThrow { NoSuchClientException("Client id not found") }
-
+//        clientDetailsEntity.clientSecret = secret!!
         clientDetailsEntity.clientSecret = passwordEncoder.encode(secret)
 
         clientDetailsRepository.save(clientDetailsEntity)
@@ -63,10 +67,10 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
 
     @Transactional
     override fun addClientDetails(clientDetails: ClientDetails?) {
+
         if (clientDetailsRepository.findOneByClientId(clientDetails!!.clientId).isPresent){
             throw ClientAlreadyExistsException("Client ID already exists")
         }
-
         val clientDetailsEntity = ClientDetailsEntity()
         clientDetailsEntity.clientId = clientDetails.clientId
         clientDetailsEntity.clientSecret = clientDetails.clientSecret
@@ -120,6 +124,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
 
     @Transactional
     override fun updateClientDetails(clientDetails: ClientDetails?) {
+
         val entity = clientDetailsRepository.findOneByClientId(clientDetails!!.clientId).orElseThrow { NoSuchClientException("Client details not found") }
 
         entity.accessTokenValiditySeconds = clientDetails.accessTokenValiditySeconds

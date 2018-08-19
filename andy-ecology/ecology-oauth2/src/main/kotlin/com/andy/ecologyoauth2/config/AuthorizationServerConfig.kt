@@ -44,7 +44,10 @@ class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
         return tokenApprovalStore
     }
 
-
+    override fun configure(security: AuthorizationServerSecurityConfigurer?) {
+        security!!
+                .tokenKeyAccess("permitAll()")
+    }
 
     override fun configure(clients: ClientDetailsServiceConfigurer?) {
         clients!!.withClientDetails(oAuth2DatabaseClientDetailsService)
