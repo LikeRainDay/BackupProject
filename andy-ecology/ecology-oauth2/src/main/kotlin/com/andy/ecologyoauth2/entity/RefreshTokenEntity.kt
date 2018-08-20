@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull
 @Table(name = "refresh_token")
 class RefreshTokenEntity: AbstractAuditable<Long>() {
 
+
+
     @NotNull
     @Column(name = "token_id", nullable = false, unique = true, length = 36)
     lateinit var tokenId: String

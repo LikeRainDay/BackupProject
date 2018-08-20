@@ -8,6 +8,8 @@ import javax.validation.constraints.NotNull
 @Table(name = "resource")
 class ResourceIdEntity: AbstractAuditable<Long>() {
 
+
+
     @NotNull
     @Column(name = "value", nullable = false)
     lateinit var value: String

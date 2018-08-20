@@ -8,10 +8,11 @@ import javax.validation.constraints.NotNull
 @Table(name = "scope")
 class ScopeEntity: AbstractAuditable<Long>() {
 
+
     @NotNull
     @Column(name = "value", nullable = false)
     lateinit var value: String
 
     @OneToMany(mappedBy = "scope", fetch = FetchType.LAZY)
-    lateinit var clientDetailsToScopeXrefs: Set<ClientDetailsToScopeXrefEntity>
+    lateinit var clientDetailsToScopeXrefs: MutableSet<ClientDetailsToScopeXrefEntity>
 }

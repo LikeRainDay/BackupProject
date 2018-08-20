@@ -1,15 +1,16 @@
 package com.andy.ecologyoauth2.entity
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import javax.persistence.*
 
 /**
  * describe: 功能表
  * author 候帅
  * date 2018/8/20 下午3:52
  */
-class FeaturesEntity {
+@Entity
+@Table(name = "pm_features")
+class FeaturesEntity: AbstractEntity<Long>(){
 
-    private val log: Logger = LoggerFactory.getLogger(FeaturesEntity::class.java)
+
 
 }

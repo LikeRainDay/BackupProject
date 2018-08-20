@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull
 @Table(name = "user_role_xref")
 class UserRoleXrefEntity: AbstractAuditable<Long>() {
 
+
     @NotNull
     @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne(cascade = [CascadeType.REFRESH, CascadeType.DETACH], fetch = FetchType.EAGER)

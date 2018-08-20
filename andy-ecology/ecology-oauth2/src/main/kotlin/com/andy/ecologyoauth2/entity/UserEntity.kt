@@ -14,6 +14,7 @@ class UserEntity: AbstractAuditable<Long>() {
         const val NAME_REGEX: String = "^[A-Za-z0-9_]*$"
     }
 
+
     @Size(max = 50)
     @NotNull
     @Pattern(regexp = NAME_REGEX)
@@ -31,16 +32,19 @@ class UserEntity: AbstractAuditable<Long>() {
     var disabled: Boolean = false
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
-    lateinit var roles: Set<UserRoleXrefEntity>
+    lateinit var roles: MutableSet<UserRoleXrefEntity>
 
     @OneToMany(mappedBy = "authority", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
-    lateinit var authorities: Set<UserAuthorityXrefEntity>
+    lateinit var authorities: MutableSet<UserAuthorityXrefEntity>
 
-
-    // 用户详情表
-
-
-
-
-
+    // 用户和用户组表
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+//    @JoinTable(name = "it_userGroup",
+//            joinColumns = [
+//                JoinColumn(name = "user_ref_user", referencedColumnName = "id")
+//            ],
+//            inverseJoinColumns = [
+//                JoinColumn(name = "user_ref_group", referencedColumnName = "id")
+//            ])
+//    lateinit var userGroupId: MutableSet<GroupEntity>
 }

@@ -1,15 +1,16 @@
 package com.andy.ecologyoauth2.entity
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.hibernate.annotations.GenericGenerator
+import javax.persistence.*
 
 /**
  * describe: 权限表
  * author 候帅
  * date 2018/8/20 下午3:50
  */
-class PermissionEntity {
+@Entity
+@Table(name = "permission")
+class PermissionEntity: AbstractEntity<Long>() {
 
-    private val log: Logger = LoggerFactory.getLogger(PermissionEntity::class.java)
 
 }

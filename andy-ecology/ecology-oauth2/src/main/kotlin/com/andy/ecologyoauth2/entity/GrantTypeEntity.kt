@@ -6,6 +6,8 @@ import javax.persistence.*
 @Table(name = "grant_type")
 class GrantTypeEntity: AbstractAuditable<Long>() {
 
+
+
     @Column(name = "value", nullable = false)
     lateinit var value: String
 

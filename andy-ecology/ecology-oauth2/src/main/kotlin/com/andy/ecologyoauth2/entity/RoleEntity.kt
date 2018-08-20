@@ -8,6 +8,8 @@ import javax.validation.constraints.NotNull
 @Table(name = "roles")
 class RoleEntity: AbstractAuditable<Long>() {
 
+
+
     @NotNull
     @Column(name = "role_name", nullable = false, unique = true, length = 100)
     lateinit var name: String
@@ -23,8 +25,8 @@ class RoleEntity: AbstractAuditable<Long>() {
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     lateinit var users: Set<UserRoleXrefEntity>
 
-
-    // 用户权限表
+//    @ManyToMany(mappedBy = "roleId", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+//    lateinit var groupId:Set<GroupEntity>
 
 }
 

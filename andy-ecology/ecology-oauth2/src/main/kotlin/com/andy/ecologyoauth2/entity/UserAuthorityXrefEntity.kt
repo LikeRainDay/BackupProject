@@ -7,6 +7,8 @@ import javax.persistence.*
 @Table(name = "user_authority_xref")
 class UserAuthorityXrefEntity: AbstractAuditable<Long>() {
 
+
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.DETACH, CascadeType.REFRESH])
     @JoinColumn(name = "user_id", nullable = false)
     lateinit var user: UserEntity

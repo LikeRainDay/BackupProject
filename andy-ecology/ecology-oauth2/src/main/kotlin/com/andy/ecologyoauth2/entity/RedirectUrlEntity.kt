@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull
 @Table(name = "redirect_url")
 class RedirectUrlEntity: AbstractAuditable<Long>() {
 
+
+
     @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "client_details_id", nullable = false)
