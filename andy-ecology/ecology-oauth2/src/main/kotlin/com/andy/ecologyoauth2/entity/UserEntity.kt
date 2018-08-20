@@ -36,4 +36,11 @@ class UserEntity: AbstractAuditable<Long>() {
     @OneToMany(mappedBy = "authority", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     lateinit var authorities: Set<UserAuthorityXrefEntity>
 
+
+    // 用户详情表
+
+
+
+
+
 }

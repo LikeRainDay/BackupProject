@@ -23,5 +23,8 @@ class RoleEntity: AbstractAuditable<Long>() {
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     lateinit var users: Set<UserRoleXrefEntity>
 
+
+    // 用户权限表
+
 }
 
