@@ -1,8 +1,6 @@
 package com.andy.service.servierusercenter.entity
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -29,7 +27,8 @@ class GroupEntity: AbstractEntity<Long>() {
     @Column(name = "group_desc")
     lateinit var groupDesc: String
 
-
-
+    // 用户信息多对多
+    @ManyToMany(mappedBy = "group", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    lateinit var user: Set<UserEntity>
 
 }

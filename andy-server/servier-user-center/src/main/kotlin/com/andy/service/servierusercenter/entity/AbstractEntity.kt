@@ -21,9 +21,11 @@ abstract class AbstractEntity<PK : Serializable>: AbstractPersistable<PK>()  {
     @Column(name = "created_date", updatable = false, nullable = false)
     var createdDate: ZonedDateTime = ZonedDateTime.now()
 
-
     @Size(max = 50)
     @LastModifiedBy
     @Column(name = "last_modified_by", length = 50)
     lateinit var lastModifiedBy: String
+
+    @Column(name = "last_modified_data", length = 50)
+    var lastModifiedDate: ZonedDateTime = ZonedDateTime.now()
 }
