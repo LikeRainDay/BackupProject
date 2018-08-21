@@ -20,6 +20,7 @@
         <module name="ecology-getway" />
         <module name="ecology-oauth2" />
         <module name="server-login" />
+        <module name="servier-user-center" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/andy-core/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/andy-server/server-login/pom.xml" />
+        <option value="$PROJECT_DIR$/andy-server/servier-user-center/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
