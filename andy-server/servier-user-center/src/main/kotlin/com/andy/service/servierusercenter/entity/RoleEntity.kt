@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "role")
-class RoleEntity: AbstractEntity<Long>() {
+class RoleEntity: AbstractEntity() {
 
 
     // 角色名

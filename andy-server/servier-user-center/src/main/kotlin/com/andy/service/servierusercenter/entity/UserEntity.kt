@@ -12,7 +12,7 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "users")
-class UserEntity: AbstractEntity<Long>() {
+class UserEntity: AbstractEntity() {
 
 
     @Size(max = 50)
@@ -37,7 +37,8 @@ class UserEntity: AbstractEntity<Long>() {
     lateinit var phone: String
 
     // 用户详情信息
-    @OneToOne(cascade = [CascadeType.ALL],fetch = FetchType.LAZY, mappedBy = "users")
+    @OneToOne(cascade = [CascadeType.ALL],fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_details_id", referencedColumnName = "id", unique = true)
     lateinit var userDetails: UserDetailsEntity
 
     // 用户组

@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "permission")
-class PermissionEntity: AbstractEntity<Long>() {
+class PermissionEntity: AbstractEntity() {
 
 
     // 权限名

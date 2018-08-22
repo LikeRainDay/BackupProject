@@ -9,7 +9,7 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "pm_features")
-class PmFeaturesEntity: AbstractEntity<Long>() {
+class PmFeaturesEntity: AbstractEntity() {
 
 
     // 当前操作的编码
@@ -21,7 +21,7 @@ class PmFeaturesEntity: AbstractEntity<Long>() {
     lateinit var operationName: String
 
     // 当前操作的父id
-    @Column(name = "operation_name", nullable = true)
+    @Column(name = "operation_parent_id", nullable = true)
     lateinit var parentId: String
 
     // 当前操作的索引 eg: -1-2-
@@ -30,6 +30,6 @@ class PmFeaturesEntity: AbstractEntity<Long>() {
 
     // 权限映射
     @ManyToMany(mappedBy = "pmFeatures", cascade = [CascadeType.DETACH, CascadeType.PERSIST])
-    lateinit var permission: PermissionEntity
+    lateinit var permission: Set<PermissionEntity>
 
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "pm_file")
-class PmFileEntity: AbstractEntity<Long>() {
+class PmFileEntity: AbstractEntity() {
 
 
     // 当前类型 0 : 代表 文件  1: 代表文件夹
@@ -26,5 +26,6 @@ class PmFileEntity: AbstractEntity<Long>() {
 
     // 权限映射
     @ManyToMany(mappedBy = "pmFile", cascade = [CascadeType.DETACH, CascadeType.PERSIST])
-    lateinit var permission: PermissionEntity
+    lateinit var permission: Set<PermissionEntity>
+
 }

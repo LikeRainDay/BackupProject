@@ -14,7 +14,7 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "user_details")
-class UserDetailsEntity: AbstractEntity<Long>() {
+class UserDetailsEntity: AbstractEntity() {
 
 
     // 用户性别

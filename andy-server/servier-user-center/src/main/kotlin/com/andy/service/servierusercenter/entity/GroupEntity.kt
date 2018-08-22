@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "groups")
-class GroupEntity: AbstractEntity<Long>() {
+class GroupEntity: AbstractEntity() {
 
     // 用户组名
     @NotNull

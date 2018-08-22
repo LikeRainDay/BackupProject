@@ -12,7 +12,7 @@ import javax.persistence.*
  */
 @Entity
 @Table(name = "user_auths")
-class UserAuthsEntity: AbstractEntity<Long>() {
+class UserAuthsEntity: AbstractEntity() {
 
     @Column
     var identityType: Int = 0

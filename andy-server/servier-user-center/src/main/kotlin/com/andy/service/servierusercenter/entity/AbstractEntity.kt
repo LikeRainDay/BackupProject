@@ -1,10 +1,9 @@
 package com.andy.service.servierusercenter.entity
 
+import com.andy.corejpa.AbstractUuidPersistable
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedBy
-import org.springframework.data.jpa.domain.AbstractPersistable
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import java.io.Serializable
 import java.time.ZonedDateTime
 import javax.persistence.Column
 import javax.persistence.EntityListeners
@@ -14,7 +13,7 @@ import javax.validation.constraints.Size
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class AbstractEntity<PK : Serializable>: AbstractPersistable<PK>()  {
+abstract class AbstractEntity: AbstractUuidPersistable() {
 
     @NotNull
     @CreatedDate
