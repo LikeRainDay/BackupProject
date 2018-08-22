@@ -15,7 +15,7 @@ import javax.validation.constraints.Size
 class UserDetailsEntity: AbstractEntity() {
 
 
-    // 用户性别
+    // 用户性别 0: 男生  1: 女生
     var sex: Int = 0
 
     // 用户地址信息
