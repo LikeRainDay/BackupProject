@@ -31,4 +31,15 @@ class GroupEntity: AbstractEntity<Long>() {
     @ManyToMany(mappedBy = "group", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     lateinit var user: Set<UserEntity>
 
+
+
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @JoinTable(name = "it_GR",
+            joinColumns = [
+                JoinColumn(name = "FK_GR_REF_USER", referencedColumnName = "id")
+            ],
+            inverseJoinColumns = [
+                JoinColumn(name = "FK_GR_REF_ROLE", referencedColumnName = "id")
+            ])
+    lateinit var role: MutableSet<RoleEntity>
 }

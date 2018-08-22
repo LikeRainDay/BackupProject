@@ -42,24 +42,24 @@ class UserEntity: AbstractEntity<Long>() {
 
     // 用户组
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinTable(name = "it_userGroup",
+    @JoinTable(name = "it_UG",
         joinColumns = [
-            JoinColumn(name = "ref_user", referencedColumnName = "id")
+            JoinColumn(name = "FK_GU_REF_USER", referencedColumnName = "id")
         ],
         inverseJoinColumns = [
-            JoinColumn(name = "ref_group", referencedColumnName = "id")
+            JoinColumn(name = "FK_GU_REF_GROUP", referencedColumnName = "id")
         ])
     lateinit var group: MutableSet<GroupEntity>
 
 
     // 用户角色
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinTable(name = "it_userRole",
+    @JoinTable(name = "it_UR",
             joinColumns = [
-                JoinColumn(name = "ref_user", referencedColumnName = "id")
+                JoinColumn(name = "FK_UR_REF_USER", referencedColumnName = "id")
             ],
             inverseJoinColumns = [
-                JoinColumn(name = "ref_role", referencedColumnName = "id")
+                JoinColumn(name = "FK_UR_REF_ROLE", referencedColumnName = "id")
             ])
     lateinit var role: MutableSet<RoleEntity>
 
@@ -69,6 +69,8 @@ class UserEntity: AbstractEntity<Long>() {
     lateinit var userAuths: MutableSet<UserAuthsEntity>
 
 
+
+    // 用户对应的oauth2的Token 内容
 
 
 
