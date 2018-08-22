@@ -1,8 +1,6 @@
 package com.andy.service.servierusercenter.entity
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.Size
 
 /**
@@ -38,6 +36,19 @@ class UserDetailsEntity: AbstractEntity() {
     // 身份证
     @Column(name = "id_card", nullable = true)
     lateinit var idCard: String
+
+    // 用户简介
+    lateinit var summary: String
+
+    // 职位
+    @ManyToOne()
+    @JoinColumn(name = "user_position")
+    lateinit var position: PositionsEntity
+
+    // 单位详情
+    @ManyToOne()
+    @JoinColumn(name = "user_details")
+    lateinit var unitDetails: UnitDetailsEntity
 
 
 }

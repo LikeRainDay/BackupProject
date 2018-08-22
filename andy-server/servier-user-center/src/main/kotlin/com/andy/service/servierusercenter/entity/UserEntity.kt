@@ -70,9 +70,4 @@ class UserEntity: AbstractEntity() {
     lateinit var userAuths: MutableSet<UserAuthsEntity>
 
 
-
-    // 用户对应的oauth2的Token 内容
-
-
-
 }
