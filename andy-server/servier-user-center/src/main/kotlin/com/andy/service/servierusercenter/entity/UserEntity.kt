@@ -70,4 +70,7 @@ class UserEntity: AbstractEntity() {
     lateinit var userAuths: MutableSet<UserAuthsEntity>
 
 
+    // 登录记录
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    lateinit var userLoginHistoryEntity: Set<UserLoginHistoryEntity>
 }
