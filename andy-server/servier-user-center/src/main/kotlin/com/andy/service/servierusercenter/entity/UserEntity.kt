@@ -11,7 +11,12 @@ import javax.validation.constraints.Size
  * History:
  */
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        indexes = [
+            Index(name = "index_username", columnList = "username", unique = true),
+            Index(name = "index_email", columnList = "email", unique = true),
+            Index(name = "index_tel", columnList = "tel", unique = true)
+        ])
 class UserEntity: AbstractEntity() {
 
 
@@ -26,7 +31,7 @@ class UserEntity: AbstractEntity() {
     lateinit var password: String
 
     @Size(max = 50)
-    @Column(name = "email", nullable = true)
+    @Column(name = "email", nullable = true, length = 30)
     lateinit var email: String
 
     // 状态信息  0: 存在  1: 禁言  3: 已删除
@@ -34,7 +39,9 @@ class UserEntity: AbstractEntity() {
     var status: Int = 0
 
     // 电话
-    lateinit var phone: String
+    @Size(max = 12)
+    @Column(name = "tel", nullable = true, length = 12)
+    var tel: Int = 0
 
     // 用户详情信息
     @OneToOne(cascade = [CascadeType.ALL],fetch = FetchType.LAZY)

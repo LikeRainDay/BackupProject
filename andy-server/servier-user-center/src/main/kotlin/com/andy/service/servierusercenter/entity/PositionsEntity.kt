@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.entity
 
+import com.andy.corejpa.AbstractIdAuditable
 import javax.persistence.*
 
 /**
@@ -10,8 +11,12 @@ import javax.persistence.*
  * History:
  */
 @Entity
-@Table(name = "positions")
-class PositionsEntity: AbstractEntity() {
+@Table(name = "positions",
+        indexes = [
+            Index(name = "INDEX_positionCoding", columnList = "positionCoding"),
+            Index(name = "INDEX_positionIndex", columnList = "positionIndex")
+        ])
+class PositionsEntity: AbstractIdAuditable(){
 
     // 职位
     lateinit var position: String
@@ -25,9 +30,6 @@ class PositionsEntity: AbstractEntity() {
     // 索引
     lateinit var positionIndex: String
 
-    // 唯一ID
-    @Column(unique = true)
-    var id: Int = 0
 
     @OneToMany(mappedBy = "position", fetch = FetchType.EAGER)
     lateinit var userDetails: Set<UserDetailsEntity>

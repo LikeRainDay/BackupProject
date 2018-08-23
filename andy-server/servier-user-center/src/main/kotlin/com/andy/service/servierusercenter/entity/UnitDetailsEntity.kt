@@ -1,9 +1,7 @@
 package com.andy.service.servierusercenter.entity
 
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.OneToMany
-import javax.persistence.Table
+import javax.persistence.*
+import javax.validation.constraints.Size
 
 /**
  * FileName: UnitDetailsEntity
@@ -42,6 +40,8 @@ class UnitDetailsEntity: AbstractEntity() {
     lateinit var userDetails: Set<UserDetailsEntity>
 
     // 单位描述
+    @Size(max = 250)
+    @Column(name = "unit_des")
     lateinit var unitDes: String
 
     // 单位状态
