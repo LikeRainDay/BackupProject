@@ -80,4 +80,6 @@ class UserEntity: AbstractEntity() {
     // 登录记录
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     lateinit var userLoginHistoryEntity: Set<UserLoginHistoryEntity>
+
+    // Oauth2 相关信息内容 的相关实体
 }
