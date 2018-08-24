@@ -38,7 +38,7 @@ interface IUserService {
      * @param userId 待查询的账号( 包含可用的 邮箱， 用户账号， 手机 )
      * @return   已开通的登录方式
      */
-    fun loginEableByUsername(userId: String): LoginEnableBean
+    fun loginEnableByUsername(userId: String): LoginEnableBean
 
     /**
      * describe: 修改 用户密码
@@ -49,7 +49,7 @@ interface IUserService {
      * @param newPass 新密码
      * @return   是否更改成功
      */
-    fun modiftyUserPass(userId: String, oldPass: String, newPass: String) = false
+    fun reviseUserPass(userId: String, oldPass: String, newPass: String) = false
 
     /**
      * describe: 注册用户 通过 账号 （手机确认）

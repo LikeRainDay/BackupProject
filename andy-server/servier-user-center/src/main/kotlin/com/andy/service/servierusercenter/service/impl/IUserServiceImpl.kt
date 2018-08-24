@@ -68,7 +68,7 @@ class IUserServiceImpl: IUserService {
         )
     }
 
-    override fun loginEableByUsername(userId: String): LoginEnableBean {
+    override fun loginEnableByUsername(userId: String): LoginEnableBean {
 
         val user = userDao.findById(userId)
 
@@ -97,7 +97,7 @@ class IUserServiceImpl: IUserService {
     }
 
 
-    override fun modiftyUserPass(userId: String, oldPass: String, newPass: String): Boolean {
+    override fun reviseUserPass(userId: String, oldPass: String, newPass: String): Boolean {
 
         val user = userDao.findById(userId)
         return user.map {
