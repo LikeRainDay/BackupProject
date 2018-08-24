@@ -16,9 +16,5 @@ class RegisterInfoBean {
 
     lateinit var tel: String
 
-    // 0: 男 1: 女 默认为男
-    var sex: Int = 0
-
-//    lateinit var
-
+    lateinit var nickName: String
 }

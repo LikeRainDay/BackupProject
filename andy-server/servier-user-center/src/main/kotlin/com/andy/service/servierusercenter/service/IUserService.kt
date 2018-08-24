@@ -2,6 +2,7 @@ package com.andy.service.servierusercenter.service
 
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
+import com.andy.service.servierusercenter.bean.RegisterInfoBean
 
 
 /**
@@ -58,7 +59,7 @@ interface IUserService {
      * @param
      * @return
      */
-    fun registerByAccount(account: String, pass: String, tel: String, email: String)
+    fun registerByAccount(registerInfo: RegisterInfoBean): UserDetailBean
 
 
 

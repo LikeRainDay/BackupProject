@@ -2,10 +2,12 @@ package com.andy.service.servierusercenter.service.impl
 
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
+import com.andy.service.servierusercenter.bean.RegisterInfoBean
 import com.andy.service.servierusercenter.dao.UserDao
 import com.andy.service.servierusercenter.entity.UserEntity
 import com.andy.service.servierusercenter.enum.SupportLoginFun
 import com.andy.service.servierusercenter.exception.NotFoundAccountException
+import com.andy.service.servierusercenter.exception.RepeatAccountException
 import com.andy.service.servierusercenter.service.IUserService
 import com.andy.service.servierusercenter.util.AccountUtil
 import org.slf4j.Logger
@@ -13,12 +15,12 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+import org.springframework.util.Assert
 import org.springframework.util.StringUtils
 
 @Service
 class IUserServiceImpl: IUserService {
-
-
 
     private val log: Logger = LoggerFactory.getLogger(IUserServiceImpl::class.java)
 
@@ -32,8 +34,42 @@ class IUserServiceImpl: IUserService {
         userDao.falseDeleteUserById(id)
     }
 
-    override fun registerByAccount(account: String, pass: String, tel: String, email: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    /**
+     * describe: 此方法 需要注意。 由于注册时需要进行 邮箱 或者 电话短信认证
+     * author 候帅
+     * date 2018/8/24 下午11:21
+     */
+    @Transactional
+    override fun registerByAccount(registerInfo: RegisterInfoBean): UserDetailBean {
+
+        val accountEntity = userDao.checkoutUserInfoByAccount(registerInfo.account)
+
+        Assert.notNull(accountEntity, "Account number repetition")
+
+        val userEntity = UserEntity()
+
+        userEntity.account = registerInfo.account
+
+        val email = registerInfo.email
+        val telName = registerInfo.tel
+        if (!StringUtils.isEmpty(email)){
+            val telEntity = userDao.checkoutUserInfoByTel(registerInfo.tel)
+
+            Assert.notNull(telEntity, "telephone repetition")
+        }
+
+        if (!StringUtils.isEmpty(telName)) {
+            val emailEntity = userDao.checkoutUserInfoByEmail(registerInfo.email)
+
+            Assert.notNull(emailEntity, "email repetition")
+        }
+
+
+        userEntity.account = registerInfo.account
+
+        // TODO 邮箱验证 或 短信验证
+//        userDao.save()
     }
 
     override fun loginByUsernameAndPass(username: String, pass: String): UserDetailBean {
