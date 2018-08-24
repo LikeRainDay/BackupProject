@@ -1,7 +1,9 @@
 package com.andy.service.servierusercenter.entity
 
+import com.andy.andycommonutils.RegexUtil
 import javax.persistence.*
 import javax.validation.constraints.NotNull
+import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 /**
  * FileName: UserDetailsEntity
@@ -13,7 +15,7 @@ import javax.validation.constraints.Size
 @Entity
 @Table(name = "users",
         indexes = [
-            Index(name = "index_username", columnList = "username", unique = true),
+            Index(name = "index_username", columnList = "account", unique = true),
             Index(name = "index_email", columnList = "email", unique = true),
             Index(name = "index_tel", columnList = "tel", unique = true)
         ])
@@ -22,8 +24,9 @@ class UserEntity: AbstractEntity() {
 
     @Size(max = 50)
     @NotNull
-    @Column(name = "username", unique = true, nullable = false, length = 50)
-    lateinit var user: String
+    @Pattern(regexp = RegexUtil.ACCOUNT_REGEX)
+    @Column(name = "account", unique = true, nullable = false, length = 50)
+    lateinit var account: String
 
     @NotNull
     @Size(min = 60, max = 60)
@@ -71,15 +74,11 @@ class UserEntity: AbstractEntity() {
             ])
     lateinit var role: MutableSet<RoleEntity>
 
-
     // 用户对应的第三方权限
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     lateinit var userAuths: MutableSet<UserAuthsEntity>
 
-
     // 登录记录
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     lateinit var userLoginHistoryEntity: Set<UserLoginHistoryEntity>
-
-    // Oauth2 相关信息内容 的相关实体
 }

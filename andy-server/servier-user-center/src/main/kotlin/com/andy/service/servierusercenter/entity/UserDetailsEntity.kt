@@ -12,9 +12,6 @@ import javax.persistence.*
 @Entity
 @Table(name = "user_details")
 class UserDetailsEntity: AbstractUserDetailsEntity() {
-
-
-
     // 用户操作历史关联
     @OneToMany(mappedBy = "userDetails", fetch = FetchType.EAGER)
     lateinit var userDetailsHistory: Set<UserDetailsHistoryEntity>

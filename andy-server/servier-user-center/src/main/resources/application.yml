@@ -16,7 +16,7 @@ spring:
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}
   application:
-    name: service-user-center
+    name: service-account-center
   redis:
     # 设置数据库索引
     database: 0
@@ -31,7 +31,7 @@ spring:
         max-wait: -1ms
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/user?useSSL=false
+    url: jdbc:mysql://localhost:3306/account?useSSL=false
     username: root
     password: root
     dbcp2:

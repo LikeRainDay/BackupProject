@@ -14,6 +14,8 @@ import javax.validation.constraints.Size
 @EntityListeners(AuditingEntityListener::class)
 abstract class AbstractUserDetailsEntity: AbstractIdAuditable() {
 
+    // 昵称
+    lateinit var nickName: String
 
     // 用户性别 0: 男生  1: 女生
     var sex: Int = 0
