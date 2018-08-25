@@ -1,5 +1,5 @@
 server:
-  port: 20001
+  port: 20002
 spring:
   cloud:
     consul:
@@ -16,18 +16,23 @@ spring:
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}
   application:
-    name: service-sms
+    name: service-email
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-ribbon:
-  eager-load:
-    enabled: false
-
-# 短信服务地址
-sms:
-  Appkey: c8b30438ad83361abba1e7cf006eb041
-  Template-id: 96714
-  url: https://www.juhe.cn/docs/api/id/54
-  active-time: 10
+# 短信配置
+  mail:
+    host: smtp.126.com
+    protocol: smtp
+    username: houshuai0816@126.com
+    password: houshuai
+    default-encoding: utf-8
+    port: 25
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
