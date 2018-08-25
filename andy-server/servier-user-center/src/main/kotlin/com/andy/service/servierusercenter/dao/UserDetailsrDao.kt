@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository
  * Description: TODO
  * History:
  */
-interface UseDetailsrDao: JpaRepository<UserDetailsEntity, Long> {
+interface UserDetailsrDao: JpaRepository<UserDetailsEntity, Long> {
 }

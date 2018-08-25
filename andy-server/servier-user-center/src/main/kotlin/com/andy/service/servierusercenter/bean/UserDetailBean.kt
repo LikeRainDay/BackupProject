@@ -12,18 +12,18 @@ data class UserDetailBean(
 
         var sex: Int,
 
-        var avator: String,
+        var avator: String?,
 
-        var nickName: String,
+        var nickName: String?,
 
-        var zipCode: String,
+        var zipCode: String?,
 
-        var tel: Int,
+        var tel: String?,
 
-        var email: String,
+        var email: String?,
 
-        var idCard: String,
+        var idCard: String?,
 
-        var summary: String,
+        var summary: String?,
 
-        var adress: String)
+        var adress: String?)

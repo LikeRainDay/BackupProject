@@ -1,13 +1,16 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.andycommonfeign.SmsFeign
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
 import com.andy.service.servierusercenter.bean.RegisterInfoBean
 import com.andy.service.servierusercenter.dao.UserDao
+import com.andy.service.servierusercenter.entity.UserDetailsEntity
 import com.andy.service.servierusercenter.entity.UserEntity
 import com.andy.service.servierusercenter.enum.SupportLoginFun
 import com.andy.service.servierusercenter.exception.NotFoundAccountException
-import com.andy.service.servierusercenter.exception.RepeatAccountException
+import com.andy.service.servierusercenter.exception.SmsException
+import com.andy.service.servierusercenter.service.IUserDetailsService
 import com.andy.service.servierusercenter.service.IUserService
 import com.andy.service.servierusercenter.util.AccountUtil
 import org.slf4j.Logger
@@ -28,7 +31,13 @@ class IUserServiceImpl: IUserService {
     private lateinit var userDao: UserDao
 
     @Autowired
+    private lateinit var smsFeign: SmsFeign
+
+    @Autowired
     private lateinit var passwordEncoder: PasswordEncoder
+
+    @Autowired
+    private lateinit var iUserDetailsService: IUserDetailsService
 
     override fun falseDeleteUserById(id: String) {
         userDao.falseDeleteUserById(id)
@@ -52,24 +61,48 @@ class IUserServiceImpl: IUserService {
         userEntity.account = registerInfo.account
 
         val email = registerInfo.email
-        val telName = registerInfo.tel
-        if (!StringUtils.isEmpty(email)){
-            val telEntity = userDao.checkoutUserInfoByTel(registerInfo.tel)
-
+        val tel = registerInfo.tel
+        val code = registerInfo.code
+        var telNum: String? = null
+        var emailNum: String? = null
+        if (!StringUtils.isEmpty(tel)){
+            val telEntity = userDao.checkoutUserInfoByTel(tel)
             Assert.notNull(telEntity, "telephone repetition")
+            if (smsFeign.verificationCode(tel, code))
+                throw SmsException.Error()
+            telNum = tel
         }
 
-        if (!StringUtils.isEmpty(telName)) {
-            val emailEntity = userDao.checkoutUserInfoByEmail(registerInfo.email)
-
+        if (!StringUtils.isEmpty(email)) {
+            val emailEntity = userDao.checkoutUserInfoByEmail(email)
             Assert.notNull(emailEntity, "email repetition")
+
+
+            emailNum = email
         }
-
-
         userEntity.account = registerInfo.account
+        userEntity.email = email
+        userEntity.tel = tel.toInt()
+        userEntity.password = passwordEncoder.encode(registerInfo.password)
+        val userDetailsEntity = UserDetailsEntity()
+        userDetailsEntity.nickName = registerInfo.nickName
+        userEntity.userDetails = iUserDetailsService.save(userDetailsEntity).map {
+            return@map it
+        }.orElse(null)
 
-        // TODO 邮箱验证 或 短信验证
-//        userDao.save()
+        val userInfo = userDao.save(userEntity)
+
+        return UserDetailBean(
+                userInfo.id!!,
+                0,
+                null,
+                null,
+                null,
+                telNum,
+                emailNum,
+                null,
+                null,
+                null)
     }
 
     override fun loginByUsernameAndPass(username: String, pass: String): UserDetailBean {
@@ -91,13 +124,13 @@ class IUserServiceImpl: IUserService {
         val userDetails = userEntity!!.userDetails
 
         return UserDetailBean(
-                userEntity?.id!!,
+                userEntity!!.id!!,
                 userDetails.sex,
                 userDetails.avator,
                 userDetails.nickName,
                 userDetails.zipCode,
-                userEntity?.tel!!,
-                userEntity?.email!!,
+                userEntity!!.tel.toString(),
+                userEntity!!.email,
                 userDetails.idCard,
                 userDetails.summary,
                 userDetails.adress

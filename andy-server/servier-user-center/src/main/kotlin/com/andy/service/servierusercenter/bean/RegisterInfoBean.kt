@@ -17,4 +17,7 @@ class RegisterInfoBean {
     lateinit var tel: String
 
     lateinit var nickName: String
+
+    // 验证码
+    lateinit var code: String
 }
