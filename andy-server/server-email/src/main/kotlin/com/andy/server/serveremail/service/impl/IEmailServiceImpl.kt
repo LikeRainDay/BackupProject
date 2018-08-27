@@ -16,6 +16,11 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class IEmailServiceImpl: IEmailService {
 
+
+    override fun sendEmailByIdentifyCode(emailBean: EmailBean) {
+
+    }
+
     private val log: Logger = LoggerFactory.getLogger(IEmailServiceImpl::class.java)
 
     @Autowired

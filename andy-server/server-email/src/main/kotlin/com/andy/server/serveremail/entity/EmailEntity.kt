@@ -1,6 +1,7 @@
 package com.andy.server.serveremail.entity
 
 import com.andy.corejpa.AbstractIdAuditable
+import org.springframework.lang.Nullable
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Lob
@@ -30,5 +31,12 @@ class EmailEntity: AbstractIdAuditable(){
     @Lob
     @Column(name = "subject", nullable = false)
     lateinit var subject: String
+
+    // 发送的邮件类型  0: 普通邮件  1: 邮箱验证邮件
+    var type: Int = 0
+
+    // 邮件发送的验证码
+    @Nullable
+    lateinit var identiftyCode: String
 
 }
