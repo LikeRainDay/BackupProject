@@ -12,6 +12,7 @@
         <module name="andy-common-feign" />
         <module name="andy-common-utils" />
         <module name="andy-core" />
+        <module name="core" />
         <module name="datasource-elasticsearch" />
         <module name="datasource-jpa" />
         <module name="datasource-redis" />
