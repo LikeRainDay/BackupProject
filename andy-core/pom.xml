@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy</groupId>
-    <artifactId>core</artifactId>
+    <artifactId>andy-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>core</name>
+    <name>andy-core</name>
     <description>核心类</description>
 
     <parent>

@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>andy-commons</name>
+    <name>andy-root</name>
     <description>公用组件内容</description>
     <modules>
         <module>andy-common-bean</module>

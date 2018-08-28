@@ -12,7 +12,6 @@
         <module name="andy-common-feign" />
         <module name="andy-common-utils" />
         <module name="andy-core" />
-        <module name="core" />
         <module name="datasource-elasticsearch" />
         <module name="datasource-jpa" />
         <module name="datasource-redis" />
@@ -27,6 +26,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="andy-core" target="1.8" />
+      <module name="andy-ecology" target="1.8" />
+      <module name="andy-root" target="1.8" />
       <module name="datasource-core" target="1.8" />
       <module name="ecology-consul" target="1.8" />
     </bytecodeTargetLevel>

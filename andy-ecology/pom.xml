@@ -13,7 +13,7 @@
 
     <parent>
         <groupId>com.andy</groupId>
-        <artifactId>andy-ecology</artifactId>
+        <artifactId>andy-root</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
