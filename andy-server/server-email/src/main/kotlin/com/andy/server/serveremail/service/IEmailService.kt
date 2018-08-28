@@ -26,7 +26,7 @@ interface IEmailService {
      * @param emailBean 邮件信息
      * @return 发送对应邮件信息
      */  
-    fun sendEmailByIdentifyCode(emailBean: EmailBean): EmailBean
+    fun sendEmailByIdentifyCode(emailBean: EmailBean): Boolean
     
     
     
@@ -34,9 +34,10 @@ interface IEmailService {
      * describe: 验证邮件中的短信是否  在有效时间内
      * author 候帅  
      * date 2018/8/26 下午1:33  
-     * @param 
-     * @return   
+     * @param code 验证码
+     * @param account 账号
+     * @return 是否成功
      */  
-    
+    fun messageValid(code: String, email: String): Boolean
     
 }

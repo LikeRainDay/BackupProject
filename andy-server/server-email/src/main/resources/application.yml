@@ -36,3 +36,5 @@ spring:
           starttls:
             enable: true
             required: true
+email:
+  active-time: 6000

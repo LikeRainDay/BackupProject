@@ -1,7 +1,5 @@
 package com.andy.server.serveiersms.service.impl
 
-import com.andy.andycommonbean.bean.SmsBean
-import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonutils.RandomUtil
 import com.andy.andycommonutils.RestfulUtil
 import com.andy.server.serveiersms.dao.SmsDao
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.util.Assert
 import org.springframework.util.LinkedMultiValueMap
 import java.time.ZonedDateTime
 
@@ -55,7 +52,8 @@ class ISmsServiceImpl: ISmsService{
             val createdDate = it.createdDate
             if (createdDate.year == now.year
                     && createdDate.dayOfYear == now.dayOfYear
-                    && (createdDate.minute - now.minute) < ACTIVETIME.toInt())
+                    && createdDate.hour == now.hour
+                    && (now.minute - createdDate.minute) > ACTIVETIME.toInt())
                 throw RepeatIdentifyException.Error()
             return@map sendIdenCodeMessage(mobile)
         }.orElseGet {
