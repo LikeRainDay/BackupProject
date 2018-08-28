@@ -20,7 +20,6 @@ interface IUserService {
      */
     fun falseDeleteUserById(id: String)
 
-
     /**
      * describe: 校验 登录的用户名和账号是否匹配
      * author 候帅
@@ -30,7 +29,6 @@ interface IUserService {
      * @return  成功返回用户的基本信息
      */
     fun loginByUsernameAndPass(username: String, pass: String): UserDetailBean
-
 
     /**
      * describe: 账号 当前支持的 登录方式
