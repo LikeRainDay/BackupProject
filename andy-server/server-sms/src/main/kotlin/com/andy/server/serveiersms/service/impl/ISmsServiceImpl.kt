@@ -25,7 +25,7 @@ class ISmsServiceImpl: ISmsService{
     @Value("\${sms.Appkey}")
     private lateinit var APP_KEY: String
 
-    @Value("\${sms.TemplateId}")
+    @Value("\${sms.templateId}")
     private lateinit var TEMPLATE_ID: String
 
     @Value("\${sms.url}")
