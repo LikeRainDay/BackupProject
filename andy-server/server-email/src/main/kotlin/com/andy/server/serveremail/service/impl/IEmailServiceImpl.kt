@@ -51,7 +51,7 @@ class IEmailServiceImpl: IEmailService {
         }
     }
 
-    override fun messageValid(code: String, email: String): Boolean {
+    override fun emailValid(code: String, email: String): Boolean {
         val emailEntity = emailDao.findLastByEmail(email)
         return emailEntity.map {
             val now = ZonedDateTime.now()

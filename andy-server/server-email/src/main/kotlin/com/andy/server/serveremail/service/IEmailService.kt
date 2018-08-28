@@ -38,6 +38,6 @@ interface IEmailService {
      * @param account 账号
      * @return 是否成功
      */  
-    fun messageValid(code: String, email: String): Boolean
+    fun emailValid(code: String, email: String): Boolean
     
 }

@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.andycommonfeign.EmailFeign
 import com.andy.andycommonfeign.SmsFeign
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
@@ -8,6 +9,7 @@ import com.andy.service.servierusercenter.dao.UserDao
 import com.andy.service.servierusercenter.entity.UserDetailsEntity
 import com.andy.service.servierusercenter.entity.UserEntity
 import com.andy.service.servierusercenter.enum.SupportLoginFun
+import com.andy.service.servierusercenter.exception.EmailException
 import com.andy.service.servierusercenter.exception.NotFoundAccountException
 import com.andy.service.servierusercenter.exception.SmsException
 import com.andy.service.servierusercenter.service.IUserDetailsService
@@ -32,6 +34,9 @@ class IUserServiceImpl: IUserService {
 
     @Autowired
     private lateinit var smsFeign: SmsFeign
+
+    @Autowired
+    private lateinit var emailFeign: EmailFeign
 
     @Autowired
     private lateinit var passwordEncoder: PasswordEncoder
@@ -76,8 +81,8 @@ class IUserServiceImpl: IUserService {
         if (!StringUtils.isEmpty(email)) {
             val emailEntity = userDao.checkoutUserInfoByEmail(email)
             Assert.notNull(emailEntity, "email repetition")
-
-
+            if (emailFeign.sendEmail(email, code))
+                throw EmailException.Error()
             emailNum = email
         }
         userEntity.account = registerInfo.account

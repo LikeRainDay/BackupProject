@@ -18,4 +18,15 @@ interface EmailFeign {
     @RequestMapping(value = ["/send"])
     fun sendMessage(@RequestBody email: EmailBean): EmailBean
 
+
+    /**
+     * describe: 确认邮件验证码 是否正确
+     * author 候帅
+     * date 2018/8/25 下午3:38
+     * @param mobile 手机号
+     * @param code 验证码
+     * @return   true 验证码信息正确
+     */
+    @RequestMapping(value = ["/valid"])
+    fun sendEmail(email: String, code: String): Boolean
 }
