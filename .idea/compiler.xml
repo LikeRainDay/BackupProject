@@ -26,9 +26,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="andy-core" target="1.8" />
-      <module name="andy-ecology" target="1.8" />
-      <module name="andy-root" target="1.8" />
       <module name="datasource-core" target="1.8" />
       <module name="ecology-consul" target="1.8" />
     </bytecodeTargetLevel>
