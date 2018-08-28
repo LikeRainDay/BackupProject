@@ -9,7 +9,6 @@ import java.util.*
 @Repository
 interface EmailDao: AbstractLongRepository<EmailEntity> {
 
-    @Query("SELECT em FROM EmailEntity em WHERE em.receiver = ?1 ORDER BY em.createdDate desc LIMIT 1")
-    fun findLastByEmail(email: String): Optional<EmailEntity>
+    fun findFirstByReceiverOrderByCreatedDate(email: String): Optional<EmailEntity>
 
 }

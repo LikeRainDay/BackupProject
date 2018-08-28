@@ -53,7 +53,7 @@ class IEmailServiceImpl: IEmailService {
     }
 
     override fun emailValid(code: String, email: String): Boolean {
-        val emailEntity = emailDao.findLastByEmail(email)
+        val emailEntity = emailDao.findFirstByReceiverOrderByCreatedDate(email)
         return emailEntity.map {
             val now = ZonedDateTime.now()
             val createdDate = it.createdDate

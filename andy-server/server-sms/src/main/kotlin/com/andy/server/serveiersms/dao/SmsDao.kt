@@ -19,8 +19,7 @@ interface SmsDao: JpaRepository<SmsEntity, Long> {
      * @param mobile 手机号
      * @return 短信内容
      */
-    @Query("SELECT sms FROM SmsEntity sms WHERE sms.mobile = ?1 ORDER BY sms.createdDate desc LIMIT 1")
-    fun findSmsByMobile(mobile: String): Optional<SmsEntity>
+    fun findFirstByMobileOrderByCreatedDate(mobile: String): Optional<SmsEntity>
 
 
 

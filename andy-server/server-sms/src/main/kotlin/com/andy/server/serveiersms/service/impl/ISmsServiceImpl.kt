@@ -45,7 +45,7 @@ class ISmsServiceImpl: ISmsService{
     @Throws(RepeatIdentifyException::class)
     @Transactional
     override fun sendMessage(mobile: String): String? {
-        val mobileEntity = smsDao.findSmsByMobile(mobile)
+        val mobileEntity = smsDao.findFirstByMobileOrderByCreatedDate(mobile)
 
         return mobileEntity.map {
             val now = ZonedDateTime.now()
@@ -61,7 +61,7 @@ class ISmsServiceImpl: ISmsService{
         }
     }
     override fun identiftyCodeSuccess(mobile: String, code: String): Boolean {
-        val sms = smsDao.findSmsByMobile(mobile)
+        val sms = smsDao.findFirstByMobileOrderByCreatedDate(mobile)
         return sms.map {
             return@map it.identifyCode == code
         }.orElse(false)
