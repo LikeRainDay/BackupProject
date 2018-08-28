@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/andy-server/servier-user-center/pom.xml" />
         <option value="$PROJECT_DIR$/andy-server/serveier-sms/pom.xml" />
         <option value="$PROJECT_DIR$/andy-server/server-email/pom.xml" />
+        <option value="$PROJECT_DIR$/andy-server/service-test/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

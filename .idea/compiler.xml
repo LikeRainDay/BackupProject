@@ -22,6 +22,7 @@
         <module name="server-email" />
         <module name="server-login" />
         <module name="server-sms" />
+        <module name="service-test" />
         <module name="servier-user-center" />
       </profile>
     </annotationProcessing>

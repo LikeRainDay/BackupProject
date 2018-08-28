@@ -39,16 +39,17 @@ class IEmailServiceImpl: IEmailService {
         mail.setSubject(emailBean.subject)
         mail.setText(emailBean.text)
         jms.send(mail)
-        return emailBean.run {
-            val emailEntity = EmailEntity()
-            emailEntity.sender = emailBean.sender
-            emailEntity.receiver = emailBean.receiver
-            emailEntity.subject = emailBean.subject
-            emailEntity.text = emailBean.text
-            val save = emailDao.save(emailEntity)
-            this.eid = save.id.toString()
-            return@run this
-        }
+//        return emailBean.run {
+//            val emailEntity = EmailEntity()
+//            emailEntity.sender = emailBean.sender
+//            emailEntity.receiver = emailBean.receiver
+//            emailEntity.subject = emailBean.subject
+//            emailEntity.text = emailBean.text
+//            val save = emailDao.save(emailEntity)
+//            this.eid = save.id.toString()
+//            return@run this
+//        }
+        return emailBean
     }
 
     override fun emailValid(code: String, email: String): Boolean {
@@ -65,7 +66,7 @@ class IEmailServiceImpl: IEmailService {
         }.orElse(false)
     }
 
-
+    @Transactional
     override fun sendEmailByIdentifyCode(emailBean: EmailBean): Boolean {
         emailBean.text =  RandomUtil.generteSixNumber().toString()
         val mail = SimpleMailMessage()
@@ -74,15 +75,16 @@ class IEmailServiceImpl: IEmailService {
         mail.setSubject(emailBean.subject)
         mail.setText(emailBean.text)
         jms.send(mail)
-        return emailBean.run {
-            val emailEntity = EmailEntity()
-            emailEntity.sender = emailBean.sender
-            emailEntity.receiver = emailBean.receiver
-            emailEntity.subject = emailBean.subject
-            emailEntity.text = emailBean.text
-            val save = emailDao.save(emailEntity)
-            this.eid = save.id.toString()
-            return@run true
-        }.or(false)
+//        return emailBean.run {
+//            val emailEntity = EmailEntity()
+//            emailEntity.sender = emailBean.sender
+//            emailEntity.receiver = emailBean.receiver
+//            emailEntity.subject = emailBean.subject
+//            emailEntity.text = emailBean.text
+//            val save = emailDao.save(emailEntity)
+//            this.eid = save.id.toString()
+//            return@run true
+//        }.or(false)
+        return false
     }
 }
