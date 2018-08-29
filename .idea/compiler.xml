@@ -12,7 +12,6 @@
         <module name="andy-common-feign" />
         <module name="andy-common-utils" />
         <module name="andy-core" />
-        <module name="core" />
         <module name="datasource-elasticsearch" />
         <module name="datasource-jpa" />
         <module name="datasource-redis" />
@@ -20,16 +19,12 @@
         <module name="ecology-getway" />
         <module name="ecology-oauth2" />
         <module name="server-email" />
+        <module name="server-iden_code" />
         <module name="server-login" />
         <module name="server-sms" />
-        <module name="service-iden_code" />
         <module name="service-test" />
         <module name="servier-user-center" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="datasource-core" target="1.8" />
-      <module name="ecology-consul" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

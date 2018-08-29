@@ -4,24 +4,12 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/andy-core/core-elasticsearch/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-core/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/server-login/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/servier-user-center/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/serveier-sms/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/server-email/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/service-test/pom.xml" />
-        <option value="$PROJECT_DIR$/andy-server/service-iden_code/pom.xml" />
+        <option value="$PROJECT_DIR$/andy-server/server-iden_code/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/andy-ecology/ecology-consul/pom.xml" />
-      </set>
-    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

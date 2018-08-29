@@ -4,28 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy</groupId>
-    <artifactId>andy-server</artifactId>
+    <artifactId>server-iden_code</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>andy-server</name>
-    <description>服务</description>
+    <name>server-iden_code</name>
+    <description>进行验证码生成服务</description>
 
     <parent>
         <groupId>com.andy</groupId>
-        <artifactId>andy-root</artifactId>
-        <version>1.0.0</version>
+        <artifactId>andy-server</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-
-    <modules>
-        <module>server-login</module>
-        <module>servier-user-center</module>
-        <module>server-sms</module>
-        <module>server-email</module>
-        <module>service-test</module>
-        <module>server-iden_code</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,17 +26,12 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
