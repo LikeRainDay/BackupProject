@@ -14,7 +14,7 @@ import java.io.OutputStream
  * author 候帅
  * date 2018/8/29 下午2:08
  */
-@Service
+@Service(value = "NumberVC")
 class NumberVerfcationCodeImpl: IVCodeGenerationService {
 
     private val log: Logger = LoggerFactory.getLogger(NumberVerfcationCodeImpl::class.java)

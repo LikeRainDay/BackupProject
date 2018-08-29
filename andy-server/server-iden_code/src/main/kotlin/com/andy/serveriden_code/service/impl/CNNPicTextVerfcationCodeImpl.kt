@@ -15,7 +15,7 @@ import java.io.OutputStream
  * author 候帅
  * date 2018/8/29 下午2:08
  */
-@Service
+@Service(value = "CNNPicTextVC")
 class CNNPicTextVerfcationCodeImpl: IStyleGeneraionService {
 
     private val log: Logger = LoggerFactory.getLogger(CNNPicTextVerfcationCodeImpl::class.java)

@@ -12,7 +12,6 @@ import java.awt.Font
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 import java.io.OutputStream
-import java.text.Format
 import java.util.*
 import javax.imageio.ImageIO
 
@@ -22,7 +21,7 @@ import javax.imageio.ImageIO
  * author 候帅
  * date 2018/8/29 下午2:08
  */
-@Service
+@Service(value = "EasyPicTextVC")
 class EasyPicTextVerfcationCodeImpl : IVCodeGenerationService {
 
     @Autowired
@@ -44,9 +43,10 @@ class EasyPicTextVerfcationCodeImpl : IVCodeGenerationService {
         val random = Random()
         val image = BufferedImage(proerties.width, proerties.height, BufferedImage.TYPE_INT_RGB)
         val g = image.graphics as Graphics2D
-        val resourceAsStream = this.javaClass.classLoader.getResourceAsStream("/bg/bg${random.nextInt(2) + 1}.jpg")
 
-        g.drawImage(ImageIO.read(resourceAsStream), 0, 20, proerties.width, proerties.height, null)
+        val resourceAsStream =  EasyPicTextVerfcationCodeImpl::class.java.classLoader.getResourceAsStream("bg/bg1.jpg")
+
+        g.drawImage(ImageIO.read(resourceAsStream), 0, 0, proerties.width, proerties.height, null)
         // 设置颜色
         g.color = Color.white
         // 画边框
@@ -57,7 +57,7 @@ class EasyPicTextVerfcationCodeImpl : IVCodeGenerationService {
         var x: Int
         var y: Int
         var target: String
-        for (i in 0..proerties.defaultLength) {
+        for (i in 0 until proerties.defaultLength) {
             g.color = Color(random.nextInt(50) + 200, random.nextInt(150) + 100, random.nextInt(50) + 200)
             val str = RandomChineseUtil.getRandomChar()
             val a = random.nextInt(proerties.width - 100) + 50
