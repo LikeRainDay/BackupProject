@@ -14,5 +14,5 @@ interface IStyleGeneraionService: IVCodeGenerationService{
      * author 候帅
      * date 2018/8/29 下午2:22
      */
-    fun customVcStyle(styleFilePath: String, textPicPath: String, test: String): OutputStream
+    fun customVcStyle(styleFilePath: String, textPicPath: String, test: String, stream: OutputStream)
 }

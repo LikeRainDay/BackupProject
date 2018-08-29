@@ -15,7 +15,7 @@ interface IVCodeGenerationService {
      * author 候帅
      * date 2018/8/29 下午1:51
      */
-    fun randomGeneration(): OutputStream
+    fun randomGeneration(stream: OutputStream)
     
     /**
      * describe: 进行生成几位的验证码
@@ -24,7 +24,7 @@ interface IVCodeGenerationService {
      * @param number 限定验证码长度
      * @return   返回的流
      */
-    fun randomGeneraionLimitNumber(number: Int): OutputStream
+    fun randomGeneraionLimitNumber(number: Int, stream: OutputStream)
 
     /**
      * describe: 指定生成的内容
@@ -33,7 +33,7 @@ interface IVCodeGenerationService {
      * @param text 指定要生成的内容
      * @return   返回的流
      */
-    fun generationByText(text: String): OutputStream
+    fun generationByText(text: String, stream: OutputStream)
 
 
 }

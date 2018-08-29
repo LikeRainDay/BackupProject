@@ -41,5 +41,7 @@ object RandomChineseUtil {
         }
 
         return str
+
+
     }
 }

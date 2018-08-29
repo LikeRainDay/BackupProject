@@ -1,0 +1,46 @@
+server:
+  port: 20001
+spring:
+  cloud:
+    consul:
+      host: localhost
+      #  Consul监听端口8500
+      port: 8500
+      discovery:
+        # 配置服务注册到Consul上
+        register: true
+        # 配置服务健康检测地址  供Consul 调用
+#        health-check-path: /health
+        # consul 健康检测频率
+#        health-check-interval: 15s
+        # 配置注册到consul 服务的id
+        instance-id: ${spring.application.name}
+  application:
+    name: service-iden_code
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/account?useSSL=false
+      username: root
+      password: root
+      dbcp2:
+        # 初始化连接数
+        initial-size: 5
+        # 最小连接数
+        min-idle: 5
+        # 最大连接数
+        max-idle: 20
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#ribbon:
+#  eager-load:
+#    enabled: false
+
+# 验证码服务
+verification:
+  code:
+   attribute:
+     height: 220
+     width: 220
+     defaultLength: 4
