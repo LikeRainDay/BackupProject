@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 
 @Component
 @ConfigurationProperties(prefix = "verification.code.attribute")
-class VerificationCodeProerties {
+class VCodeStyleProerties {
 
 
     var height: Int = 220
