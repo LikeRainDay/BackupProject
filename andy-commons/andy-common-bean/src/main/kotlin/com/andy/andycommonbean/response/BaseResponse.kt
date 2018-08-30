@@ -1,6 +1,5 @@
 package com.andy.andycommonbean.response
 
-import org.springframework.lang.Nullable
 import java.io.Serializable
 import java.util.*
 import javax.validation.constraints.NotNull
@@ -11,16 +10,8 @@ import javax.validation.constraints.NotNull
  * author 候帅
  * date 2018/8/25 下午12:04
  */
-open class BaseResponse<T :Serializable>: Serializable {
+open class BaseResponse: Serializable {
 
-
-    /**
-     * describe: 内容信息
-     * author 候帅
-     * date 2018/8/25 下午12:06
-     */
-    @Nullable
-    lateinit var result: T
 
     /**
      * describe: 消息跟踪日志
@@ -36,7 +27,7 @@ open class BaseResponse<T :Serializable>: Serializable {
      * date 2018/8/25 下午12:07
      */
     @NotNull
-    var error_code: Int = 0
+    var code: Int = 0
 
     /**
      * describe: 消息提示
@@ -45,5 +36,6 @@ open class BaseResponse<T :Serializable>: Serializable {
      */
     @NotNull
     lateinit var reason: String
+
 
 }

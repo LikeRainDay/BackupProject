@@ -15,7 +15,7 @@ import javax.validation.constraints.Size
 @Entity
 @Table(name = "users",
         indexes = [
-            Index(name = "index_username", columnList = "account", unique = true),
+            Index(name = "index_account", columnList = "account", unique = true),
             Index(name = "index_email", columnList = "email", unique = true),
             Index(name = "index_tel", columnList = "tel", unique = true)
         ])
@@ -75,10 +75,10 @@ class UserEntity: AbstractEntity() {
     lateinit var role: MutableSet<RoleEntity>
 
     // 用户对应的第三方权限
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     lateinit var userAuths: MutableSet<UserAuthsEntity>
 
     // 登录记录
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     lateinit var userLoginHistoryEntity: Set<UserLoginHistoryEntity>
 }

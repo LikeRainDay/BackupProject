@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-@ComponentScan("com.andy")
+@EnableFeignClients(basePackages = ["com.andy"])
+//@ComponentScan("com.andy")
 class ServierUserCenterApplication
 
 fun main(args: Array<String>) {

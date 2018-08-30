@@ -12,12 +12,18 @@ class RegisterInfoBean {
 
     lateinit var password: String
 
-    lateinit var email: String
+    var email: String? = null
 
-    lateinit var tel: String
+    var tel: String? = null
 
     lateinit var nickName: String
 
     // 验证码
-    lateinit var code: String
+    var code: String? = null
+
+    override fun toString(): String {
+        return "RegisterInfoBean(account='$account', password='$password', email='$email', tel='$tel', nickName='$nickName', code='$code')"
+    }
+
+
 }

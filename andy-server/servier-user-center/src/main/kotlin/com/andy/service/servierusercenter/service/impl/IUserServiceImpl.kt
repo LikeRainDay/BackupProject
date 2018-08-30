@@ -11,6 +11,7 @@ import com.andy.service.servierusercenter.entity.UserEntity
 import com.andy.service.servierusercenter.enum.SupportLoginFun
 import com.andy.service.servierusercenter.exception.EmailException
 import com.andy.service.servierusercenter.exception.NotFoundAccountException
+import com.andy.service.servierusercenter.exception.RepeatAccountException
 import com.andy.service.servierusercenter.exception.SmsException
 import com.andy.service.servierusercenter.service.IUserDetailsService
 import com.andy.service.servierusercenter.service.IUserService
@@ -21,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.util.Assert
 import org.springframework.util.StringUtils
 
 @Service
@@ -59,7 +59,8 @@ class IUserServiceImpl: IUserService {
 
         val accountEntity = userDao.checkoutUserInfoByAccount(registerInfo.account)
 
-        Assert.notNull(accountEntity, "Account number repetition")
+        if (accountEntity.isPresent)
+            throw RepeatAccountException("${registerInfo.account} has registered")
 
         val userEntity = UserEntity()
 
@@ -71,23 +72,26 @@ class IUserServiceImpl: IUserService {
         var telNum: String? = null
         var emailNum: String? = null
         if (!StringUtils.isEmpty(tel)){
-            val telEntity = userDao.checkoutUserInfoByTel(tel)
-            Assert.notNull(telEntity, "telephone repetition")
-            if (smsFeign.verificationCode(tel, code))
+            val telEntity = userDao.checkoutUserInfoByTel(tel!!)
+            if (telEntity.isPresent)
+                throw IllegalAccessException("$tel is repetition")
+            if (smsFeign.verificationCode(tel, code!!))
                 throw SmsException.Error()
             telNum = tel
         }
 
         if (!StringUtils.isEmpty(email)) {
-            val emailEntity = userDao.checkoutUserInfoByEmail(email)
-            Assert.notNull(emailEntity, "email repetition")
-            if (emailFeign.sendEmail(email, code))
+            val emailEntity = userDao.checkoutUserInfoByEmail(email!!)
+            if (emailEntity.isPresent)
+                throw IllegalAccessException("$email is repetition")
+
+            if (emailFeign.validEmailCode(email, code!!))
                 throw EmailException.Error()
             emailNum = email
         }
         userEntity.account = registerInfo.account
-        userEntity.email = email
-        userEntity.tel = tel.toInt()
+        userEntity.email = email!!
+        userEntity.tel = tel!!.toInt()
         userEntity.password = passwordEncoder.encode(registerInfo.password)
         val userDetailsEntity = UserDetailsEntity()
         userDetailsEntity.nickName = registerInfo.nickName
@@ -115,11 +119,11 @@ class IUserServiceImpl: IUserService {
         var userEntity: UserEntity? = null
 
         AccountUtil.judgeAccountTypeByListener(username,{
-            userEntity = userDao.checkoutUserInfoByAccount(username)
+            userEntity = userDao.checkoutUserInfoByAccount(username).get()
         },{
-            userEntity = userDao.checkoutUserInfoByTel(username)
+            userEntity = userDao.checkoutUserInfoByTel(username).get()
         },{
-            userEntity = userDao.checkoutUserInfoByEmail(username)
+            userEntity = userDao.checkoutUserInfoByEmail(username).get()
         },{
             throw NotFoundAccountException.Error(username)
         })

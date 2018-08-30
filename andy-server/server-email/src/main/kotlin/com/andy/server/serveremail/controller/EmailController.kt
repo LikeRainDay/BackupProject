@@ -5,10 +5,7 @@ import com.andy.server.serveremail.service.IEmailService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/email")
@@ -36,7 +33,7 @@ class EmailController {
      * date 2018/8/28 上午11:10  
      */
     @PostMapping(value = ["/valid"])
-    fun sendEmail(email: String, code: String): Boolean {
+    fun validEmailCode(@RequestParam("mobile") email: String, @RequestParam("code") code: String): Boolean {
         return iEmailService.emailValid(code, email)
     }
 

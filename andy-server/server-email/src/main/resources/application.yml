@@ -1,5 +1,5 @@
 server:
-  port: 20002
+  port: 20003
 spring:
   cloud:
     consul:
@@ -38,7 +38,7 @@ spring:
     host: smtp.126.com
     protocol: smtp
     username: houshuai0816@126.com
-    password: houshuai
+    password: houshuai0816
     default-encoding: utf-8
     port: 25
     properties:
@@ -49,4 +49,4 @@ spring:
             enable: true
             required: true
 email:
-  active-time: 6000
+  activeTime: 6000

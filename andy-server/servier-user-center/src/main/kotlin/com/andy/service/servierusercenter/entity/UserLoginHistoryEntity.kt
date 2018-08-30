@@ -17,7 +17,7 @@ class UserLoginHistoryEntity: AbstractIdAuditable() {
     // 登录的账号
     @Size(max = 50)
     @NotNull
-    @Column(name = "account", nullable = false, length = 50)
+    @Column(name = "username", nullable = false, length = 50)
     lateinit var username: String
 
     // 登录的IP
@@ -26,13 +26,13 @@ class UserLoginHistoryEntity: AbstractIdAuditable() {
     // 经度
     @Size(max = 20)
     @NotNull
-    @Column(name = "account", length = 20)
+    @Column(name = "longitube", length = 20)
     lateinit var longitube: String
 
     // 纬度
     @Size(max = 20)
     @NotNull
-    @Column(name = "account", length = 20)
+    @Column(name = "latitude", length = 20)
     lateinit var latitude: String
 
     // 登录状态 0: 登录成功  1: 登录失败
@@ -41,7 +41,7 @@ class UserLoginHistoryEntity: AbstractIdAuditable() {
     // 失败登录的密码 ( 用来进行做处理记录 )
     @Size(min = 6, max = 20)
     @NotNull
-    @Column(name = "account", length = 20)
+    @Column(name = "loginFailPass", length = 20)
     lateinit var loginFailPass: String
 
 

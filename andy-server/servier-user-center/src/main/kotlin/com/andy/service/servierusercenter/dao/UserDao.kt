@@ -5,6 +5,7 @@ import com.andy.service.servierusercenter.entity.UserEntity
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 /**
  * FileName: UserDao
@@ -34,7 +35,7 @@ interface UserDao: AbstractStringRepository<UserEntity> {
      * @return  用户信息
      */  
     @Query(value = "SELECT u FROM UserEntity u WHERE u.status = 0 AND u.account = ?1")
-    fun checkoutUserInfoByAccount(account: String): UserEntity
+    fun checkoutUserInfoByAccount(account: String): Optional<UserEntity>
 
 
     /**
@@ -45,7 +46,7 @@ interface UserDao: AbstractStringRepository<UserEntity> {
      * @return 用户信息
      */
     @Query(value = "SELECT u FROM UserEntity u WHERE u.status = 0 AND u.email = ?1")
-    fun checkoutUserInfoByEmail(email: String): UserEntity 
+    fun checkoutUserInfoByEmail(email: String): Optional<UserEntity>
     
     
     /**
@@ -56,7 +57,7 @@ interface UserDao: AbstractStringRepository<UserEntity> {
      * @return   
      */
     @Query(value = "SELECT u FROM UserEntity u WHERE u.status = 0 AND u.tel = ?1")
-    fun checkoutUserInfoByTel(tel: String): UserEntity
+    fun checkoutUserInfoByTel(tel: String): Optional<UserEntity>
 
 
     /**

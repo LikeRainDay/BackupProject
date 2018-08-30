@@ -2,12 +2,12 @@ package com.andy.andycommonfeign
 
 import com.andy.andycommonbean.bean.EmailBean
 import org.springframework.cloud.openfeign.FeignClient
-import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 
-@FeignClient(name = "service-email", path = "/email")
-@Component
+@FeignClient(name = "service-email")
+//@Component
 interface EmailFeign {
 
     /**
@@ -28,5 +28,5 @@ interface EmailFeign {
      * @return   true 验证码信息正确
      */
     @RequestMapping(value = ["/valid"])
-    fun sendEmail(email: String, code: String): Boolean
+    fun validEmailCode(@RequestParam("mobile") email: String, @RequestParam("code") code: String): Boolean
 }
