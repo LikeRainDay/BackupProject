@@ -9,14 +9,15 @@ spring:
       enabled: true
       discovery:
         # 配置服务注册到Consul上
-#        register: true
+        register: true
         # 配置服务健康检测地址  供Consul 调用
 #        health-check-path: /
         # consul 健康检测频率
 #        health-check-interval: 15s
         # 配置注册到consul 服务的id
-        instance-id: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
         enabled: true
+        service-name: ${spring.application.name}
   application:
     name: service-email
   datasource:
