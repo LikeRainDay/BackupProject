@@ -6,15 +6,17 @@ spring:
       host: localhost
       #  Consul监听端口8500
       port: 8500
+      enabled: true
       discovery:
         # 配置服务注册到Consul上
-        register: true
+#        register: true
         # 配置服务健康检测地址  供Consul 调用
-#        health-check-path: /health
+#        health-check-path: /
         # consul 健康检测频率
 #        health-check-interval: 15s
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}
+        enabled: true
   application:
     name: service-account-center
   redis:
