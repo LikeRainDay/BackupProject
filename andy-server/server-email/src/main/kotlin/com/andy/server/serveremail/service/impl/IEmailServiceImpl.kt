@@ -6,12 +6,15 @@ import com.andy.server.serveremail.dao.EmailDao
 import com.andy.server.serveremail.entity.EmailEntity
 
 import com.andy.server.serveremail.service.IEmailService
+import org.bouncycastle.asn1.iana.IANAObjectIdentifiers.mail
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.mail.SimpleMailMessage
 import org.springframework.mail.javamail.JavaMailSender
+import org.springframework.mail.javamail.MimeMailMessage
+import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.ZonedDateTime
@@ -33,12 +36,14 @@ class IEmailServiceImpl: IEmailService {
 
     @Transactional
     override fun sendEmtail(emailBean: EmailBean): EmailBean {
-        val mail = SimpleMailMessage()
-        mail.setFrom(emailBean.sender)
-        mail.setTo(emailBean.receiver)
-        mail.setSubject(emailBean.subject)
-        mail.setText(emailBean.text)
-        jms.send(mail)
+        // 富文本方式发送短信 内容 TODO 短信内容的定制
+        val msg = jms.createMimeMessage()
+        val helper = MimeMessageHelper(msg, true)
+        helper.setFrom(emailBean.sender)
+        helper.setTo(emailBean.receiver)
+        helper.setSubject(emailBean.subject)
+        helper.setText(emailBean.text, true)
+        jms.send(msg)
         return emailBean.run {
             val emailEntity = EmailEntity()
             emailEntity.sender = emailBean.sender
@@ -67,6 +72,7 @@ class IEmailServiceImpl: IEmailService {
 
     @Transactional
     override fun sendEmailByIdentifyCode(emailBean: EmailBean): Boolean {
+        // 进行简易 邮件发送
         emailBean.text =  RandomUtil.generteSixNumber().toString()
         val mail = SimpleMailMessage()
         mail.setFrom(emailBean.sender)
