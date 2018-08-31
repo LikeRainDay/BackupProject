@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(name = "service-email")
-//@Component
 interface EmailFeign {
 
     /**

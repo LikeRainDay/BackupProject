@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
  * date 2018/8/30 下午2:52
  */
 @RestController
-@RequestMapping(value = ["/user"])
+@RequestMapping(value = ["/api/user"])
 class UserController {
 
     private val log: Logger = LoggerFactory.getLogger(UserController::class.java)
