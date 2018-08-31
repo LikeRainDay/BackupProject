@@ -26,6 +26,6 @@ interface EmailFeign {
      * @param code 验证码
      * @return   true 验证码信息正确
      */
-    @RequestMapping(value = ["/valid"])
+    @RequestMapping(value = ["/affirm"])
     fun validEmailCode(@RequestParam("mobile") email: String, @RequestParam("code") code: String): Boolean
 }
