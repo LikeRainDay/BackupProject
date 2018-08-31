@@ -4,9 +4,11 @@ import com.andy.andycommonbean.bean.EmailBean
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(name = "service-email")
+@RequestMapping("/api/email")
 interface EmailFeign {
 
     /**
@@ -26,6 +28,6 @@ interface EmailFeign {
      * @param code 验证码
      * @return   true 验证码信息正确
      */
-    @RequestMapping(value = ["/affirm"])
+    @RequestMapping(value = ["/affirm"], method = [RequestMethod.POST])
     fun validEmailCode(@RequestParam("mobile") email: String, @RequestParam("code") code: String): Boolean
 }
