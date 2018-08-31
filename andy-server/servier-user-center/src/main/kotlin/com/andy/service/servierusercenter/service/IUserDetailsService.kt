@@ -14,4 +14,7 @@ interface IUserDetailsService {
      * @return 存储到数据库中的用户详情数据
      */
     fun save(userDetails: UserDetailsEntity): Optional<UserDetailsEntity>
+
+
+
 }
