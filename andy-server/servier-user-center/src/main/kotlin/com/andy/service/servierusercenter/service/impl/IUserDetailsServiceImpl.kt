@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.service.servierusercenter.dao.UserDetailsDao
 import com.andy.service.servierusercenter.entity.UserDetailsEntity
 import com.andy.service.servierusercenter.service.IUserDetailsService
 import org.slf4j.Logger
@@ -15,10 +16,10 @@ class IUserDetailsServiceImpl: IUserDetailsService {
     private val log: Logger = LoggerFactory.getLogger(IUserDetailsServiceImpl::class.java)
 
     @Autowired
-    private lateinit var userDetailsrDao: UserDetailsrDao
+    private lateinit var userDetailsDao: UserDetailsDao
 
     override fun save(userDetails: UserDetailsEntity): Optional<UserDetailsEntity> {
-       return Optional.ofNullable(userDetailsrDao.save(userDetails))
+       return Optional.ofNullable(userDetailsDao.save(userDetails))
     }
 
     override fun modiftyUserDetails(userDetails: UserDetailsEntity) {
