@@ -12,6 +12,7 @@ import java.util.*
 @Service
 class IUserDetailsServiceImpl: IUserDetailsService {
 
+
     private val log: Logger = LoggerFactory.getLogger(IUserDetailsServiceImpl::class.java)
 
     @Autowired
@@ -21,4 +22,11 @@ class IUserDetailsServiceImpl: IUserDetailsService {
        return Optional.ofNullable(userDetailsrDao.save(userDetails))
     }
 
+    override fun modiftyUserDetails(userDetails: UserDetailsEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun findUserDetailsById(userDetailsId: String): UserDetailsEntity {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

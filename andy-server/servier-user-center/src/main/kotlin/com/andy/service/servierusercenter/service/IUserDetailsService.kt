@@ -15,6 +15,22 @@ interface IUserDetailsService {
      */
     fun save(userDetails: UserDetailsEntity): Optional<UserDetailsEntity>
 
+    /**
+     * describe: 修改用户的详情信息
+     * author 候帅
+     * date 2018/9/1 下午6:57
+     * @param userDetails 待修改的用户详情信息
+     */
+    fun modiftyUserDetails(userDetails: UserDetailsEntity)
 
+
+    /**
+     * describe: 查询用户的详情信息
+     * author 候帅
+     * date 2018/9/1 下午6:59
+     * @param userDetailsId 用户详情的ID
+     * @return   用户详情信息
+     */
+    fun findUserDetailsById(userDetailsId: String): UserDetailsEntity
 
 }
