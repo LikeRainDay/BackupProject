@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 描述： TODO
  */
 
-public interface PermissionDao extends JpaRepository<PermissionEntity, Long> {
+public interface PermissionDao extends JpaRepository<PermissionEntity, String> {
 
 
 }

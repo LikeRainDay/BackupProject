@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 描述： TODO
  */
 
-public interface PmMenuDao extends JpaRepository<PmMenuEntity, Long> {
+public interface PmMenuDao extends JpaRepository<PmMenuEntity, String> {
 
 
 }

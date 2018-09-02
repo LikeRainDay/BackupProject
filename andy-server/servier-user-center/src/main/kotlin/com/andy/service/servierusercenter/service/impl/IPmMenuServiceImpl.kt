@@ -18,22 +18,19 @@ class IPmMenuServiceImpl: IPermissionService<PmMenuEntity> {
     private lateinit var pmMenuDao: PmMenuDao
 
     override fun addPermission(permission: PmMenuEntity): String {
-        //
-
-
        return pmMenuDao.save(permission).id!!
     }
 
     override fun modiftyPermission(permission: PmMenuEntity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmMenuDao.save(permission)
     }
 
     override fun deletePermission(perId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmMenuDao.deleteById(perId)
     }
 
     override fun findAll(): Optional<MutableList<PmMenuEntity>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Optional.ofNullable(pmMenuDao.findAll().toMutableList())
     }
 
 

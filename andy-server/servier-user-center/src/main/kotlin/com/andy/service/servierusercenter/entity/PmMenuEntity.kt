@@ -23,10 +23,10 @@ class PmMenuEntity: AbstractEntity() {
     @Column(name = "menu_des", length = 200)
     lateinit var menuDes: String
 
-
     // 菜单的父ID
     @Column(name = "menu_parent_id", nullable = true)
     lateinit var menuParentId: String
+
 
     // 权限映射
     @ManyToMany(mappedBy = "pmMenu", cascade = [CascadeType.DETACH, CascadeType.PERSIST])

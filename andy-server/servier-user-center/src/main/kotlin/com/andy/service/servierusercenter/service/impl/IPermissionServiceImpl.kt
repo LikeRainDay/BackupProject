@@ -1,9 +1,13 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.service.servierusercenter.dao.PermissionDao
+import com.andy.service.servierusercenter.dao.PmFeaturesDao
 import com.andy.service.servierusercenter.entity.PermissionEntity
+import com.andy.service.servierusercenter.entity.PmFeaturesEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -13,20 +17,23 @@ class IPermissionServiceImpl: IPermissionService<PermissionEntity> {
     private val log: Logger = LoggerFactory.getLogger(IPermissionServiceImpl::class.java)
 
 
+    @Autowired
+    private lateinit var permissionDao: PermissionDao
+
     override fun addPermission(permission: PermissionEntity): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return permissionDao.save(permission).id!!
     }
 
     override fun modiftyPermission(permission: PermissionEntity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        permissionDao.save(permission)
     }
 
     override fun deletePermission(perId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        permissionDao.deleteById(perId)
     }
 
     override fun findAll(): Optional<MutableList<PermissionEntity>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Optional.ofNullable(permissionDao.findAll().toMutableList())
     }
 
 

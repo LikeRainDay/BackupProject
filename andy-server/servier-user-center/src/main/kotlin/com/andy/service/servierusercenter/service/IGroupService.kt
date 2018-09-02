@@ -14,8 +14,9 @@ interface IGroupService {
      * author 候帅
      * date 2018/9/1 上午12:20
      * @param groupEntity 当前组的实体内容
+     * @return 增加的组ID
      */
-    fun addGroup(groupEntity: GroupEntity): GroupEntity
+    fun addGroup(groupEntity: GroupEntity): String
 
 
     /**

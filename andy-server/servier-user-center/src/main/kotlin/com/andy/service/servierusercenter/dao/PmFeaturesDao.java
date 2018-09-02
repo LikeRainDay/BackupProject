@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 描述： TODO
  */
 
-public interface PmFeaturesDao extends JpaRepository<PmFeaturesEntity, Long> {
+public interface PmFeaturesDao extends JpaRepository<PmFeaturesEntity, String> {
 
 
 }

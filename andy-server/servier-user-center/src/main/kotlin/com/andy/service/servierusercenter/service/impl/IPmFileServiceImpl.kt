@@ -1,9 +1,11 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.service.servierusercenter.dao.PmFileDao
 import com.andy.service.servierusercenter.entity.PmFileEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -12,21 +14,23 @@ class IPmFileServiceImpl: IPermissionService<PmFileEntity> {
 
     private val log: Logger = LoggerFactory.getLogger(IPmFileServiceImpl::class.java)
 
+    @Autowired
+    private lateinit var pmFileDao: PmFileDao
 
     override fun addPermission(permission: PmFileEntity): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return pmFileDao.save(permission).id!!
     }
 
     override fun modiftyPermission(permission: PmFileEntity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmFileDao.save(permission)
     }
 
     override fun deletePermission(perId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmFileDao.deleteById(perId)
     }
 
     override fun findAll(): Optional<MutableList<PmFileEntity>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Optional.ofNullable(pmFileDao.findAll().toMutableList())
     }
 
 
