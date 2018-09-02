@@ -1,9 +1,11 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.service.servierusercenter.dao.PmMenuDao
 import com.andy.service.servierusercenter.entity.PmMenuEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -12,9 +14,14 @@ class IPmMenuServiceImpl: IPermissionService<PmMenuEntity> {
 
     private val log: Logger = LoggerFactory.getLogger(IPmMenuServiceImpl::class.java)
 
+    @Autowired
+    private lateinit var pmMenuDao: PmMenuDao
 
     override fun addPermission(permission: PmMenuEntity): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //
+
+
+       return pmMenuDao.save(permission).id!!
     }
 
     override fun modiftyPermission(permission: PmMenuEntity) {
@@ -25,7 +32,7 @@ class IPmMenuServiceImpl: IPermissionService<PmMenuEntity> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun findAll(): Optional<List<PmMenuEntity>> {
+    override fun findAll(): Optional<MutableList<PmMenuEntity>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

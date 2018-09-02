@@ -25,7 +25,7 @@ class IPmFeatureServiceImpl: IPermissionService<PmFeaturesEntity> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun findAll(): Optional<List<PmFeaturesEntity>> {
+    override fun findAll(): Optional<MutableList<PmFeaturesEntity>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

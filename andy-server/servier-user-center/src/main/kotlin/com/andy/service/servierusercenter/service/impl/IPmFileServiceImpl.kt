@@ -25,7 +25,7 @@ class IPmFileServiceImpl: IPermissionService<PmFileEntity> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun findAll(): Optional<List<PmFileEntity>> {
+    override fun findAll(): Optional<MutableList<PmFileEntity>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

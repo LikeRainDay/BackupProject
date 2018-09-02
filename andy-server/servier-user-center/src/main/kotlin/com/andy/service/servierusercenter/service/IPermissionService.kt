@@ -44,7 +44,7 @@ interface IPermissionService<T : Persistable<String>> {
      * date 2018/9/1 下午6:34
      * @return 当前所有权限内容
      */
-    fun findAll(): Optional<List<T>>
+    fun findAll(): Optional<MutableList<T>>
 
 
 }

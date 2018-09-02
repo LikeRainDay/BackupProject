@@ -18,6 +18,12 @@ class PmMenuEntity: AbstractEntity() {
     @Column(name = "menu_name", nullable = false, length = 30)
     lateinit var menuName: String
 
+    // 描述信息
+    @Size(max = 200)
+    @Column(name = "menu_des", length = 200)
+    lateinit var menuDes: String
+
+
     // 菜单的父ID
     @Column(name = "menu_parent_id", nullable = true)
     lateinit var menuParentId: String

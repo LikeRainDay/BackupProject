@@ -13,8 +13,8 @@ import javax.persistence.*
 @Entity
 @Table(name = "positions",
         indexes = [
-            Index(name = "INDEX_positionCoding", columnList = "positionCoding"),
-            Index(name = "INDEX_positionIndex", columnList = "positionIndex")
+            Index(name = "INDEX_positionCoding", columnList = "positionCoding", unique = true),
+            Index(name = "INDEX_positionIndex", columnList = "positionIndex", unique = true)
         ])
 class PositionsEntity: AbstractIdAuditable(){
 
@@ -22,7 +22,7 @@ class PositionsEntity: AbstractIdAuditable(){
     lateinit var position: String
 
     // 上级
-    lateinit var unitName: String
+    lateinit var superUnitCode: String
 
     // 职位编号
     lateinit var positionCoding: String
@@ -30,6 +30,11 @@ class PositionsEntity: AbstractIdAuditable(){
     // 索引
     lateinit var positionIndex: String
 
+    // 叶节点
+    var isLeaf: Boolean = false
+
+    // 子节点
+    var isSub: Boolean = false
 
     @OneToMany(mappedBy = "position", fetch = FetchType.EAGER)
     lateinit var userDetails: Set<UserDetailsEntity>

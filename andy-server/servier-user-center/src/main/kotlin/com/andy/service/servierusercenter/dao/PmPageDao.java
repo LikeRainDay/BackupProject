@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 描述： TODO
  */
 
-public interface PmPageDao extends JpaRepository<PmPageEntity, Long> {
+public interface PmPageDao extends JpaRepository<PmPageEntity, String> {
 
 
 }

@@ -25,7 +25,7 @@ class IPermissionServiceImpl: IPermissionService<PermissionEntity> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun findAll(): Optional<List<PermissionEntity>> {
+    override fun findAll(): Optional<MutableList<PermissionEntity>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

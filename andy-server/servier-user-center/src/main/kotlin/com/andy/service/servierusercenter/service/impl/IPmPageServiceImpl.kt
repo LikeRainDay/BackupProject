@@ -1,9 +1,11 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.service.servierusercenter.dao.PmPageDao
 import com.andy.service.servierusercenter.entity.PmPageEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -12,21 +14,23 @@ class IPmPageServiceImpl: IPermissionService<PmPageEntity> {
 
     private val log: Logger = LoggerFactory.getLogger(IPmPageServiceImpl::class.java)
 
+    @Autowired
+    private lateinit var pmPageDao: PmPageDao
 
     override fun addPermission(permission: PmPageEntity): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return pmPageDao.save(permission).id!!
     }
 
     override fun modiftyPermission(permission: PmPageEntity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmPageDao.save(permission)
     }
 
     override fun deletePermission(perId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pmPageDao.deleteById(perId)
     }
 
-    override fun findAll(): Optional<List<PmPageEntity>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun findAll(): Optional<MutableList<PmPageEntity>> {
+        return Optional.ofNullable(pmPageDao.findAll().toMutableList())
     }
 
 
