@@ -111,6 +111,7 @@ class IGroupServiceImpl : IGroupService {
                         groupDao.save(it)
                     }
                 }
+                groupDao.deleteById(childId)
             }.orElseThrow {
                 throw IllegalAccessException("Not fond group info")
             }
