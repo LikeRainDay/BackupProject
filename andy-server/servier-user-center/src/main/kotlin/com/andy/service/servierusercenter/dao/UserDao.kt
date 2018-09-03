@@ -70,4 +70,6 @@ interface UserDao: AbstractStringRepository<UserEntity> {
     @Query("UPDATE UserEntity u SET u.password = ?2 WHERE u.id = ?1")
     fun modiftyPassByUserId(userId: String, newPass: String)
 
+
+
 }

@@ -11,7 +11,7 @@ import java.util.*
 interface UserRoleXrefRepository: JpaRepository<UserRoleXrefEntity, Long> {
 
 
-    @Query("select ur from  UserRoleXrefEntity ur where ur.role =?1 and ur.user = ?2")
+    @Query("select ur from  UserRoleXrefEntity ur where ur.roles =?1 and ur.user = ?2")
     fun findIsPeplace(roleId: RoleEntity, userId: UserEntity): Optional<UserRoleXrefEntity>
     
 }
