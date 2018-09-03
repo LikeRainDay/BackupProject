@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/email")
+@RequestMapping("/api/email")
 class EmailController {
 
     private val log: Logger = LoggerFactory.getLogger(EmailController::class.java)
@@ -32,7 +32,7 @@ class EmailController {
      * author 候帅  
      * date 2018/8/28 上午11:10  
      */
-    @PostMapping(value = ["/valid"])
+    @PostMapping(value = ["/affirm"])
     fun validEmailCode(@RequestParam("mobile") email: String, @RequestParam("code") code: String): Boolean {
         return iEmailService.emailValid(code, email)
     }

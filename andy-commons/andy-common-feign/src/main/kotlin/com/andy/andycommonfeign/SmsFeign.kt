@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam
  * date 2018/8/25 下午2:43
  */
 @FeignClient(name = "service-sms")
-//@Component
 interface SmsFeign {
 
     /**

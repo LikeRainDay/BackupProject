@@ -1,11 +1,12 @@
 package com.andy.service.servierusercenter.entity
 
+import com.andy.corejpa.AbstractOrganizeAuditable
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "groups")
-class GroupEntity: AbstractEntity() {
+class GroupEntity: AbstractOrganizeAuditable() {
 
     // 用户组名
     @NotNull
@@ -22,7 +23,6 @@ class GroupEntity: AbstractEntity() {
     @Column(name = "parent_id", nullable = false)
     lateinit var parentId: String
 
-
     // 用户组 描述
     @Column(name = "group_desc")
     lateinit var groupDesc: String
@@ -30,8 +30,6 @@ class GroupEntity: AbstractEntity() {
     // 用户信息多对多
     @ManyToMany(mappedBy = "group", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     lateinit var user: Set<UserEntity>
-
-
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinTable(name = "it_GR",
