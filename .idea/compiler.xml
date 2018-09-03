@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="andy-common-bean" />
+        <module name="andy-common-dao" />
+        <module name="andy-common-entity" />
+        <module name="andy-common-feign" />
+        <module name="andy-common-utils" />
+        <module name="andy-core" />
+        <module name="core" />
+        <module name="datasource-elasticsearch" />
+        <module name="datasource-jpa" />
+        <module name="datasource-redis" />
+        <module name="ecology-config" />
+        <module name="ecology-getway" />
+        <module name="ecology-oauth2" />
+        <module name="server-email" />
+        <module name="server-iden_code" />
+        <module name="server-login" />
+        <module name="server-sms" />
+        <module name="service-test" />
+        <module name="servier-user-center" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-iden_code" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
