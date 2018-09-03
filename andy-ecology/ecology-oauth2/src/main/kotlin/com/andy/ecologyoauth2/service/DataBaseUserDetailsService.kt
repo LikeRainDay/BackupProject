@@ -1,8 +1,8 @@
 package com.andy.ecologyoauth2.service
 
+import com.andy.andycommonfeign.UserFeign
 import com.andy.ecologyoauth2.dao.AccessTokenRepository
 import com.andy.ecologyoauth2.dao.ClientDetailsRepository
-import com.andy.ecologyoauth2.dao.UserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,9 +30,8 @@ class DataBaseUserDetailsService :UserDetailsService {
     companion object {
         private const val ROLE_PREFIX: String = "ROLE_"
     }
-
     @Autowired
-    private lateinit var userRepository: UserRepository
+    private lateinit var userFeign: UserFeign
 
     @Autowired
     private lateinit var accessTokenRepository: AccessTokenRepository
@@ -41,17 +40,14 @@ class DataBaseUserDetailsService :UserDetailsService {
     private lateinit var clientDetailsRepository: ClientDetailsRepository
 
     override fun loadUserByUsername(username: String?): UserDetails {
-
-        return userRepository.findOneByUsername(username!!)
+       return userFeign
+                .findUserInfo(username!!)
                 .map {
-                    return@map User(it.username, it.password, it.roles.stream()
+                    return@map User(it.account, it.password, it.roles.stream()
                             .map {
-                                return@map SimpleGrantedAuthority(prefixRoleName(it.role.name))
-                    }
-                    .collect(Collectors.toList()))}
-                    .orElseThrow {
-                        return@orElseThrow UsernameNotFoundException("User $username was not found in the database")
-                    }
+                                return@map SimpleGrantedAuthority(prefixRoleName(it))
+                            }.collect(Collectors.toList()))
+                }.orElseThrow {  return@orElseThrow UsernameNotFoundException("User $username was not found in the database") }
     }
 
     /**

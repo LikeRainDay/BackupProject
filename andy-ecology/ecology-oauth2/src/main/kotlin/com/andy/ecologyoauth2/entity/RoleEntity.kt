@@ -19,10 +19,10 @@ class RoleEntity: AbstractAuditable<Long>() {
     @ColumnDefault("False")
     var disable: Boolean = false
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "roles", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     lateinit var authorities: Set<RoleAuthorityXrefEntity>
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     lateinit var users: Set<UserRoleXrefEntity>
 
 //    @ManyToMany(mappedBy = "roleId", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)

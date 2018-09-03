@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.andycommonbean.bean.UserBean
 import com.andy.andycommonfeign.EmailFeign
 import com.andy.andycommonfeign.SmsFeign
 import com.andy.service.servierusercenter.bean.UserDetailBean
@@ -23,6 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
+import java.util.stream.Collectors
 
 @Service
 class IUserServiceImpl: IUserService {
@@ -48,6 +50,29 @@ class IUserServiceImpl: IUserService {
         userDao.falseDeleteUserById(id)
     }
 
+    override fun findUserInfo(account: String): UserBean {
+        var userEntity: UserEntity? = null
+
+        AccountUtil.judgeAccountTypeByListener(account,{
+            userEntity = userDao.checkoutUserInfoByAccount(account).get()
+        },{
+            userEntity = userDao.checkoutUserInfoByTel(account).get()
+        },{
+            userEntity = userDao.checkoutUserInfoByEmail(account).get()
+        },{
+            throw NotFoundAccountException.Error(account)
+        })
+        if (userEntity == null)
+            throw NotFoundAccountException("This account does not exist")
+
+        val userBean = UserBean()
+        userBean.account =userEntity!!.account
+        userBean.password= userEntity!!.password
+        userBean.roles = userEntity!!.role.stream().map {
+            return@map it.roleName
+        }.collect(Collectors.toSet())
+        return userBean
+    }
 
     /**
      * describe: 此方法 需要注意。 由于注册时需要进行 邮箱 或者 电话短信认证
