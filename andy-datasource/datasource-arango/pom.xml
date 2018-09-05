@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy.datasource</groupId>
-    <artifactId>datasource-elasticsearch</artifactId>
+    <artifactId>datasource-arango</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>datasource-elasticsearch</name>
-    <description>ES 的核心配置</description>
+    <name>datasource-arango</name>
+    <description>Arango</description>
 
     <parent>
         <groupId>com.andy.datasource</groupId>
@@ -26,15 +26,12 @@
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            <groupId>com.arangodb</groupId>
+            <artifactId>arangodb-java-driver</artifactId>
+            <version>4.7.3</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.elasticsearch.client</groupId>-->
-            <!--<artifactId>transport</artifactId>-->
-            <!--<version>6.3.2</version>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>

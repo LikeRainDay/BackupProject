@@ -14,6 +14,8 @@
         <module>datasource-jpa</module>
         <module>datasource-elasticsearch</module>
         <module>datasource-redis</module>
+        <module>datasource-arango</module>
+        <module>datasource-mongodb</module>
     </modules>
     <parent>
         <groupId>com.andy</groupId>
