@@ -1,8 +1,15 @@
 spring:
-  elasticsearch:
-    jest:
-      uris: http://localhost:9200
-      username:
-      password:
-      read-timeout: 20000ms
-      connection-timeout: 20000ms
+#  elasticsearch:
+#    jest:
+#      uris: http://localhost:9200
+#      username:
+#      password:
+#      read-timeout: 20000ms
+#      connection-timeout: 20000ms
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: localhost:9200
+      repositories:
+        enabled: true
+
