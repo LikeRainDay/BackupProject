@@ -27,10 +27,12 @@ class TestDoTest{
         testDo.lastName = "帅"
         testDo.firstName ="候"
 
-        testRepository.save(testDo)
+//        testRepository.save(testDo)
 
         val findAll = testRepository.findAll()
-        log.info("查询到的内容为：$findAll")
+        findAll.forEach {
+            log.info("查询到的内容为：$it")
+        }
 
     }
 

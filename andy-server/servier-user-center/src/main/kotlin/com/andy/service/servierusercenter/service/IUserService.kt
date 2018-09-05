@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service
 
+import com.andy.andycommonbean.bean.UserBean
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
 import com.andy.service.servierusercenter.bean.RegisterInfoBean
@@ -59,6 +60,10 @@ interface IUserService {
      */
     fun registerByAccount(registerInfo: RegisterInfoBean): UserDetailBean
 
-
-
+    /**
+     *  通过账号信息进行获取 对应人员的  账号密码和角色信息
+     * @param account 账号信息
+     * @return  用户的相关信息
+     */
+    fun findUserInfo(account: String): UserBean
 }
