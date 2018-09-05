@@ -8,8 +8,8 @@ spring:
 #      connection-timeout: 20000ms
   data:
     elasticsearch:
-      cluster-name: elasticsearch
-      cluster-nodes: localhost:9200
+      cluster-name: elasticsearh
+      cluster-nodes: 127.0.0.1:9300
       repositories:
         enabled: true
 

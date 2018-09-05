@@ -31,20 +31,10 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>io.searchbox</groupId>-->
-            <!--<artifactId>jest</artifactId>-->
-            <!--<version>6.3.1</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.elasticsearch</groupId>-->
-            <!--<artifactId>elasticsearch</artifactId>-->
+            <!--<groupId>org.elasticsearch.client</groupId>-->
+            <!--<artifactId>transport</artifactId>-->
             <!--<version>6.3.2</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-            <version>6.3.2</version>
-        </dependency>
     </dependencies>
 
     <build>
