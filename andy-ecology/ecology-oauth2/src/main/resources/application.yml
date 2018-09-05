@@ -10,11 +10,13 @@ spring:
         # 配置服务注册到Consul上
         register: true
         # 配置服务健康检测地址  供Consul 调用
-#        health-check-path: /health
+        health-check-path: /api/health
         # consul 健康检测频率
-#        health-check-interval: 15s
+        health-check-interval: 15s
         # 配置注册到consul 服务的id
-        instance-id: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+        enabled: true
+        service-name: ${spring.application.name}
   application:
     name: ecology-oauth2
   redis:
