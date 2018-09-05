@@ -2,6 +2,7 @@ package com.andy.service.servierusercenter.controller
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
@@ -10,8 +11,18 @@ import org.springframework.web.bind.annotation.RestController
  * date 2018/9/2 下午10:27
  */
 @RestController
+@RequestMapping(value = ["/admin/auth"])
 class AuthController {
 
     private val log: Logger = LoggerFactory.getLogger(AuthController::class.java)
+
+    /**
+     * describe: 第三方登录相关内容
+     * author 候帅
+     * date 2018/9/5 下午10:05
+     * @param
+     * @return
+     */
+
 
 }

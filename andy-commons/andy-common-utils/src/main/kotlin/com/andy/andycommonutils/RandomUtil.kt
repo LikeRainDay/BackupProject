@@ -1,5 +1,7 @@
 package com.andy.andycommonutils
 
+import java.util.*
+
 /**
  * describe: 随机内容生成
  * author 候帅  
@@ -16,6 +18,16 @@ object RandomUtil {
      */
     fun generteSixNumber(): Int {
         return ((Math.random()*9+1)*100000).toInt()
+    }
+
+    /**
+     * describe: 生成UUID的32位验证
+     * author 候帅
+     * date 2018/9/5 下午10:16
+     * @return 生成32随机数
+     */
+    fun generteRandomUUID(): String {
+        return UUID.randomUUID().toString().replace("-", "")
     }
     
 }

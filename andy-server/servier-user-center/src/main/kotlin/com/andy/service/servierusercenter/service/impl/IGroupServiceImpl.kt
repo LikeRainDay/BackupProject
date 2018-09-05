@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
+import java.util.*
 
 @Service
 class IGroupServiceImpl : IGroupService {
+
 
     private val log: Logger = LoggerFactory.getLogger(IGroupServiceImpl::class.java)
 
@@ -120,5 +122,11 @@ class IGroupServiceImpl : IGroupService {
         }
     }
 
+    override fun findGroupInfoById(id: String): Optional<GroupEntity> {
+        return groupDao.findById(id)
+    }
 
+    override fun findGroupInfoByGroupId(groupId: String): Optional<GroupEntity> {
+        return groupDao.findByGroupId(groupId)
+    }
 }

@@ -1,6 +1,7 @@
 package com.andy.service.servierusercenter.service
 
 import com.andy.service.servierusercenter.entity.GroupEntity
+import java.util.*
 
 /**
  * describe: 组相关管理
@@ -8,6 +9,26 @@ import com.andy.service.servierusercenter.entity.GroupEntity
  * date 2018/9/1 上午12:19
  */
 interface IGroupService {
+
+
+
+    /**
+     * describe: 根据组的ID 进行查询组的详细内容
+     * author 候帅
+     * date 2018/9/5 下午10:30
+     * @param id  组的唯一ID
+     * @return    组的详细信息
+     */
+    fun findGroupInfoById(id: String): Optional<GroupEntity>
+
+    /**
+     * describe: 根据组的编号 进行查询组的详细内容
+     * author 候帅
+     * date 2018/9/5 下午10:31
+     * @param groupId 组的唯一编号
+     * @return   组的详细信息
+     */
+    fun findGroupInfoByGroupId(groupId: String): Optional<GroupEntity>
 
 
     /**

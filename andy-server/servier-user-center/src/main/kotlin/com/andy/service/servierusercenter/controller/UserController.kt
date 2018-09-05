@@ -17,7 +17,7 @@ import java.util.*
  * date 2018/8/30 下午2:52
  */
 @RestController
-@RequestMapping(value = ["/api/user"])
+@RequestMapping(value = ["/admin/user"])
 class UserController {
 
     private val log: Logger = LoggerFactory.getLogger(UserController::class.java)
