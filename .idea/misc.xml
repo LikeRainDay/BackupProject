@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/andy-server/server-iden_code/pom.xml" />
+        <option value="$PROJECT_DIR$/andy-datasource/database-arango/pom.xml" />
+        <option value="$PROJECT_DIR$/andy-datasource/datasource-mongodb/pom.xml" />
       </list>
     </option>
   </component>
