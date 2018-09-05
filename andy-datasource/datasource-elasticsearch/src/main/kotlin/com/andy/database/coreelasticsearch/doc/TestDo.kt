@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.elasticsearch.annotations.Document
 import java.util.*
 
-@Document(indexName = "company", type = "employe", shards = 8, replicas = 1)
+@Document(indexName = "company", type = "test", shards = 8, replicas = 1)
 class TestDo {
 
     @Id
