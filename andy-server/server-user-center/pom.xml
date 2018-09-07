@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy.service</groupId>
-    <artifactId>servier-user-center</artifactId>
+    <artifactId>server-user-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>servier-user-center</name>
+    <name>server-user-center</name>
     <description>用户中心服务</description>
 
     <parent>

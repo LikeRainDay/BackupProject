@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TestRepository: ElasticsearchRepository<TestDo, Int> {
+
 }

@@ -20,10 +20,9 @@
 
     <modules>
         <module>server-login</module>
-        <module>servier-user-center</module>
+        <module>server-user-center</module>
         <module>server-sms</module>
         <module>server-email</module>
-        <module>service-test</module>
         <module>server-iden_code</module>
     </modules>
 
