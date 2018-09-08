@@ -19,6 +19,8 @@ spring:
         service-name: ${spring.application.name}
   application:
     name: ecology-getway
+  thymeleaf:
+    cache: true
 zuul:
   host:
     connect-timeout-millis: 10000

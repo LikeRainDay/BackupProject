@@ -93,6 +93,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
         }
     }
 
+
 //    companion object {
 //        /**
 //         * describe: 全局方法安全配置
