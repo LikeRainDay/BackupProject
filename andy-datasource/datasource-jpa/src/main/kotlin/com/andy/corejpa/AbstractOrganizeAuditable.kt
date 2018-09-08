@@ -46,7 +46,7 @@ abstract class AbstractOrganizeAuditable: AbstractUuidPersistable() {
 
     // 唯一ID
     @NotNull
-    @Column(name = "unique", nullable = true)
+    @Column(name = "unique_id", nullable = true)
     var uniqueId: Long = 0
 
     // 机构的索引
