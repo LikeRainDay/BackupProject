@@ -26,12 +26,35 @@ class UserController {
     @Autowired
     private lateinit var iUserService: IUserService
 
+    /**
+     * describe: 用户注册
+     * author 候帅
+     * date 2018/9/8 下午12:22
+     */
     @PostMapping("/register")
     fun registerUser(@RequestBody registerInfoBean: RegisterInfoBean): BaseResponse {
         val registerByAccount = iUserService.registerByAccount(registerInfoBean)
         return ResultResponse.Success(registerByAccount)
     }
 
+    /**
+     * describe: 进行简单注册
+     * author 候帅
+     * date 2018/9/8 下午12:23
+     */
+    @PostMapping("/register/simple")
+    fun simpleRegisterUser(@RequestParam account: String, @RequestParam password: String): BaseResponse {
+        val registerByAccount = iUserService.simpleRegister(account, password)
+        return ResultResponse.Success(registerByAccount)
+    }
+
+
+
+    /**
+     * describe: 查询用户信息
+     * author 候帅
+     * date 2018/9/8 下午12:22
+     */
     @GetMapping("/find")
     fun findUserInfo(@RequestParam(value = "account") accout: String): Optional<UserBean> {
         return Optional.ofNullable(iUserService.findUserInfo(accout))

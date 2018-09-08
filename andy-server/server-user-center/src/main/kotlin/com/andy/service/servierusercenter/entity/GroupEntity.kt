@@ -39,5 +39,5 @@ class GroupEntity: AbstractOrganizeAuditable() {
             inverseJoinColumns = [
                 JoinColumn(name = "FK_GR_REF_ROLE", referencedColumnName = "id")
             ])
-    lateinit var role: MutableSet<RoleEntity>
+    lateinit var roles: MutableSet<RoleEntity>
 }

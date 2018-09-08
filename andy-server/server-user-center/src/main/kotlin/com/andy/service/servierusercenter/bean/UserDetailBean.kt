@@ -10,20 +10,20 @@ data class UserDetailBean(
 
         var userId: String,
 
-        var sex: Int,
+        var sex: Int = 1,
 
-        var avator: String?,
+        var avator: String? = null,
 
-        var nickName: String?,
+        var nickName: String? = null,
 
-        var zipCode: String?,
+        var zipCode: String? = null,
 
-        var tel: String?,
+        var tel: String? = null,
 
-        var email: String?,
+        var email: String? = null,
 
-        var idCard: String?,
+        var idCard: String? = null,
 
-        var summary: String?,
+        var summary: String? = null,
 
-        var adress: String?)
+        var adress: String? = null)

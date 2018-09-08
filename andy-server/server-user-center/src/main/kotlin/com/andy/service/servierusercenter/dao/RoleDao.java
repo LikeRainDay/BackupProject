@@ -21,7 +21,7 @@ public interface RoleDao extends JpaRepository<RoleEntity, String> {
      * author 候帅
      * date 2018/9/1 下午7:41
      */
-    Optional<RoleEntity> findDistinctFirstByStatusAndRoleNameAndRoleType(int statu, String roleName, String roleType);
+    Optional<RoleEntity> findDistinctFirstByStatusAndRoleName(int statu, String roleName);
 
 
 }

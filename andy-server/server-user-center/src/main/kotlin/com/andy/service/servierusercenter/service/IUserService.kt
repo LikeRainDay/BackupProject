@@ -66,4 +66,14 @@ interface IUserService {
      * @return  用户的相关信息
      */
     fun findUserInfo(account: String): UserBean
+    
+    
+    /**
+     * describe: 简易注册
+     * author 候帅  
+     * date 2018/9/8 下午12:24  
+     */
+    fun simpleRegister(account: String, password: String): UserDetailBean
+    
+    
 }

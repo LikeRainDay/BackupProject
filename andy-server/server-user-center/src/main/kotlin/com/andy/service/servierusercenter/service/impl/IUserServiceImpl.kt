@@ -29,6 +29,7 @@ import java.util.stream.Collectors
 @Service
 class IUserServiceImpl: IUserService {
 
+
     private val log: Logger = LoggerFactory.getLogger(IUserServiceImpl::class.java)
 
     @Autowired
@@ -68,7 +69,7 @@ class IUserServiceImpl: IUserService {
         val userBean = UserBean()
         userBean.account =userEntity!!.account
         userBean.password= userEntity!!.password
-        userBean.roles = userEntity!!.role.stream().map {
+        userBean.roles = userEntity!!.roles.stream().map {
             return@map it.roleName
         }.collect(Collectors.toSet())
         return userBean
@@ -212,5 +213,33 @@ class IUserServiceImpl: IUserService {
             }
             return@map true
         }.orElse(false)
+    }
+
+
+    override fun simpleRegister(account: String, password: String): UserDetailBean {
+        val accountEntity = userDao.checkoutUserInfoByAccount(account)
+
+        if (accountEntity.isPresent)
+            throw RepeatAccountException("$account has registered")
+
+        val userEntity = UserEntity()
+
+        userEntity.account = account
+        userEntity.password = passwordEncoder.encode(password)
+
+        val userInfo = userDao.save(userEntity)
+
+
+        return UserDetailBean(
+                userInfo.id!!,
+                0,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null)
     }
 }

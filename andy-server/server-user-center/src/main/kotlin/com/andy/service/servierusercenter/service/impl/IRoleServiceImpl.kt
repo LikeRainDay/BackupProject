@@ -32,10 +32,10 @@ class IRoleServiceImpl: IRoleService {
      */
     override fun addRole(role: RoleEntity): RoleEntity {
         if (StringUtils.isEmpty(role.roleName)
-                || StringUtils.isEmpty(role.roleType))
+                || StringUtils.isEmpty(role.roleName))
             throw IllegalArgumentException("please push your role`s name and role`s type")
 
-        val roleEntity = roleDao.findDistinctFirstByStatusAndRoleNameAndRoleType(0, role.roleName, role.roleType)
+        val roleEntity = roleDao.findDistinctFirstByStatusAndRoleName(0, role.roleName)
         return roleEntity
                 .map {
                     return@map it

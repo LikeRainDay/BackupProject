@@ -42,8 +42,8 @@ class UserEntity: AbstractEntity() {
     var status: Int = 0
 
     // 电话
-    @Size(max = 12)
-    @Column(name = "tel", nullable = true, length = 12)
+//    @Size(max = 12)
+    @Column(name = "tel", nullable = true, length = 11)
     var tel: Int = 0
 
     // 用户详情信息
@@ -72,7 +72,7 @@ class UserEntity: AbstractEntity() {
             inverseJoinColumns = [
                 JoinColumn(name = "FK_UR_REF_ROLE", referencedColumnName = "id")
             ])
-    lateinit var role: MutableSet<RoleEntity>
+    lateinit var roles: MutableSet<RoleEntity>
 
     // 用户对应的第三方权限
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
