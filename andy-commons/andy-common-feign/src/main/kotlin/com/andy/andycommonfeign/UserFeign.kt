@@ -14,9 +14,9 @@ import java.util.*
  * History:
  */
 @FeignClient(name = "service-account-center")
-@RequestMapping(value = ["/user"])
+@RequestMapping(value = ["/admin/user"])
 interface UserFeign {
 
     @RequestMapping(value = ["/find"])
-    fun findUserInfo(@RequestParam(value = "account") accout: String): Optional<UserBean>
+    fun findUserInfo(@RequestParam(value = "account") account: String): UserBean
 }

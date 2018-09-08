@@ -25,14 +25,14 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
      * @return
      */
     override fun configure(http: HttpSecurity?) {
-//        http!!
-//                .csrf()
-//                .disable()
-        http!!.antMatcher("/**")
-                .authorizeRequests()
-                .antMatchers("/", "/login**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+        http!!
+                .csrf()
+                .disable()
+//        http!!.antMatcher("/**")
+//                .authorizeRequests()
+//                .antMatchers("/", "/login**")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
     }
 }

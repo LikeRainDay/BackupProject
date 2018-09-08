@@ -56,8 +56,8 @@ class UserController {
      * date 2018/9/8 下午12:22
      */
     @GetMapping("/find")
-    fun findUserInfo(@RequestParam(value = "account") accout: String): Optional<UserBean> {
-        return Optional.ofNullable(iUserService.findUserInfo(accout))
+    fun findUserInfo(@RequestParam(value = "account") account: String): UserBean {
+        return iUserService.findUserInfo(account)
     }
 
 

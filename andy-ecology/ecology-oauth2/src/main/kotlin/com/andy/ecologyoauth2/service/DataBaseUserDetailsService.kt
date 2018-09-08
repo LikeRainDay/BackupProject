@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 import org.springframework.util.StringUtils
+import java.util.*
 import java.util.stream.Collectors
 
 /**
@@ -42,7 +43,7 @@ class DataBaseUserDetailsService :UserDetailsService {
 
     override fun loadUserByUsername(username: String?): UserDetails {
 
-       return userFeign.findUserInfo(username!!)
+       return Optional.ofNullable(userFeign.findUserInfo(username!!))
                 .map {
                     return@map User(it.account, it.password, it.roles.stream()
                             .map {
