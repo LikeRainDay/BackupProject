@@ -55,12 +55,12 @@ zuul:
       type: url
   add-proxy-headers: true
   add-host-header: true
-security:
-  oauth2:
-    client:
-      access-token-uri: http://localhost:${server.port}/auth/oauth/token
-      user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
-      client-id: open-api
-    resource:
-      user-info-uri: http://localhost:${server.port}/auth/user
-      prefer-token-info: false
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://localhost:${server.port}/auth/oauth/token
+#      user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
+#      client-id: open-api
+#    resource:
+#      user-info-uri: http://localhost:${server.port}/auth/user
+#      prefer-token-info: false
