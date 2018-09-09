@@ -30,10 +30,6 @@ zuul:
       path: /ratelimit-api/**
       serviceId: service-client
       sensitiveHeaders: "*"
-    login:
-      path: /login/**
-      sensitiveHeaders: "*"
-      serviceId: server-login
     auth:
       path: /auth/**
       sensitiveHeaders: "*"
@@ -54,6 +50,7 @@ zuul:
       type: url
   ignored-services: '*'
   add-proxy-headers: true
+  add-host-header: true
 security:
   oauth2:
     client:
