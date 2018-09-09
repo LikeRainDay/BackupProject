@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * History:
  */
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 @Order(SecurityProperties.BASIC_AUTH_ORDER - 3)
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
@@ -27,7 +27,13 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity?) {
         http!!
                 .authorizeRequests()
-                .antMatchers( "/auth/**", "/api/health", "/default", "/login/**")
+                .antMatchers(
+                        "/",
+                        "/**/*.html",
+                        "/auth/**",
+                        "/api/health",
+                        "/default",
+                        "/login/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

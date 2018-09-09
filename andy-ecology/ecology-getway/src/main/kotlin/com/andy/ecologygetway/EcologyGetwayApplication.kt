@@ -11,8 +11,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 @SpringBootApplication
 @EnableDiscoveryClient
 // 开启OAuth2的单点登录
-@EnableOAuth2Sso
-@EnableFeignClients(basePackages = ["com.andy"])
+//@EnableOAuth2Sso
+//@EnableFeignClients(basePackages = ["com.andy"])
 class EcologyGetwayApplication
 
 fun main(args: Array<String>) {
