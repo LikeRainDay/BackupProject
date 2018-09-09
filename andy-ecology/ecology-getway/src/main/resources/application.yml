@@ -17,38 +17,42 @@ spring:
         instance-id: ${spring.application.name}:${server.port}
         enabled: true
         service-name: ${spring.application.name}
+      enabled: true
   application:
     name: ecology-getway
   thymeleaf:
     cache: true
 zuul:
-  host:
-    connect-timeout-millis: 10000
-    socket-timeout-millis: 60000
+#  host:
+#    connect-timeout-millis: 10000
+#    socket-timeout-millis: 60000
   routes:
     ratelimit-api:
       path: /ratelimit-api/**
-      serviceId: service-client
-      sensitiveHeaders: "*"
+      service-id: service-client
+#      sensitiveHeaders: "*"
     auth:
       path: /auth/**
-      sensitiveHeaders: "*"
-      serviceId: ecology-oauth2
+#      sensitiveHeaders: "*"
+      service-id: ecology-oauth2
+    user-center:
+      path: /test/**
+#      sensitiveHeaders: "*"
+      service-id: service-account-center
   ratelimit:
     key-prefix: ratelimit-api
-    # 启动限流服务
+#     启动限流服务
     enabled: true
     behind-proxy: true
     default-policy:
-      # 请求数量
+#       请求数量
       limit: 100
-      # 请求总时间
+#       请求总时间
       quota: 20
-      # 统计窗口刷新时间
+#       统计窗口刷新时间
       refresh-interval: 60
-      # 限流类型
+#       限流类型
       type: url
-  ignored-services: '*'
   add-proxy-headers: true
   add-host-header: true
 security:

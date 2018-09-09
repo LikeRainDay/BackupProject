@@ -123,7 +123,7 @@ class IUserServiceImpl: IUserService {
         }
         userEntity.account = registerInfo.account
         userEntity.email = email!!
-        userEntity.tel = tel!!.toInt()
+        userEntity.tel = tel!!
         userEntity.password = passwordEncoder.encode(registerInfo.password)
         val userDetailsEntity = UserDetailsEntity()
         userDetailsEntity.nickName = registerInfo.nickName
@@ -234,8 +234,6 @@ class IUserServiceImpl: IUserService {
         userEntity.password = passwordEncoder.encode(password)
 
         val userInfo = userDao.save(userEntity)
-
-
         return UserDetailBean(
                 userInfo.id!!,
                 0,

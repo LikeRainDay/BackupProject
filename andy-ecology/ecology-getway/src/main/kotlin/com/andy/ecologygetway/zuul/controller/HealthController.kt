@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.controller
+package com.andy.ecologygetway.zuul.controller
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

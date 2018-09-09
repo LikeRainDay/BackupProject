@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.filter
+package com.andy.ecologygetway.zuul.filter
 
 
 import com.netflix.zuul.ZuulFilter
@@ -9,21 +9,20 @@ import org.springframework.stereotype.Component
 
 /**
  * @author :        侯帅
- * @CreateTime :    2018/4/30/15:17
- * @Descript:       路由层进行拦截
+ * @CreateTime :    2018/4/30/15:21
+ * @Descript:       进入路由拦截器  优先级为2的拦截
  * @Email:          houshuai0816@126.com
  * 修改人:
  */
 @Component
-class RouteFilter :ZuulFilter() {
-    private var log: Logger = LoggerFactory.getLogger(RouteFilter::class.java)
+class PreFilter2 :ZuulFilter() {
+    private var log: Logger = LoggerFactory.getLogger(PreFilter2::class.java)
 
-    override fun run(): Any?{
+    override fun run(): Any? {
         val currentContext = RequestContext.getCurrentContext()
         val request = currentContext.request
-        log.info("PouteFilter: ${request.method} request to  ${request.requestURL}")
+        log.info("PreFilter: ${request.method} request to ${request.requestURL}")
         return null
-
     }
 
     override fun shouldFilter(): Boolean {
@@ -31,12 +30,12 @@ class RouteFilter :ZuulFilter() {
     }
 
     override fun filterType(): String {
-        return "route"  // 在路由层前进行相关的拦截
+        return "pre"  // 在路由层前进行相关的拦截
     }
 
 
     override fun filterOrder(): Int {
-        return 0
+        return 2
     }
 
 

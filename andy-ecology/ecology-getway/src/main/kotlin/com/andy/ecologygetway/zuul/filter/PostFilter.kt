@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.filter
+package com.andy.ecologygetway.zuul.filter
 
 
 import com.netflix.zuul.ZuulFilter

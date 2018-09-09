@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.fallback
+package com.andy.ecologygetway.zuul.fallback
 
 
 import com.andy.andycommonbean.response.ResultResponse

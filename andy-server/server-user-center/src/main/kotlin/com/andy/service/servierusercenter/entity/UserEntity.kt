@@ -44,7 +44,7 @@ class UserEntity: AbstractEntity() {
     // 电话
 //    @Size(max = 12)
     @Column(name = "tel", nullable = true, length = 11)
-    var tel: Int = 0
+    lateinit var tel: String
 
     // 用户详情信息
     @OneToOne(cascade = [CascadeType.ALL],fetch = FetchType.LAZY)

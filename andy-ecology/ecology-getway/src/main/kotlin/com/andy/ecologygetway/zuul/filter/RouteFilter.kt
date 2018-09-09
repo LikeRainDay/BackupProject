@@ -1,29 +1,29 @@
-package com.andy.ecologygetway.filter
+package com.andy.ecologygetway.zuul.filter
+
 
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 
 /**
  * @author :        侯帅
- * @CreateTime :    2018/4/30/15:21
- * @Descript:       进入路由拦截器  优先级为1的拦截
+ * @CreateTime :    2018/4/30/15:17
+ * @Descript:       路由层进行拦截
  * @Email:          houshuai0816@126.com
  * 修改人:
  */
 @Component
-class PreFilter :ZuulFilter() {
-    private var log: Logger = LoggerFactory.getLogger(PreFilter::class.java)
+class RouteFilter :ZuulFilter() {
+    private var log: Logger = LoggerFactory.getLogger(RouteFilter::class.java)
 
-    override fun run(): Any? {
+    override fun run(): Any?{
         val currentContext = RequestContext.getCurrentContext()
         val request = currentContext.request
-        val authentication = SecurityContextHolder.getContext().authentication
-        log.info("PreFilter: ${request.method} request to ${request.requestURL} and authentication is $authentication")
+        log.info("PouteFilter: ${request.method} request to  ${request.requestURL}")
         return null
+
     }
 
     override fun shouldFilter(): Boolean {
@@ -31,7 +31,7 @@ class PreFilter :ZuulFilter() {
     }
 
     override fun filterType(): String {
-        return "pre"  // 在路由层前进行相关的拦截
+        return "route"  // 在路由层前进行相关的拦截
     }
 
 
