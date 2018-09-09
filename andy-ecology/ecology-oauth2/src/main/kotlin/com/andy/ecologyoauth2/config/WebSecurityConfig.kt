@@ -3,7 +3,6 @@ package com.andy.ecologyoauth2.config
 import com.andy.ecologyoauth2.service.DataBaseUserDetailsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,6 +19,9 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event
+
+
 
 /**
  * FileName: WebSecurityConfig
@@ -30,7 +32,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
  */
 @Configuration
 @EnableWebSecurity
-@Order(SecurityProperties.BASIC_AUTH_ORDER - 2)
+@Order(2)
 class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     private var log: Logger = LoggerFactory.getLogger(WebSecurityConfig::class.java)
@@ -60,13 +62,15 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     override fun configure(http: HttpSecurity?) {
 //        http!!
-//                .anonymous()
-//                .disable()
-//                .authorizeRequests()
-//                .anyRequest()
-//                .authenticated()
+//                .cors().disable()
+//
+
         http!!
-                .cors().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/auth/**", "/api/health", "/oauth/**", "/default/**", "/login")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
     }
 
     override fun configure(web: WebSecurity?) {
@@ -84,7 +88,6 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
         val authentication = SecurityContextHolder.getContext().authentication
         if (authentication == null || AuthenticationTrustResolverImpl().isAnonymous(authentication))
             return "@SYSTEM"
-
         val principal = authentication.principal
         return when (principal) {
             is String -> principal
@@ -92,22 +95,4 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
             else -> principal.toString()
         }
     }
-
-
-//    companion object {
-//        /**
-//         * describe: 全局方法安全配置
-//         * author 候帅
-//         * date 2018/8/19 上午9:31
-//         */
-//        @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
-//        class GlobalSecurityConfiguration: GlobalMethodSecurityConfiguration(){
-//
-//            override fun createExpressionHandler(): MethodSecurityExpressionHandler {
-//                return OAuth2MethodSecurityExpressionHandler()
-//            }
-//        }
-//
-//    }
-
 }

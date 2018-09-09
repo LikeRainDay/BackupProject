@@ -55,11 +55,17 @@ class IUserServiceImpl: IUserService {
         var userEntity: UserEntity? = null
 
         AccountUtil.judgeAccountTypeByListener(account,{
-            userEntity = userDao.checkoutUserInfoByAccount(account).get()
+            userDao.checkoutUserInfoByAccount(account).map {
+                userEntity = it
+            }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
         },{
-            userEntity = userDao.checkoutUserInfoByTel(account).get()
+            userDao.checkoutUserInfoByTel(account).map {
+                userEntity = it
+            }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
         },{
-            userEntity = userDao.checkoutUserInfoByEmail(account).get()
+            userDao.checkoutUserInfoByEmail(account).map {
+                userEntity = it
+            }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
         },{
             throw NotFoundAccountException.Error(account)
         })

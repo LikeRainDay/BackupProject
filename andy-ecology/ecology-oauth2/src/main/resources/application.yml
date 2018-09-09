@@ -49,6 +49,7 @@ spring:
     show-sql: true
   profiles:
     include: default-user-and-roles_route
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 ribbon:
   eager-load:
     enabled: false

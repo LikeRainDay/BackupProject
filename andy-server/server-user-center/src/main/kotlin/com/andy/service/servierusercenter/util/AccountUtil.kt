@@ -45,14 +45,12 @@ object AccountUtil {
                                   , PhoneListener: () -> Unit
                                   , emailListener: () -> Unit
                                   , UNKNOWListener: () -> Unit) {
-       if (RegexUtil.isEmail(account))
-           emailListener.invoke()
-       else if (RegexUtil.isPhone(account))
-           PhoneListener.invoke()
-       else if (RegexUtil.isLegalAccount(account))
-           AccountListener.invoke()
-       else
-           UNKNOWListener.invoke()
+       when {
+           RegexUtil.isEmail(account) -> emailListener.invoke()
+           RegexUtil.isPhone(account) -> PhoneListener.invoke()
+           RegexUtil.isLegalAccount(account) -> AccountListener.invoke()
+           else -> UNKNOWListener.invoke()
+       }
    }
 
 
