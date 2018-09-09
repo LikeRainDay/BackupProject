@@ -44,7 +44,7 @@ class GroupController {
         groupEntity.groupDesc = des
         groupEntity.groupId = RandomUtil.generteRandomUUID()
         iGroupService.addGroup(groupEntity)
-        return ResultResponse.Success()
+        return ResultResponse.success()
     }
 
 
@@ -58,7 +58,7 @@ class GroupController {
     @DeleteMapping(value = ["/delete/{groupId}"])
     fun deleteGroup(@PathVariable(value = "groupId") groupId: String): BaseResponse {
         iGroupService.deleteGroupById(groupId)
-        return ResultResponse.Success()
+        return ResultResponse.success()
     }
 
     /**
@@ -77,8 +77,8 @@ class GroupController {
             if (!StringUtils.isEmpty(des))
                 it.groupDesc = des
             iGroupService.modiftyGroupInfo(it)
-            return@map ResultResponse.Success()
-        }.orElse(ResultResponse.Error())
+            return@map ResultResponse.success()
+        }.orElse(ResultResponse.error())
 
     }
 

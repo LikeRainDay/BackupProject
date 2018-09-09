@@ -1,6 +1,7 @@
 package com.andy.ecologygetway.fallback
 
 
+import com.andy.andycommonbean.response.ResultResponse
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider
 import org.springframework.http.HttpHeaders
@@ -53,8 +54,7 @@ class ServiceFallbackProvider:FallbackProvider {
             }
 
             override fun getBody(): InputStream {
-                val msg = "当前服务不可用"
-                return ByteArrayInputStream(ObjectMapper().writeValueAsString(msg).toByteArray())
+                return ByteArrayInputStream(ObjectMapper().writeValueAsString(ResultResponse.error("当前微服务不可用，请稍后尝试")).toByteArray())
             }
         }
     }

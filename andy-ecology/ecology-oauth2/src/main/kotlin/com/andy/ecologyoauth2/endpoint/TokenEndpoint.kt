@@ -21,9 +21,9 @@ class TokenEndpoint {
     @DeleteMapping(value = ["/oauth/token"])
     fun revokeToken(access_token: String): BaseResponse {
         return if (consumerTokenServices.revokeToken(access_token))
-            ResultResponse.Success("注销成功")
+            ResultResponse.success("注销成功")
         else
-            ResultResponse.Error()
+            ResultResponse.error()
     }
 
 }

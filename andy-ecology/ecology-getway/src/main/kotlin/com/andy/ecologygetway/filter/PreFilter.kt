@@ -4,6 +4,7 @@ import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 
 /**
@@ -20,7 +21,8 @@ class PreFilter :ZuulFilter() {
     override fun run(): Any? {
         val currentContext = RequestContext.getCurrentContext()
         val request = currentContext.request
-        log.info("PreFilter: ${request.method} request to ${request.requestURL}")
+        val authentication = SecurityContextHolder.getContext().authentication
+        log.info("PreFilter: ${request.method} request to ${request.requestURL} and authentication is $authentication")
         return null
     }
 

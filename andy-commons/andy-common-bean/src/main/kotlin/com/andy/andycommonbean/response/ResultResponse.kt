@@ -27,7 +27,7 @@ class ResultResponse<T>: BaseResponse() {
         * @param result 返回对应结果数据
         * @return 结果响应数据
         */
-       fun<T> Success(result: T): ResultResponse<T> {
+       fun<T> success(result: T): ResultResponse<T> {
            val resultResponse = ResultResponse<T>()
            resultResponse.result = result
            resultResponse.reason = "请求成功"
@@ -39,7 +39,7 @@ class ResultResponse<T>: BaseResponse() {
         * author 候帅
         * date 2018/9/5 下午10:39
         */
-       fun Success(): ResultResponse<String> {
+       fun success(): ResultResponse<String> {
            val resultResponse = ResultResponse<String>()
            resultResponse.result = null
            resultResponse.reason = "请求成功"
@@ -51,7 +51,7 @@ class ResultResponse<T>: BaseResponse() {
         * author 候帅
         * date 2018/9/5 下午10:40
         */
-       fun Error(): ResultResponse<String> {
+       fun error(): ResultResponse<String> {
            val resultResponse = ResultResponse<String>()
            resultResponse.result = null
            resultResponse.reason = "请求失败"
@@ -59,6 +59,18 @@ class ResultResponse<T>: BaseResponse() {
            return resultResponse
        }
 
+       /**
+        * describe: 请求失败 返回对应的失败内容
+        * author 候帅
+        * date 2018/9/5 下午10:40
+        */
+       fun error(message: String): ResultResponse<String> {
+           val resultResponse = ResultResponse<String>()
+           resultResponse.result = message
+           resultResponse.reason = "请求失败"
+           resultResponse.code = 1000
+           return resultResponse
+       }
    }
 
 }

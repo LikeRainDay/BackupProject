@@ -9,7 +9,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 /**
  * describe: 用户操作的内容
@@ -34,7 +33,7 @@ class UserController {
     @PostMapping("/register")
     fun registerUser(@RequestBody registerInfoBean: RegisterInfoBean): BaseResponse {
         val registerByAccount = iUserService.registerByAccount(registerInfoBean)
-        return ResultResponse.Success(registerByAccount)
+        return ResultResponse.success(registerByAccount)
     }
 
     /**
@@ -45,7 +44,7 @@ class UserController {
     @PostMapping("/register/simple")
     fun simpleRegisterUser(@RequestParam account: String, @RequestParam password: String): BaseResponse {
         val registerByAccount = iUserService.simpleRegister(account, password)
-        return ResultResponse.Success(registerByAccount)
+        return ResultResponse.success(registerByAccount)
     }
 
 
