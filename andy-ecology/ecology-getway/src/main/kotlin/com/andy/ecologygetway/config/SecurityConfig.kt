@@ -29,4 +29,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .csrf()
                 .disable()
     }
+
+
 }

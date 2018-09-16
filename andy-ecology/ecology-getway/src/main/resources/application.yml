@@ -39,10 +39,13 @@ zuul:
       sensitiveHeaders: "*"
       serviceId: server-login
     auth:
-      path: /auth/**
+      path: /uaa/**
       serviceId: ecology-oauth2
       strip-prefix: true
       custom-sensitive-headers: true
+    user:
+      path: /user/**
+      serviceId: service-account-center
   ratelimit:
     key-prefix: ratelimit-api
     # 启动限流服务
@@ -64,9 +67,10 @@ zuul:
 security:
   oauth2:
     client:
-      access-token-uri: http://localhost:${server.port}/auth/oauth/token
-      user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
+      access-token-uri: http://localhost:${server.port}/uaa/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
       client-id: open-api
+
     resource:
-      user-info-uri: http://localhost:${server.port}/auth/user
+      user-info-uri: http://localhost:${server.port}/uaa/user
       prefer-token-info: false
