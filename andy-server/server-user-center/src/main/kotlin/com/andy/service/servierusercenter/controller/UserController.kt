@@ -48,7 +48,6 @@ class UserController {
     }
 
 
-
     /**
      * describe: 查询用户信息
      * author 候帅
@@ -60,6 +59,15 @@ class UserController {
     }
 
 
-
+    /**
+     * describe: 进行用户登录
+     * author 候帅
+     * date 2018/9/16 上午11:56
+     */
+    @PostMapping("/login")
+    fun login(@RequestParam account: String, @RequestParam password: String): BaseResponse {
+        val findUserInfo = iUserService.findUserInfo(account)
+        return ResultResponse.success(findUserInfo)
+    }
 
 }
