@@ -30,7 +30,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="service-iden_code" target="1.8" />
-      <module name="service-test" target="1.8" />
       <module name="servier-user-center" target="1.8" />
     </bytecodeTargetLevel>
   </component>

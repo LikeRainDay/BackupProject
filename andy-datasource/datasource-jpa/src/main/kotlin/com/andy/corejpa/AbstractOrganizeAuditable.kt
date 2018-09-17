@@ -22,7 +22,7 @@ import javax.validation.constraints.Size
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class AbstractOrganizeAuditable: AbstractUuidPersistable() {
+abstract class AbstractOrganizeAuditable : AbstractIdAuditable() {
 
     @NotNull
     @CreatedBy
@@ -30,33 +30,19 @@ abstract class AbstractOrganizeAuditable: AbstractUuidPersistable() {
     @Column(name = "created_by", length = 50, updatable = false, nullable = false)
     var createBy: String = UUID.randomUUID().toString()
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "created_date", updatable = false, nullable = false)
-    var createdDate: ZonedDateTime = ZonedDateTime.now()
-
-    @Size(max = 50)
-    @LastModifiedBy
-    @Column(name = "last_modified_by", length = 50)
-    lateinit var lastModifiedBy: String
-
-    @LastModifiedDate
-    @Column(name = "last_modified_date")
-    var lastModifiedDate: ZonedDateTime = ZonedDateTime.now()
-
-    // 唯一ID
-    @NotNull
-    @Column(name = "unique_id", nullable = true)
-    var uniqueId: Long = 0
-
     // 机构的索引
     @NotNull
     @Column(name = "organize_index", nullable = true)
     lateinit var organizeIndex: String
 
-    // 机构登记
+    // 机构等级
     @Size(max = 30)
     @Column(name = "organize_level", nullable = true, length = 30)
     var organizeLevel: Long = 0
 
+    // 是否为叶子节点
+    var isLeaf: Boolean = true
+
+    // 是否为根节点
+    var isNode: Boolean = false
 }

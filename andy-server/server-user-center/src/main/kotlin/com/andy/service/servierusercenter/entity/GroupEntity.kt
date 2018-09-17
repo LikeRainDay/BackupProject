@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "groups")
-class GroupEntity: AbstractOrganizeAuditable() {
+class GroupEntity : AbstractOrganizeAuditable() {
 
     // 用户组名
     @NotNull
@@ -26,6 +26,12 @@ class GroupEntity: AbstractOrganizeAuditable() {
     // 用户组 描述
     @Column(name = "group_desc")
     lateinit var groupDesc: String
+
+    // 组的Icon
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "icon_id")
+    lateinit var icon: GroupIconEntity
+
 
     // 用户信息多对多
     @ManyToMany(mappedBy = "group", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
