@@ -3,6 +3,7 @@ package com.andy.service.servierusercenter.controller
 import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.andycommonutils.RandomUtil
+import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.entity.GroupEntity
 import com.andy.service.servierusercenter.service.IGroupService
 import org.slf4j.Logger
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.*
+import java.util.*
+import javax.swing.text.html.HTML.Tag.P
 
 /**
  * describe: 组信息管理
@@ -24,6 +27,22 @@ class GroupController {
 
     @Autowired
     private lateinit var iGroupService: IGroupService
+
+
+
+    /**
+     * describe: 进行查询组的子单位信息
+     * author 候帅
+     * date 2018/9/19 上午9:24
+     * @param
+     * @return
+     */
+    @GetMapping(value = ["/find/children/{parentId}"])
+    fun findChildByParentID(@PathVariable parentId: String): BaseResponse {
+        val data: Optional<MutableList<GroupBean>>? = iGroupService.findChildrenByParnetId(parentId)
+        return ResultResponse.success(data)
+    }
+
 
     /**
      * describe: 组相关操作

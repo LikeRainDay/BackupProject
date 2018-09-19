@@ -70,7 +70,6 @@ security:
       access-token-uri: http://localhost:${server.port}/uaa/oauth/token
       user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
       client-id: open-api
-
     resource:
       user-info-uri: http://localhost:${server.port}/uaa/user
       prefer-token-info: false

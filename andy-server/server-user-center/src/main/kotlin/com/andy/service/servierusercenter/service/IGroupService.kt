@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service
 
+import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.entity.GroupEntity
 import java.util.*
 
@@ -76,6 +77,14 @@ interface IGroupService {
      * @param childId 待操作子对象
      */
     fun mergeGroup(targetId: String, childId: String)
+
+
+    /**
+     * describe: 通过父ID 进行查询所有的子信息
+     * author 候帅
+     * date 2018/9/19 下午5:16
+     */
+    fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>?
 
 
 }

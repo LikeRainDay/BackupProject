@@ -1,8 +1,12 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.andycommonutils.RandomUtil
+import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.dao.GroupDao
 import com.andy.service.servierusercenter.entity.GroupEntity
 import com.andy.service.servierusercenter.service.IGroupService
+import jdk.nashorn.internal.objects.NativeArray.forEach
+import org.apache.commons.lang3.RandomUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,20 +26,23 @@ class IGroupServiceImpl : IGroupService {
 
     override fun addGroup(groupEntity: GroupEntity): String {
         val parentId = groupEntity.parentId
-        val count = groupDao.count() + 1
         if (StringUtils.isEmpty(parentId)) {
-            groupEntity.organizeIndex = "$count-"
             groupEntity.organizeLevel = 1
+            groupEntity.organizeIndex = ""
+            groupEntity.groupId = RandomUtil.generteRandomUUID()
         } else {
             val parentEntity = groupDao.findByGroupId(parentId)
             parentEntity.map {
                 groupEntity.organizeLevel = it.organizeLevel + 1
-                groupEntity.organizeIndex = "${it.organizeIndex}$count-"
+                groupEntity.organizeIndex = "${it.organizeIndex}${it.id}-"
+                groupEntity.groupId = RandomUtil.generteRandomUUID()
+                it.isNode = true
+                it.isLeaf = false
             }.orElseThrow {
                 throw IllegalAccessException("not find $parentId")
             }
         }
-        return groupDao.save(groupEntity).id!!
+        return groupDao.save(groupEntity).groupId!!
     }
 
     @Transactional
@@ -43,7 +50,8 @@ class IGroupServiceImpl : IGroupService {
         val groupEntity = groupDao.findByGroupId(groupId)
         // 移除其下所有匹配的组
         groupEntity.map {
-            groupDao.deleteByOrganizeIndexIsStartingWith(it.organizeIndex)
+            groupDao.deleteByOrganizeIndexIsStartingWith(it.organizeIndex + it.id)
+            groupDao.deleteById(it.id!!)
         }.orElseThrow {
             throw IllegalAccessException("not find $groupId")
         }
@@ -113,7 +121,7 @@ class IGroupServiceImpl : IGroupService {
                         groupDao.save(it)
                     }
                 }
-                groupDao.deleteById(childId)
+                groupDao.deleteById(it.id!!)
             }.orElseThrow {
                 throw IllegalAccessException("Not fond group info")
             }
@@ -123,10 +131,52 @@ class IGroupServiceImpl : IGroupService {
     }
 
     override fun findGroupInfoById(id: String): Optional<GroupEntity> {
-        return groupDao.findById(id)
+        return groupDao.findByGroupId(id)
     }
 
     override fun findGroupInfoByGroupId(groupId: String): Optional<GroupEntity> {
         return groupDao.findByGroupId(groupId)
     }
+
+    override fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>? {
+        val groupEntity = groupDao.findByGroupId(parentId)
+        return groupEntity.map {
+            val resultData = mutableListOf<GroupBean>()
+
+            val data = groupDao.findByOrganizeIndexsLike(it.organizeIndex + it.id)
+            data.map {
+                it.forEach {
+                    val groupBean = GroupBean()
+//                TODO    groupBean.children = it.gr
+
+                    resultData.add(groupBean)
+                }
+            }
+            return@map Optional.of(resultData)
+        }.orElseThrow {
+            throw IllegalAccessException("Not fond group info")
+        }
+    }
+
+
+    /**
+     * describe: 重新塑造
+     * author 候帅
+     * date 2018/9/19 下午5:40
+     * @param
+     * @return
+     */
+//    fun rebuildTree(data: Optional<MutableList<GroupEntity>>, parentId: String, groupBean: GroupBean): Unit {
+//        data.map {
+//            it.stream().filter {
+//                it.parentId == parentId
+//            }.flatMap {
+//
+//
+//                return@flatMap
+//            }.
+//        }
+//    }
+
+
 }

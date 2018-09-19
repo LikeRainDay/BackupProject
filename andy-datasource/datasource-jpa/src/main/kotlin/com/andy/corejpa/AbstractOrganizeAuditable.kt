@@ -38,7 +38,7 @@ abstract class AbstractOrganizeAuditable : AbstractIdAuditable() {
     // 机构等级
     @Size(max = 30)
     @Column(name = "organize_level", nullable = true, length = 30)
-    var organizeLevel: Long = 0
+    var organizeLevel: Long = 1
 
     // 是否为叶子节点
     var isLeaf: Boolean = true

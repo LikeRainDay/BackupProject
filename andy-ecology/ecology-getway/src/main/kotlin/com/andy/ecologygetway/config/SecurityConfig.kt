@@ -19,11 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Order(SecurityProperties.BASIC_AUTH_ORDER - 3)
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
-    /**
-     * Web安全配置  关闭跨域访问
-     * @param
-     * @return
-     */
     override fun configure(http: HttpSecurity?) {
         http!!
                 .csrf()

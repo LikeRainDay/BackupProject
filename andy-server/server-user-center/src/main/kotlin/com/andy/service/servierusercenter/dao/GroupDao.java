@@ -14,7 +14,7 @@ import java.util.Optional;
  * 描述： TODO
  */
 
-public interface GroupDao extends JpaRepository<GroupEntity, String> {
+public interface GroupDao extends JpaRepository<GroupEntity, Long> {
 
 
     /**
@@ -37,13 +37,17 @@ public interface GroupDao extends JpaRepository<GroupEntity, String> {
 
 
     /**
-     * describe: 查询出所有该单位
+     * describe: 查询出所有该单位的下级单位
      * author 候帅
      * date 2018/9/2 下午6:43
-     * @param
-     * @return
      */
-
     @Query("select ge from GroupEntity ge where ge.organizeIndex like '?1%'")
     Optional<List<GroupEntity>> findByOrganizeIndexsLike(String orgIndex);
+
+    /**
+     * describe: 根据索引进行查询 其下级单位（ 下级的一层 ）
+     * author 候帅
+     * date 2018/9/19 下午5:21
+     */
+    Optional<List<GroupEntity>> findByOrganizeIndex(String orgIndex);
 }
