@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/andy-commons/andy-swagger/andy-swagger.iml" filepath="$PROJECT_DIR$/andy-commons/andy-swagger/andy-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-datasource/datasource-arango/database-arango.iml" filepath="$PROJECT_DIR$/andy-datasource/datasource-arango/database-arango.iml" />
       <module fileurl="file://$PROJECT_DIR$/andy-server/service-test/service-test.iml" filepath="$PROJECT_DIR$/andy-server/service-test/service-test.iml" />
     </modules>

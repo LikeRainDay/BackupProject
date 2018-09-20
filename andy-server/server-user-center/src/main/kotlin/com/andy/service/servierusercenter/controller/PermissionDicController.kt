@@ -32,6 +32,12 @@ class PermissionDicController : BaseController() {
     private lateinit var iPmFeatureService: IPmFeatureService
 
 
+
+
+
+
+
+
     /**
      * describe: 查询文件权限
      * author 候帅
