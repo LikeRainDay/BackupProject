@@ -27,7 +27,7 @@ import org.springframework.util.StringUtils
 import java.util.stream.Collectors
 
 @Service
-class IUserServiceImpl: IUserService {
+class IUserServiceImpl : IUserService {
 
 
     private val log: Logger = LoggerFactory.getLogger(IUserServiceImpl::class.java)
@@ -54,27 +54,27 @@ class IUserServiceImpl: IUserService {
     override fun findUserInfo(account: String): UserBean {
         var userEntity: UserEntity? = null
 
-        AccountUtil.judgeAccountTypeByListener(account,{
+        AccountUtil.judgeAccountTypeByListener(account, {
             userDao.checkoutUserInfoByAccount(account).map {
                 userEntity = it
             }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
-        },{
+        }, {
             userDao.checkoutUserInfoByTel(account).map {
                 userEntity = it
             }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
-        },{
+        }, {
             userDao.checkoutUserInfoByEmail(account).map {
                 userEntity = it
             }.orElseThrow { throw NotFoundAccountException("This account does not exist") }
-        },{
+        }, {
             throw NotFoundAccountException.Error(account)
         })
         if (userEntity == null)
             throw NotFoundAccountException("This account does not exist")
 
         val userBean = UserBean()
-        userBean.account =userEntity!!.account
-        userBean.password= userEntity!!.password
+        userBean.account = userEntity!!.account
+        userBean.password = userEntity!!.password
         userBean.roles = userEntity!!.roles.stream().map {
             return@map it.roleName
         }.collect(Collectors.toSet())
@@ -103,7 +103,7 @@ class IUserServiceImpl: IUserService {
         val code = registerInfo.code
         var telNum: String? = null
         var emailNum: String? = null
-        if (!StringUtils.isEmpty(tel)){
+        if (!StringUtils.isEmpty(tel)) {
             val telEntity = userDao.checkoutUserInfoByTel(tel!!)
             if (telEntity.isPresent)
                 throw IllegalAccessException("$tel is repetition")
@@ -150,13 +150,13 @@ class IUserServiceImpl: IUserService {
 
         var userEntity: UserEntity? = null
 
-        AccountUtil.judgeAccountTypeByListener(username,{
+        AccountUtil.judgeAccountTypeByListener(username, {
             userEntity = userDao.checkoutUserInfoByAccount(username).get()
-        },{
+        }, {
             userEntity = userDao.checkoutUserInfoByTel(username).get()
-        },{
+        }, {
             userEntity = userDao.checkoutUserInfoByEmail(username).get()
-        },{
+        }, {
             throw NotFoundAccountException.Error(username)
         })
         if (userEntity == null)
@@ -170,7 +170,7 @@ class IUserServiceImpl: IUserService {
                 userDetails.avator,
                 userDetails.nickName,
                 userDetails.zipCode,
-                userEntity!!.tel.toString(),
+                userEntity!!.tel,
                 userEntity!!.email,
                 userDetails.idCard,
                 userDetails.summary,
@@ -182,28 +182,28 @@ class IUserServiceImpl: IUserService {
 
         val user = userDao.findById(userId)
 
-       return user.map {
+        return user.map {
 
-           val temp = it
+            val temp = it
 
-           val loginEnable = LoginEnableBean()
+            val loginEnable = LoginEnableBean()
 
-           it.userAuths.forEach {
-               when(it.identityType){
-                   SupportLoginFun.ACCOUNT.value -> loginEnable.account = StringUtils.isEmpty(temp.account)
-                   SupportLoginFun.EMAIL.value -> loginEnable.email = StringUtils.isEmpty(temp.email)
-                   SupportLoginFun.TEL.value -> loginEnable.tel = StringUtils.isEmpty(temp.tel)
-                   SupportLoginFun.QQ.value -> loginEnable.QQ = StringUtils.isEmpty(it.identifier)
-                   SupportLoginFun.WX.value -> loginEnable.WX = StringUtils.isEmpty(it.identifier)
-                   SupportLoginFun.WB.value -> loginEnable.WB = StringUtils.isEmpty(it.identifier)
-                   SupportLoginFun.QR360.value -> loginEnable.QR360 = StringUtils.isEmpty(it.identifier)
-                   SupportLoginFun.WY.value -> loginEnable.WY = StringUtils.isEmpty(it.identifier)
-               }
-           }
-           return@map loginEnable
-       }.orElseGet {
-           return@orElseGet null
-       }
+            it.userAuths.forEach {
+                when (it.identityType) {
+                    SupportLoginFun.ACCOUNT.value -> loginEnable.account = StringUtils.isEmpty(temp.account)
+                    SupportLoginFun.EMAIL.value -> loginEnable.email = StringUtils.isEmpty(temp.email)
+                    SupportLoginFun.TEL.value -> loginEnable.tel = StringUtils.isEmpty(temp.tel)
+                    SupportLoginFun.QQ.value -> loginEnable.QQ = StringUtils.isEmpty(it.identifier)
+                    SupportLoginFun.WX.value -> loginEnable.WX = StringUtils.isEmpty(it.identifier)
+                    SupportLoginFun.WB.value -> loginEnable.WB = StringUtils.isEmpty(it.identifier)
+                    SupportLoginFun.QR360.value -> loginEnable.QR360 = StringUtils.isEmpty(it.identifier)
+                    SupportLoginFun.WY.value -> loginEnable.WY = StringUtils.isEmpty(it.identifier)
+                }
+            }
+            return@map loginEnable
+        }.orElseGet {
+            return@orElseGet null
+        }
     }
 
 
@@ -212,9 +212,9 @@ class IUserServiceImpl: IUserService {
         val user = userDao.findById(userId)
         return user.map {
             val matches = passwordEncoder.matches(oldPass, it.password)
-            if (matches){
+            if (matches) {
                 userDao.modiftyPassByUserId(userId, passwordEncoder.encode(newPass))
-            }else{
+            } else {
                 throw RuntimeException("The original password is incorrect")
             }
             return@map true
