@@ -5,8 +5,6 @@ import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.dao.GroupDao
 import com.andy.service.servierusercenter.entity.GroupEntity
 import com.andy.service.servierusercenter.service.IGroupService
-import jdk.nashorn.internal.objects.NativeArray.forEach
-import org.apache.commons.lang3.RandomUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
 import java.util.*
+import java.util.stream.Collectors
 
 @Service
 class IGroupServiceImpl : IGroupService {
@@ -138,45 +137,76 @@ class IGroupServiceImpl : IGroupService {
         return groupDao.findByGroupId(groupId)
     }
 
-    override fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>? {
+    override fun findAllChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>> {
         val groupEntity = groupDao.findByGroupId(parentId)
         return groupEntity.map {
-            val resultData = mutableListOf<GroupBean>()
-
             val data = groupDao.findByOrganizeIndexsLike(it.organizeIndex + it.id)
-            data.map {
-                it.forEach {
-                    val groupBean = GroupBean()
-//                TODO    groupBean.children = it.gr
-
-                    resultData.add(groupBean)
-                }
-            }
-            return@map Optional.of(resultData)
+            return@map childTreeNodes(data, it.groupId)
         }.orElseThrow {
             throw IllegalAccessException("Not fond group info")
         }
     }
 
 
+    override fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>> {
+        val groupEntity = groupDao.findByGroupId(parentId)
+        return groupEntity.map {
+            val findByOrganizeIndex = groupDao.findByOrganizeIndex(it.organizeIndex + it.id + "-")
+            return@map treeNodes(findByOrganizeIndex, it.groupId)
+        }.orElseThrow { throw IllegalAccessException("Not fond group info") }
+    }
+
+
     /**
-     * describe: 重新塑造
+     * describe: 父节点下的一级节点信息
+     * author 候帅
+     * date 2018/9/20 上午9:46
+     */
+    fun treeNodes(data: Optional<MutableList<GroupEntity>>, parentId: String): Optional<MutableList<GroupBean>> {
+        return data.map {
+            it.stream().filter {
+                it.parentId == parentId
+            }.map {
+                val groupBean = GroupBean()
+                groupBean.groupId = it.groupId
+                groupBean.groupIcon = it.icon.url
+                groupBean.groupLevel = it.organizeLevel
+                groupBean.groupName = it.groupName
+                groupBean.isLeaf = it.isLeaf
+                groupBean.isNode = it.isNode
+                return@map groupBean
+            }.collect(Collectors.toList())
+        }
+    }
+
+    /**
+     * describe: 父节点下的所有节点信息
      * author 候帅
      * date 2018/9/19 下午5:40
-     * @param
-     * @return
+     * @param data 待排列medate
+     * @param parentId 父ID
+     * @return 返回父级以下的树
      */
-//    fun rebuildTree(data: Optional<MutableList<GroupEntity>>, parentId: String, groupBean: GroupBean): Unit {
-//        data.map {
-//            it.stream().filter {
-//                it.parentId == parentId
-//            }.flatMap {
-//
-//
-//                return@flatMap
-//            }.
-//        }
-//    }
+    fun childTreeNodes(data: Optional<MutableList<GroupEntity>>, parentId: String): Optional<MutableList<GroupBean>> {
+        return data.map {
+            it.stream().filter {
+                it.parentId == parentId
+            }.map {
+                val groupBean = GroupBean()
+                groupBean.groupId = it.groupId
+                groupBean.groupIcon = it.icon.url
+                groupBean.groupLevel = it.organizeLevel
+                groupBean.groupName = it.groupName
+                groupBean.isLeaf = it.isLeaf
+                groupBean.isNode = it.isNode
+                val treeNodes = treeNodes(data, it.groupId)
+                treeNodes.ifPresent {
+                    groupBean.children = it
+                }
+                return@map groupBean
+            }.collect(Collectors.toList())
+        }
+    }
 
 
 }

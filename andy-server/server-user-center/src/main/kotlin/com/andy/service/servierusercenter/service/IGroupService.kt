@@ -12,7 +12,6 @@ import java.util.*
 interface IGroupService {
 
 
-
     /**
      * describe: 根据组的ID 进行查询组的详细内容
      * author 候帅
@@ -84,7 +83,15 @@ interface IGroupService {
      * author 候帅
      * date 2018/9/19 下午5:16
      */
-    fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>?
+    fun findAllChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>
 
+    /**
+     * describe: 通过父ID 进行查询下一级的子信息
+     * author 候帅
+     * date 2018/9/20 上午9:57
+     * @param  parentId 父ID
+     * @return  下一级子内容
+     */
+    fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>
 
 }

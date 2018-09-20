@@ -14,7 +14,11 @@ class GroupBean {
 
     var groupIcon: String? = null
 
-    var groupLevel: Int = -1
+    var groupLevel: Long = -1
+
+    var isLeaf: Boolean = true;
+
+    var isNode: Boolean = false;
 
     var children: List<GroupBean>? = null
 }
