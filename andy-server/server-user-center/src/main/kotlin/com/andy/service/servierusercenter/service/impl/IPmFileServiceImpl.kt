@@ -12,6 +12,7 @@ import java.util.*
 @Service
 class IPmFileServiceImpl : IPmFileService {
 
+
     private val log: Logger = LoggerFactory.getLogger(IPmFileServiceImpl::class.java)
 
     @Autowired
@@ -33,5 +34,15 @@ class IPmFileServiceImpl : IPmFileService {
         return Optional.ofNullable(pmFileDao.findAll().toMutableList())
     }
 
+    override fun addFilePermission(fileUrl: String): String {
+        val fileEntiy = pmFileDao.findByFileUrl(fileUrl)
+        fileEntiy.ifPresent {
+            throw IllegalAccessException("")
+        }
+        val pmFileEntity = PmFileEntity()
+        pmFileEntity.fileUrl = fileUrl
+        return pmFileDao.save(pmFileEntity).id!!
+
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.Size
 
@@ -9,22 +10,17 @@ import javax.validation.constraints.Size
  * date 2018/8/22 上午11:01
  */
 @Entity
-@Table(name = "pm_file")
-class PmFileEntity: AbstractEntity() {
-
-
-    // 当前类型 0 : 代表 文件  1: 代表文件夹
-    var status = 0
+@Table(name = "pm_file", indexes = [
+    Index(name = "INDEX_FILE_URL", columnList = "file_url", unique = true)
+])
+class PmFileEntity : AbstractEntity() {
 
     // 文件名
-    @Size(max = 60)
-    lateinit var fileName: String
-
-    // 文件目录
-    @Column(name = "file_dir", nullable = false)
-    lateinit var fileDir: String
+    @Column(name = "file_url", nullable = false)
+    lateinit var fileUrl: String
 
     // 权限映射
+    @JsonIgnore
     @ManyToMany(mappedBy = "pmFile", cascade = [CascadeType.DETACH, CascadeType.PERSIST])
     lateinit var permission: Set<PermissionEntity>
 

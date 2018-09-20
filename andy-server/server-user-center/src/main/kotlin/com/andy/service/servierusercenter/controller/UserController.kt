@@ -1,6 +1,7 @@
 package com.andy.service.servierusercenter.controller
 
 import com.andy.andycommonbean.bean.UserBean
+import com.andy.andycommonbean.controller.BaseController
 import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.bean.RegisterInfoBean
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping(value = ["/admin/user"])
-class UserController {
+class UserController : BaseController() {
 
     private val log: Logger = LoggerFactory.getLogger(UserController::class.java)
 

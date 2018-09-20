@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.controller
 
+import com.andy.andycommonbean.controller.BaseController
 import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.andycommonutils.RandomUtil
@@ -20,7 +21,7 @@ import java.util.*
  */
 @RestController
 @RequestMapping(value = ["/admin/group"])
-class GroupController {
+class GroupController : BaseController() {
 
     private val log: Logger = LoggerFactory.getLogger(GroupController::class.java)
 
@@ -52,10 +53,10 @@ class GroupController {
         return ResultResponse.success(data)
     }
 
-    
+
     /**
      * describe: 发现跟等级的组信息内容
-     * author 候帅  
+     * author 候帅
      * date 2018/9/20 上午10:09
      */
     @GetMapping(value = ["/find/baseGroup"])

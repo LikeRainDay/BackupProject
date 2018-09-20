@@ -1,6 +1,8 @@
 package com.andy.service.servierusercenter.controller
 
+import com.andy.andycommonbean.controller.BaseController
 import com.andy.andycommonbean.response.BaseResponse
+import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.service.IPmFeatureService
 import com.andy.service.servierusercenter.service.IPmFileService
 import org.slf4j.Logger
@@ -8,6 +10,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 /**
@@ -19,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping(value = ["/admin/permission/dic"])
-class PermissionDicController {
+class PermissionDicController : BaseController() {
 
     private val log: Logger = LoggerFactory.getLogger(PermissionDicController::class.java)
 
@@ -38,8 +41,9 @@ class PermissionDicController {
      * @param
      * @return
      */
-//    @PostMapping("/add/file")
-//    fun addFilePM(): BaseResponse {
-//
-//    }
+    @PostMapping("/add/file")
+    fun addFilePM(@RequestParam fileUrl: String): BaseResponse {
+        val permission = iPmFileService.addFilePermission(fileUrl)
+        return ResultResponse.success(permission)
+    }
 }

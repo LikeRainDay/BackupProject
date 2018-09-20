@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.controller
 
+import com.andy.andycommonbean.controller.BaseController
 import com.andy.andycommonbean.response.BaseResponse
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
@@ -18,17 +19,13 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping(value = ["/admin/permission"])
-class PermissionController {
+class PermissionController : BaseController() {
 
     private val log: Logger = LoggerFactory.getLogger(PermissionController::class.java)
 
 
-
     @Autowired
     private lateinit var iPermissionService: IPermissionService
-
-
-
 
 
 }
