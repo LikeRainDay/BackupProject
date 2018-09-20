@@ -52,6 +52,17 @@ class GroupController {
         return ResultResponse.success(data)
     }
 
+    
+    /**
+     * describe: 发现跟等级的组信息内容
+     * author 候帅  
+     * date 2018/9/20 上午10:09
+     */
+    @GetMapping(value = ["/find/baseGroup"])
+    fun findBaseGroup(): BaseResponse {
+        val data: Optional<MutableList<GroupBean>> = iGroupService.findBaseGroup()
+        return ResultResponse.success(data)
+    }
 
     /**
      * describe: 组相关操作

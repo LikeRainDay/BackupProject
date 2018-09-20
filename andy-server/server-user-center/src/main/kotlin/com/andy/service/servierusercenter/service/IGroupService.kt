@@ -94,4 +94,13 @@ interface IGroupService {
      */
     fun findChildrenByParnetId(parentId: String): Optional<MutableList<GroupBean>>
 
+    /**
+     * describe: 根据对应等级获取其其对应等级的组信息
+     * author 候帅
+     * date 2018/9/20 上午10:11
+     * @param
+     * @return
+     */
+    fun findBaseGroup(): Optional<MutableList<GroupBean>>
+
 }

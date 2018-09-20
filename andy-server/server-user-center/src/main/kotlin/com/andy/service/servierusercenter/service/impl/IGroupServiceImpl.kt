@@ -156,6 +156,24 @@ class IGroupServiceImpl : IGroupService {
         }.orElseThrow { throw IllegalAccessException("Not fond group info") }
     }
 
+    override fun findBaseGroup(): Optional<MutableList<GroupBean>> {
+        return groupDao.findByOrganizeLevel(1).map {
+            val collect = it.stream().map {
+                val groupBean = GroupBean()
+                groupBean.groupId = it.groupId
+                groupBean.groupIcon = it.icon.url
+                groupBean.groupLevel = it.organizeLevel
+                groupBean.groupName = it.groupName
+                groupBean.isLeaf = it.isLeaf
+                groupBean.isNode = it.isNode
+                return@map groupBean
+            }.collect(Collectors.toList())
+            return@map Optional.ofNullable(collect)
+        }.orElseThrow {
+            throw IllegalAccessException("Not fond group info")
+        }
+    }
+
 
     /**
      * describe: 父节点下的一级节点信息
