@@ -1,9 +1,7 @@
 package com.andy.service.servierusercenter.service.impl
 
 import com.andy.service.servierusercenter.dao.PermissionDao
-import com.andy.service.servierusercenter.dao.PmFeaturesDao
 import com.andy.service.servierusercenter.entity.PermissionEntity
-import com.andy.service.servierusercenter.entity.PmFeaturesEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -11,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
-@Service(value = "permission_service")
-class IPermissionServiceImpl: IPermissionService<PermissionEntity> {
+@Service
+class IPermissionServiceImpl: IPermissionService {
 
     private val log: Logger = LoggerFactory.getLogger(IPermissionServiceImpl::class.java)
 

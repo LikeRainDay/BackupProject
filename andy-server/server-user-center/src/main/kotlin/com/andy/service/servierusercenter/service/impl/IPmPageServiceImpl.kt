@@ -2,15 +2,15 @@ package com.andy.service.servierusercenter.service.impl
 
 import com.andy.service.servierusercenter.dao.PmPageDao
 import com.andy.service.servierusercenter.entity.PmPageEntity
-import com.andy.service.servierusercenter.service.IPermissionService
+import com.andy.service.servierusercenter.service.IPmPageService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
-@Service(value = "pm_page_service")
-class IPmPageServiceImpl: IPermissionService<PmPageEntity> {
+@Service
+class IPmPageServiceImpl: IPmPageService {
 
     private val log: Logger = LoggerFactory.getLogger(IPmPageServiceImpl::class.java)
 

@@ -2,16 +2,15 @@ package com.andy.service.servierusercenter.service.impl
 
 import com.andy.service.servierusercenter.dao.PmFeaturesDao
 import com.andy.service.servierusercenter.entity.PmFeaturesEntity
-import com.andy.service.servierusercenter.entity.PmFileEntity
-import com.andy.service.servierusercenter.service.IPermissionService
+import com.andy.service.servierusercenter.service.IPmFeatureService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 
-@Service(value = "pm_feature_service")
-class IPmFeatureServiceImpl: IPermissionService<PmFeaturesEntity> {
+@Service
+class IPmFeatureServiceImpl : IPmFeatureService {
 
     private val log: Logger = LoggerFactory.getLogger(IPmFeatureServiceImpl::class.java)
 
