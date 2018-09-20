@@ -17,6 +17,8 @@
 ```
 
 * 在SpringBoot的`main` 进行开启使用. 例如如下。
+
+
 ```java
 
 @ComponentScan(value = ["com.andy"])
