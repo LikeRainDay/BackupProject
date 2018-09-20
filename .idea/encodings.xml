@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/andy-commons/andy-common-entity" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-commons/andy-common-feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-commons/andy-common-utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/andy-commons/andy-swagger" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-datasource" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-datasource/datasource-arango" charset="UTF-8" />
@@ -26,6 +27,5 @@
     <file url="file://$PROJECT_DIR$/andy-server/server-sms" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-server/server-user-center" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/andy-server/service-test" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/andy-server/servier-user-center" charset="UTF-8" />
   </component>
 </project>

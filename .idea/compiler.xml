@@ -12,6 +12,7 @@
         <module name="andy-common-feign" />
         <module name="andy-common-utils" />
         <module name="andy-core" />
+        <module name="andy-swagger" />
         <module name="core" />
         <module name="datasource-arango" />
         <module name="datasource-elasticsearch" />
