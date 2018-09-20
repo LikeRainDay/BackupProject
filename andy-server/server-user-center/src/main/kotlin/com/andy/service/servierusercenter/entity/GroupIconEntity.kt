@@ -12,7 +12,7 @@ import javax.persistence.*
  * History:
  */
 @Entity
-@Table(name = "groups")
+@Table(name = "groups_icon")
 class GroupIconEntity : AbstractIdAuditable() {
 
     @Column(name = "url")
