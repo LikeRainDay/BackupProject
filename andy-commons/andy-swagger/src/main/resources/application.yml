@@ -1,0 +1,9 @@
+swagger:
+  deploy:
+    api-package: com.andy
+    title: 示例title
+    des: 示例描述
+    version: 1.0.0
+    author: 候帅
+    email: houshuai0816@126.com
+    web: www.google.com

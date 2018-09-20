@@ -52,4 +52,3 @@ spring:
 ribbon:
   eager-load:
     enabled: false
-
