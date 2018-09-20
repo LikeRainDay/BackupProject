@@ -46,6 +46,11 @@
             <artifactId>andy-common-feign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.andy.doc</groupId>
+            <artifactId>andy-swagger</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>

@@ -1,8 +1,9 @@
 package com.andy.service.servierusercenter.dao;
 
 
-import com.andy.corejpa.AbstractStringRepository;
 import com.andy.service.servierusercenter.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import java.util.Optional;
  * 时间：2018:09:20-15:52
  * 描述： 用户操作的dao
  */
-public interface UserDao extends AbstractStringRepository<UserEntity> {
+public interface UserDao extends JpaRepository<UserEntity, String>, JpaSpecificationExecutor<UserEntity> {
 
     /**
      * describe: 伪删除对应ID的用户

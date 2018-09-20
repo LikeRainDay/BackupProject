@@ -1,13 +1,11 @@
 package com.andy.server.serveremail.dao
 
-import com.andy.corejpa.AbstractLongRepository
 import com.andy.server.serveremail.entity.EmailEntity
-import org.springframework.data.jpa.repository.Query
-import org.springframework.stereotype.Repository
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 import java.util.*
 
-@Repository
-interface EmailDao: AbstractLongRepository<EmailEntity> {
+interface EmailDao : JpaRepository<EmailEntity, Long>, JpaSpecificationExecutor<EmailEntity> {
 
     fun findFirstByReceiverOrderByCreatedDate(email: String): Optional<EmailEntity>
 
