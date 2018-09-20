@@ -31,12 +31,15 @@ class PermissionDicController : BaseController() {
     @Autowired
     private lateinit var iPmFeatureService: IPmFeatureService
 
-
-
-
-
-
-
+    
+    
+    /**
+     * describe: 进行菜单权限
+     * author 候帅
+     * data 20/09/2018 21:01
+     * @param
+     * @return
+     */
 
     /**
      * describe: 查询文件权限
