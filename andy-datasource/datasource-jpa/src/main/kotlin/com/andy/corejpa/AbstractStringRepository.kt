@@ -1,6 +1,7 @@
 package com.andy.corejpa
 
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 
 
 /**
@@ -8,4 +9,4 @@ import org.springframework.data.jpa.repository.JpaRepository
  * author 候帅
  * date 2018/8/24 上午9:48
  */
-interface AbstractStringRepository<T>: JpaRepository<T, String>
+interface AbstractStringRepository<T> : JpaRepository<T, String>, JpaSpecificationExecutor<T>

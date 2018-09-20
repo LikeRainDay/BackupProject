@@ -20,8 +20,8 @@ abstract class AbstractUuidPersistable : Persistable<String> {
 
 
     @Id
-    @GenericGenerator(name="idGenerator", strategy="uuid")
-    @GeneratedValue(generator="idGenerator")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @GeneratedValue(generator = "idGenerator")
     @Nullable
     private var id: String? = null
 
