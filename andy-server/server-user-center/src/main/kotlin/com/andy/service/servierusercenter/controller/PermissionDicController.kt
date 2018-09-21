@@ -1,7 +1,7 @@
 package com.andy.service.servierusercenter.controller
 
 import com.andy.andycommonbean.controller.BaseController
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.service.IPmFeatureService
@@ -60,9 +60,9 @@ class PermissionDicController : BaseController() {
     }
 
     @ApiOperation(value = "获取菜单权限分页")
-    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageParams", paramType = "body")
     @GetMapping(value = ["/menu"])
-    fun getMenPmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+    fun getMenPmsPage(@RequestBody pageRequest: PageParams): BaseResponse {
         val page = iPmMenuService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }
@@ -77,9 +77,9 @@ class PermissionDicController : BaseController() {
     }
 
     @ApiOperation(value = "获取文件权限分页")
-    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageParams", paramType = "body")
     @GetMapping(value = ["/file"])
-    fun getFilePmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+    fun getFilePmsPage(@RequestBody pageRequest: PageParams): BaseResponse {
         val page = iPmFileService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }
@@ -102,9 +102,9 @@ class PermissionDicController : BaseController() {
 
 
     @ApiOperation(value = "获取特征权限分页")
-    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageParams", paramType = "body")
     @GetMapping(value = ["/features"])
-    fun getFeaturesPmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+    fun getFeaturesPmsPage(@RequestBody pageRequest: PageParams): BaseResponse {
         val page = iPmFeatureService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }
@@ -132,9 +132,9 @@ class PermissionDicController : BaseController() {
     }
 
     @ApiOperation(value = "获取页面权限分页")
-    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageParams", paramType = "body")
     @GetMapping(value = ["/file"])
-    fun getPagePmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+    fun getPagePmsPage(@RequestBody pageRequest: PageParams): BaseResponse {
         val page = iPmPageService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }

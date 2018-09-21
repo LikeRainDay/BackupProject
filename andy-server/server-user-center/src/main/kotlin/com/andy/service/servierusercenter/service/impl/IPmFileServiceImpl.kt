@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
 import com.andy.service.servierusercenter.dao.PmFileDao
 import com.andy.service.servierusercenter.entity.PmFileEntity
@@ -51,7 +51,7 @@ class IPmFileServiceImpl : IPmFileService {
 
     }
 
-    override fun findPageByParam(pageRequest: PageRequest): Page<PmFileEntity> {
+    override fun findPageByParam(pageRequest: PageParams): Page<PmFileEntity> {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)

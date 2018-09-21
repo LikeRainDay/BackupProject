@@ -6,7 +6,7 @@ package com.andy.andycommonbean.request
  * author 候帅
  * date 2018/9/20 下午4:49
  */
-class PageRequest {
+class PageParams {
 
     // 分页大小
     var pageSize: Int = 8

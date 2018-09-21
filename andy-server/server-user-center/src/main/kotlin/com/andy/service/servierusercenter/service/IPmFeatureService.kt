@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service
 
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.service.servierusercenter.entity.PmFeaturesEntity
 import org.springframework.data.domain.Page
 
@@ -14,7 +14,7 @@ interface IPmFeatureService : BasePermissionService<PmFeaturesEntity> {
      * @param pageRequest 分页参数
      * @return   分页后的结果
      */
-    fun findPageByParam(pageRequest: PageRequest): Page<PmFeaturesEntity>
+    fun findPageByParam(pageRequest: PageParams): Page<PmFeaturesEntity>
 
     /**
      * describe: 增加特征权限内容

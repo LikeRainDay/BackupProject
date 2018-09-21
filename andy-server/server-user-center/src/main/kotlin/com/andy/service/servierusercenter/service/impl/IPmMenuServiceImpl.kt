@@ -1,10 +1,9 @@
 package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonbean.exception.RepeatParamException
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
 import com.andy.service.servierusercenter.dao.PmMenuDao
-import com.andy.service.servierusercenter.entity.PmFileEntity
 import com.andy.service.servierusercenter.entity.PmMenuEntity
 import com.andy.service.servierusercenter.service.IPmMenuService
 import org.slf4j.Logger
@@ -55,7 +54,7 @@ class IPmMenuServiceImpl : IPmMenuService {
         return save.id!!
     }
 
-    override fun findPageByParam(pageRequest: PageRequest): Page<PmMenuEntity> {
+    override fun findPageByParam(pageRequest: PageParams): Page<PmMenuEntity> {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)

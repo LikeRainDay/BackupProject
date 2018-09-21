@@ -1,7 +1,7 @@
 package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonbean.exception.RepeatParamException
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
 import com.andy.service.servierusercenter.dao.PmFeaturesDao
 import com.andy.service.servierusercenter.entity.PmFeaturesEntity
@@ -41,7 +41,7 @@ class IPmFeatureServiceImpl : IPmFeatureService {
         return Optional.ofNullable(pmFeaturesDao.findAll().toMutableList())
     }
 
-    override fun findPageByParam(pageRequest: PageRequest): Page<PmFeaturesEntity> {
+    override fun findPageByParam(pageRequest: PageParams): Page<PmFeaturesEntity> {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)

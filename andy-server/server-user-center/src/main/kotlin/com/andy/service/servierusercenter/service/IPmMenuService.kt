@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service
 
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.service.servierusercenter.entity.PmMenuEntity
 import org.springframework.data.domain.Page
 
@@ -18,5 +18,5 @@ interface IPmMenuService : BasePermissionService<PmMenuEntity> {
      * author 候帅
      * date 2018/9/21 上午10:06
      */
-    fun findPageByParam(pageRequest: PageRequest): Page<PmMenuEntity>
+    fun findPageByParam(pageRequest: PageParams): Page<PmMenuEntity>
 }
