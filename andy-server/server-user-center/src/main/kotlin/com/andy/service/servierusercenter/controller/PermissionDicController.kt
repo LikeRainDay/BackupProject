@@ -34,12 +34,16 @@ class PermissionDicController : BaseController() {
     
     
     /**
-     * describe: 进行菜单权限
+     * describe: 增加菜单权限字典
      * author 候帅
      * data 20/09/2018 21:01
      * @param
      * @return
      */
+    fun addMenuPms(): Unit {
+        
+    }
+    
 
     /**
      * describe: 查询文件权限

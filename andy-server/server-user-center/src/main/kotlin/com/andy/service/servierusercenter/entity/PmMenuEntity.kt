@@ -1,11 +1,14 @@
 package com.andy.service.servierusercenter.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.Size
 
 @Entity
-@Table(name = "pm_menu")
-class PmMenuEntity: AbstractEntity() {
+@Table(name = "pm_menu", indexes = [
+    Index(name = "INDEX_MENU_URL", columnList = "menu_url", unique = true)
+])
+class PmMenuEntity : AbstractEntity() {
 
 
     // 菜单URL
@@ -27,8 +30,8 @@ class PmMenuEntity: AbstractEntity() {
     @Column(name = "menu_parent_id", nullable = true)
     lateinit var menuParentId: String
 
-
     // 权限映射
+    @JsonIgnore
     @ManyToMany(mappedBy = "pmMenu", cascade = [CascadeType.DETACH, CascadeType.PERSIST])
     lateinit var permission: Set<PermissionEntity>
 }
