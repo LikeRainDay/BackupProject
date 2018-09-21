@@ -70,4 +70,11 @@ class PermissionController : BaseController() {
         val page = iPermissionService.onPage(pageResult)
         return ResultResponse.success(page)
     }
+
+    /**
+     * describe: TODO 增加对应细节权限
+     * author 候帅
+     * date 2018/9/21 下午3:24
+     */
+
 }
