@@ -72,7 +72,6 @@ class PermissionDicController : BaseController() {
         return ResultResponse.success("delete success")
     }
 
-
     @ApiOperation(value = "获取文件权限分页")
     @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
     @GetMapping(value = ["/file"])
@@ -97,5 +96,31 @@ class PermissionDicController : BaseController() {
         return ResultResponse.success("delete success")
     }
 
+
+    @ApiOperation(value = "获取特征权限分页")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @GetMapping(value = ["/file"])
+    fun getFeaturesPmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+        val page = iPmFeatureService.findPageByParam(pageRequest)
+        return ResultResponse.success(page)
+    }
+
+    @ApiOperation(value = "增加特征权限")
+    @ApiImplicitParam(name = "fileUrl", value = "文件路径", required = true, dataType = "String", paramType = "query")
+    @PostMapping(value = ["/file"])
+    fun addFeaturesPM(@RequestParam operationCode: String,
+                      @RequestParam parentId: String,
+                      @RequestParam operationName: String): BaseResponse {
+        val permission = iPmFeatureService.addFeaturePermission(operationCode, parentId, operationName)
+        return ResultResponse.success(permission)
+    }
+
+    @ApiOperation(value = "删除特征权限")
+    @ApiImplicitParam(name = "fileUrl", value = "文件ID", required = true, dataType = "String", paramType = "path")
+    @DeleteMapping(value = ["/file/{fileId}"])
+    fun deleteFeaturesPM(@PathVariable fileId: String): BaseResponse {
+        iPmFeatureService.deletePermission(fileId)
+        return ResultResponse.success("delete success")
+    }
 
 }

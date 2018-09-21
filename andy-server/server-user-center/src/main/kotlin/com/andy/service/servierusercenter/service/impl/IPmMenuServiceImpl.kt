@@ -59,9 +59,9 @@ class IPmMenuServiceImpl : IPmMenuService {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)
-        val spec = Specification<PmMenuEntity> { root, query, criteriaBuilder ->
+        val spec = Specification<PmMenuEntity> { root, _, criteriaBuilder ->
             if ("" != pageRequest.searchValue) {
-                predicates.add(criteriaBuilder.like(root.get("newsLetter"), "%${pageRequest.searchValue}%"))
+                predicates.add(criteriaBuilder.like(root.get("menu_name"), "%${pageRequest.searchValue}%"))
             }
             if (pageRequest.statis > -1) {
                 predicates.add(criteriaBuilder.equal(root.get<Any>("status"), pageRequest.statis))

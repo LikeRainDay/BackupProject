@@ -55,9 +55,9 @@ class IPmFileServiceImpl : IPmFileService {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)
-        val spec = Specification<PmFileEntity> { root, query, criteriaBuilder ->
+        val spec = Specification<PmFileEntity> { root, _, criteriaBuilder ->
             if ("" != pageRequest.searchValue) {
-                predicates.add(criteriaBuilder.like(root.get("newsLetter"), "%${pageRequest.searchValue}%"))
+                predicates.add(criteriaBuilder.like(root.get("file_url"), "%${pageRequest.searchValue}%"))
             }
             if (pageRequest.statis > -1) {
                 predicates.add(criteriaBuilder.equal(root.get<Any>("status"), pageRequest.statis))

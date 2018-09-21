@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -13,6 +14,7 @@ class PmPageEntity: AbstractEntity() {
 
 
     // 权限映射
+    @JsonIgnore
     @ManyToMany(mappedBy = "pmPage", cascade = [CascadeType.DETACH, CascadeType.PERSIST])
     lateinit var permission: Set<PermissionEntity>
 }
