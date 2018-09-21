@@ -55,11 +55,28 @@ class PermissionDicController : BaseController() {
         return ResultResponse.success(permissionId)
     }
 
+    @ApiOperation(value = "获取菜单权限分页")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @GetMapping(value = ["/menu"])
+    fun getMenPmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+        val page = iPmMenuService.findPageByParam(pageRequest)
+        return ResultResponse.success(page)
+    }
+
+
+    @ApiOperation(value = "删除菜单权限")
+    @ApiImplicitParam(name = "menuId", value = "菜单ID", required = true, dataType = "String", paramType = "path")
+    @DeleteMapping(value = ["/menu/{menuId}"])
+    fun deleteMenuPM(@PathVariable menuId: String): BaseResponse {
+        iPmMenuService.deletePermission(menuId)
+        return ResultResponse.success("delete success")
+    }
+
 
     @ApiOperation(value = "获取文件权限分页")
     @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
     @GetMapping(value = ["/file"])
-    fun getFilePms(@RequestBody pageRequest: PageRequest): BaseResponse {
+    fun getFilePmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
         val page = iPmFileService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }

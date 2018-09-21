@@ -13,10 +13,7 @@ import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
 import java.util.*
-import javax.persistence.criteria.CriteriaBuilder
-import javax.persistence.criteria.CriteriaQuery
 import javax.persistence.criteria.Predicate
-import javax.persistence.criteria.Root
 
 @Service
 class IPmFileServiceImpl : IPmFileService {
@@ -67,8 +64,7 @@ class IPmFileServiceImpl : IPmFileService {
             }
             return@Specification criteriaBuilder.and(*predicates.toTypedArray())
         }
-        val page = pmFileDao.findAll(spec, pageable)
-        return page
+        return pmFileDao.findAll(spec, pageable)
     }
 
 }

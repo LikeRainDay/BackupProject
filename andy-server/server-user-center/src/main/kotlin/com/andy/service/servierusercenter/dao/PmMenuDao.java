@@ -3,6 +3,7 @@ package com.andy.service.servierusercenter.dao;
 
 import com.andy.service.servierusercenter.entity.PmMenuEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
  * 描述： 进行操作权限菜单相关内容
  */
 
-public interface PmMenuDao extends JpaRepository<PmMenuEntity, String> {
+public interface PmMenuDao extends JpaRepository<PmMenuEntity, String>, JpaSpecificationExecutor<PmMenuEntity> {
 
     /**
      * describe: 通过唯一内容 MenuURl 进行查询
