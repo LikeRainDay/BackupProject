@@ -6,6 +6,7 @@ import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.service.IPmFeatureService
 import com.andy.service.servierusercenter.service.IPmFileService
+import com.andy.service.servierusercenter.service.IPmMenuService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiImplicitParam
 import io.swagger.annotations.ApiImplicitParams
@@ -34,6 +35,9 @@ class PermissionDicController : BaseController() {
     @Autowired
     private lateinit var iPmFeatureService: IPmFeatureService
 
+    @Autowired
+    private lateinit var iPmMenuService: IPmMenuService
+
 
     @ApiOperation(value = "增加菜单权限", notes = "<p>此接口进行对菜单字典的增加")
     @ApiImplicitParams(
@@ -46,8 +50,9 @@ class PermissionDicController : BaseController() {
     fun addMenuPms(@RequestParam(required = true) menuUrl: String,
                    @RequestParam(required = true) menuName: String,
                    @RequestParam menuDes: String,
-                   @RequestParam menuParentId: String): Unit {
-
+                   @RequestParam menuParentId: String): BaseResponse {
+        val permissionId: String = iPmMenuService.addMenPermission(menuUrl, menuName, menuDes, menuParentId)
+        return ResultResponse.success(permissionId)
     }
 
 

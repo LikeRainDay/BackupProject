@@ -1,5 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
+import com.andy.andycommonbean.exception.RepeatParamException
 import com.andy.service.servierusercenter.dao.PmMenuDao
 import com.andy.service.servierusercenter.entity.PmMenuEntity
 import com.andy.service.servierusercenter.service.IPmMenuService
@@ -31,6 +32,19 @@ class IPmMenuServiceImpl : IPmMenuService {
 
     override fun findAll(): Optional<MutableList<PmMenuEntity>> {
         return Optional.ofNullable(pmMenuDao.findAll().toMutableList())
+    }
+
+    override fun addMenPermission(menuUrl: String, menuName: String, menuDes: String, menuParentId: String): String {
+        val menuEntity = pmMenuDao.findByMenuUrl(menuUrl)
+        if (menuEntity.isPresent)
+            throw RepeatParamException.error("Repeat param value is $menuUrl in mysql")
+        val pmMenuEntity = PmMenuEntity()
+        pmMenuEntity.menuDes = menuDes
+        pmMenuEntity.menuName = menuName
+        pmMenuEntity.menuParentId = menuParentId
+        pmMenuEntity.menuUrl = menuUrl
+        val save = pmMenuDao.save(pmMenuEntity)
+        return save.id!!
     }
 
 
