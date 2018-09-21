@@ -24,4 +24,5 @@ interface IPmFeatureService : BasePermissionService<PmFeaturesEntity> {
      * @return   
      */  
     fun addFeaturePermission(operationCode: String, parentId: String, operationName: String): String?
+
 }

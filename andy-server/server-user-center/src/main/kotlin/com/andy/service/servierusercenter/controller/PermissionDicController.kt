@@ -7,6 +7,7 @@ import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.service.IPmFeatureService
 import com.andy.service.servierusercenter.service.IPmFileService
 import com.andy.service.servierusercenter.service.IPmMenuService
+import com.andy.service.servierusercenter.service.IPmPageService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiImplicitParam
 import io.swagger.annotations.ApiImplicitParams
@@ -37,6 +38,9 @@ class PermissionDicController : BaseController() {
 
     @Autowired
     private lateinit var iPmMenuService: IPmMenuService
+
+    @Autowired
+    private lateinit var iPmPageService: IPmPageService
 
 
     @ApiOperation(value = "增加菜单权限", notes = "<p>此接口进行对菜单字典的增加")
@@ -99,15 +103,19 @@ class PermissionDicController : BaseController() {
 
     @ApiOperation(value = "获取特征权限分页")
     @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
-    @GetMapping(value = ["/file"])
+    @GetMapping(value = ["/features"])
     fun getFeaturesPmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
         val page = iPmFeatureService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
     }
 
     @ApiOperation(value = "增加特征权限")
-    @ApiImplicitParam(name = "fileUrl", value = "文件路径", required = true, dataType = "String", paramType = "query")
-    @PostMapping(value = ["/file"])
+    @ApiImplicitParams(
+            ApiImplicitParam(value = "特征地址", name = "operationCode", dataType = "String", paramType = "form", required = true),
+            ApiImplicitParam(value = "特征名字", name = "parentId", dataType = "String", paramType = "form", required = false),
+            ApiImplicitParam(value = "特征描述", name = "operationName", dataType = "String", paramType = "form", required = true)
+    )
+    @PostMapping(value = ["/features"])
     fun addFeaturesPM(@RequestParam operationCode: String,
                       @RequestParam parentId: String,
                       @RequestParam operationName: String): BaseResponse {
@@ -117,10 +125,41 @@ class PermissionDicController : BaseController() {
 
     @ApiOperation(value = "删除特征权限")
     @ApiImplicitParam(name = "fileUrl", value = "文件ID", required = true, dataType = "String", paramType = "path")
-    @DeleteMapping(value = ["/file/{fileId}"])
+    @DeleteMapping(value = ["/features/{fileId}"])
     fun deleteFeaturesPM(@PathVariable fileId: String): BaseResponse {
         iPmFeatureService.deletePermission(fileId)
         return ResultResponse.success("delete success")
     }
+
+    @ApiOperation(value = "获取页面权限分页")
+    @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageRequest", paramType = "body")
+    @GetMapping(value = ["/file"])
+    fun getPagePmsPage(@RequestBody pageRequest: PageRequest): BaseResponse {
+        val page = iPmPageService.findPageByParam(pageRequest)
+        return ResultResponse.success(page)
+    }
+
+    @ApiOperation(value = "增加页面权限")
+    @ApiImplicitParams(
+            ApiImplicitParam(value = "页面元素编码", name = "pageCoding", dataType = "String", paramType = "form", required = true),
+            ApiImplicitParam(value = "页面名", name = "pageName", dataType = "String", paramType = "form", required = false),
+            ApiImplicitParam(value = "页面描述", name = "pageDes", dataType = "String", paramType = "form", required = true)
+    )
+    @PostMapping(value = ["/file"])
+    fun addPagePM(@RequestParam pageCoding: String,
+                      @RequestParam pageName: String,
+                      @RequestParam pageDes: String): BaseResponse {
+        val permission = iPmPageService.addPagePermission(pageCoding, pageName, pageDes)
+        return ResultResponse.success(permission)
+    }
+
+    @ApiOperation(value = "删除页面权限")
+    @ApiImplicitParam(name = "pageId", value = "页面ID", required = true, dataType = "String", paramType = "path")
+    @DeleteMapping(value = ["/file/{pageId}"])
+    fun deletePagePM(@PathVariable pageId: String): BaseResponse {
+        iPmPageService.deletePermission(pageId)
+        return ResultResponse.success("delete success")
+    }
+
 
 }
