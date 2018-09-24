@@ -133,7 +133,7 @@ class PermissionDicController : BaseController() {
 
     @ApiOperation(value = "获取页面权限分页")
     @ApiImplicitParam(name = "pageRequest", value = "分页设置", required = false, dataType = "PageParams", paramType = "body")
-    @GetMapping(value = ["/file"])
+    @GetMapping(value = ["/page"])
     fun getPagePmsPage(@RequestBody pageRequest: PageParams): BaseResponse {
         val page = iPmPageService.findPageByParam(pageRequest)
         return ResultResponse.success(page)
@@ -145,7 +145,7 @@ class PermissionDicController : BaseController() {
             ApiImplicitParam(value = "页面名", name = "pageName", dataType = "String", paramType = "form", required = false),
             ApiImplicitParam(value = "页面描述", name = "pageDes", dataType = "String", paramType = "form", required = true)
     )
-    @PostMapping(value = ["/file"])
+    @PostMapping(value = ["/page"])
     fun addPagePM(@RequestParam pageCoding: String,
                       @RequestParam pageName: String,
                       @RequestParam pageDes: String): BaseResponse {
@@ -155,7 +155,7 @@ class PermissionDicController : BaseController() {
 
     @ApiOperation(value = "删除页面权限")
     @ApiImplicitParam(name = "pageId", value = "页面ID", required = true, dataType = "String", paramType = "path")
-    @DeleteMapping(value = ["/file/{pageId}"])
+    @DeleteMapping(value = ["/page/{pageId}"])
     fun deletePagePM(@PathVariable pageId: String): BaseResponse {
         iPmPageService.deletePermission(pageId)
         return ResultResponse.success("delete success")

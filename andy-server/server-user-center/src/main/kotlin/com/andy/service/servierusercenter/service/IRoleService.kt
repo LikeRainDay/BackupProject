@@ -10,7 +10,7 @@ interface IRoleService {
 
 
     /**
-     * describe: 增加角色秒速
+     * describe: 增加角色描述
      * author 候帅
      * date 2018/9/21 下午3:51
      */
