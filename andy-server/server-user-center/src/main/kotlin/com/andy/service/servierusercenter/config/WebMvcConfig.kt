@@ -1,4 +1,4 @@
-package com.andy.ecologygetway.config
+package com.andy.service.servierusercenter.config
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
