@@ -21,7 +21,7 @@ import java.util.*
  */
 @RestController
 @RequestMapping(value = ["/admin/group"])
-class GroupController : BaseController() {
+class GroupController {
 
     private val log: Logger = LoggerFactory.getLogger(GroupController::class.java)
 

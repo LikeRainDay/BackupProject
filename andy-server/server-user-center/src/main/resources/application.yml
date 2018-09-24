@@ -13,7 +13,7 @@ spring:
         # 配置服务健康检测地址  供Consul 调用
         health-check-path: /api/health
         # consul 健康检测频率
-        health-check-interval: 15s
+        health-check-interval: 5s
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}:${server.port}
         enabled: true
