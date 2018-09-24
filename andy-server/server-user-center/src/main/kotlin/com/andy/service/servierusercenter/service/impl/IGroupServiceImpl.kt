@@ -26,13 +26,13 @@ class IGroupServiceImpl : IGroupService {
     override fun addGroup(groupEntity: GroupEntity): String {
         val parentId = groupEntity.parentId
         if (StringUtils.isEmpty(parentId)) {
-            groupEntity.organizeLevel = 1
+            groupEntity.organizeLevel = 1L
             groupEntity.organizeIndex = ""
             groupEntity.groupId = RandomUtil.generteRandomUUID()
         } else {
             val parentEntity = groupDao.findByGroupId(parentId)
             parentEntity.map {
-                groupEntity.organizeLevel = it.organizeLevel + 1
+                groupEntity.organizeLevel = it.organizeLevel + 1L
                 groupEntity.organizeIndex = "${it.organizeIndex}${it.id}-"
                 groupEntity.groupId = RandomUtil.generteRandomUUID()
                 it.isNode = true
@@ -161,7 +161,7 @@ class IGroupServiceImpl : IGroupService {
             val collect = it.stream().map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
@@ -187,7 +187,7 @@ class IGroupServiceImpl : IGroupService {
             }.map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
@@ -212,7 +212,7 @@ class IGroupServiceImpl : IGroupService {
             }.map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf

@@ -1,6 +1,7 @@
 package com.andy.service.servierusercenter.entity
 
 import com.andy.corejpa.AbstractOrganizeAuditable
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
@@ -28,15 +29,18 @@ class GroupEntity : AbstractOrganizeAuditable() {
     lateinit var groupDesc: String
 
     // 组的Icon
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "icon_id")
-    lateinit var icon: GroupIconEntity
+    var icon: GroupIconEntity? = null
 
 
     // 用户信息多对多
+    @JsonIgnore
     @ManyToMany(mappedBy = "group", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     lateinit var user: Set<UserEntity>
 
+    @JsonIgnore
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinTable(name = "it_GR",
             joinColumns = [

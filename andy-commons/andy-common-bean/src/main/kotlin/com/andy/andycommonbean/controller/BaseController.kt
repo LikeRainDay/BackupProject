@@ -24,6 +24,7 @@ class BaseController : ResponseEntityExceptionHandler() {
      */
     @ExceptionHandler(value = [(IllegalAccessException::class)])
     fun illegalAccessException(error: IllegalAccessException): BaseResponse {
+        error.printStackTrace()
         return ResultResponse.error(error.message!!)
     }
 
@@ -35,6 +36,7 @@ class BaseController : ResponseEntityExceptionHandler() {
      */
     @ExceptionHandler(value = [(RepeatParamException::class)])
     fun dbRepeateException(error: RepeatParamException): BaseResponse {
+        error.printStackTrace()
         return ResultResponse.error(error.message!!)
     }
 
@@ -44,8 +46,9 @@ class BaseController : ResponseEntityExceptionHandler() {
      * date 2018/9/21 上午9:49
      */
     @ExceptionHandler(value = [(Exception::class)])
-    fun allExceptionHandler(exception: Exception): BaseResponse {
-        val message = exception.message
+    fun allExceptionHandler(error: Exception): BaseResponse {
+        error.printStackTrace()
+        val message = error.message
         return if (message != null) ResultResponse.error(message) else ResultResponse.error()
 
     }
