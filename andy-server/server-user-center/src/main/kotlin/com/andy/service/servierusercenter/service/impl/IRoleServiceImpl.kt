@@ -20,13 +20,10 @@ import java.util.*
 @Service
 class IRoleServiceImpl : IRoleService {
 
-
     private val log: Logger = LoggerFactory.getLogger(IRoleServiceImpl::class.java)
-
 
     @Autowired
     private lateinit var roleDao: RoleDao
-
 
     override fun onCreateRole(roleName: String, roleDes: String): String? {
         val roleEntity = roleDao.findByRoleName(roleName)
@@ -38,6 +35,26 @@ class IRoleServiceImpl : IRoleService {
         return roleDao.save(role).id
     }
 
+    override fun onDeleteRoleById(id: String) {
+        roleDao.deleteById(id)
+    }
+
+    override fun onFindRoles(): List<RoleEntity> {
+        return roleDao.findAll()
+    }
+
+    override fun onModiftyRoles(id: String, roleName: String?, roleDes: String?) {
+        val role = roleDao.findById(id)
+        role.map {
+            if (roleDes != null)
+                it.roleDes = roleDes
+            if (roleName != null)
+                it.roleName = roleName
+            roleDao.save(it)
+        }.orElseThrow {
+            throw IllegalAccessException("not found role`id")
+        }
+    }
 //    /**
 //     * describe: 增加角色 需要确定 status = 0 和 roleName 以及 roleType 不重复，才可以进行增加。
 //     * author 候帅

@@ -1,5 +1,7 @@
 package com.andy.service.servierusercenter.service
 
+import com.andy.service.servierusercenter.entity.RoleEntity
+
 
 /**
  * describe: 进行角色管理服务
@@ -8,13 +10,34 @@ package com.andy.service.servierusercenter.service
  */
 interface IRoleService {
 
-
     /**
      * describe: 增加角色描述
      * author 候帅
      * date 2018/9/21 下午3:51
      */
     fun onCreateRole(roleName: String, roleDes: String): String?
+
+    /**
+     * describe: 通过校色Id进行删除角色信息
+     * author 候帅
+     * data 25/09/2018 22:05
+     * @param id 角色id
+     */
+    fun onDeleteRoleById(id: String)
+
+    /**
+     * describe: 查询出所有角色信息
+     * author 候帅
+     * data 25/09/2018 22:12
+     */
+    fun onFindRoles(): List<RoleEntity>
+
+    /**
+     * describe: 修改角色内容
+     * author 候帅
+     * data 25/09/2018 22:15
+     */
+    fun onModiftyRoles(id: String, roleName: String?, roleDes: String?)
 
 //    /**
 //     * describe: 增加角色

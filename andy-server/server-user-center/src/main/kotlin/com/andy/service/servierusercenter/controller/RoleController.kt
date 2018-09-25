@@ -11,10 +11,7 @@ import io.swagger.annotations.ApiOperation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /**
  * describe: 角色控制层
@@ -44,5 +41,33 @@ class RoleController : BaseController() {
 
     }
 
+    @ApiOperation(value = "通过ID进行删除")
+    @ApiImplicitParam(name = "id", value = "角色ID", dataType = "String", paramType = "path", required = true)
+    @DeleteMapping(value = ["/{id}"])
+    fun onDeleteRoleById(@PathVariable id: String): BaseResponse {
+        iRoleService.onDeleteRoleById(id)
+        return ResultResponse.success()
+    }
+
+    @ApiOperation(value = "查询所有的角色信息")
+    @GetMapping(value = ["/all"])
+    fun onFindRoles(): BaseResponse {
+        val roles = iRoleService.onFindRoles()
+        return ResultResponse.success(roles)
+    }
+
+    @ApiOperation(value = "修改角色信息")
+    @ApiImplicitParams(
+            ApiImplicitParam(name = "id", value = "角色ID", dataType = "String", paramType = "path", required = true),
+            ApiImplicitParam(name = "roleName", value = "角色名", dataType = "String", paramType = "query", required = true),
+            ApiImplicitParam(name = "roleDes", value = "角色描述", dataType = "String", paramType = "query", required = true)
+    )
+    @PutMapping(value = ["/{id}"])
+    fun onModiftyRoles(@PathVariable id: String,
+                       @RequestParam roleName: String?,
+                       @RequestParam roleDes: String?): BaseResponse {
+        iRoleService.onModiftyRoles(id, roleDes, roleDes)
+        return ResultResponse.success()
+    }
 
 }
