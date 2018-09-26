@@ -1,0 +1,6 @@
+arangodb:
+  hosts: localhost
+  user: root
+  password: 123456
+  port: 8529
+  database: test

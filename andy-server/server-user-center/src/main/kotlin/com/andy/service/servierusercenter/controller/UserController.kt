@@ -6,6 +6,8 @@ import com.andy.andycommonbean.response.BaseResponse
 import com.andy.andycommonbean.response.ResultResponse
 import com.andy.service.servierusercenter.bean.RegisterInfoBean
 import com.andy.service.servierusercenter.service.IUserService
+import io.swagger.annotations.ApiImplicitParam
+import io.swagger.annotations.ApiOperation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,11 +28,8 @@ class UserController : BaseController() {
     @Autowired
     private lateinit var iUserService: IUserService
 
-    /**
-     * describe: 用户注册
-     * author 候帅
-     * date 2018/9/8 下午12:22
-     */
+    @ApiOperation(value = "用户注册")
+    @ApiImplicitParam(name = "registerInfoBean", value = "用户注册实体", dataType = "RegisterInfoBean", paramType = "body", required = true)
     @PostMapping("/register")
     fun registerUser(@RequestBody registerInfoBean: RegisterInfoBean): BaseResponse {
         val registerByAccount = iUserService.registerByAccount(registerInfoBean)
