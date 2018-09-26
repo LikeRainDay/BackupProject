@@ -1,6 +1,7 @@
 package com.andy.database.databasearango.entity
 
 import com.arangodb.springframework.annotation.Document
+import com.arangodb.springframework.annotation.HashIndex
 import org.springframework.data.annotation.Id
 
 /**
@@ -11,6 +12,8 @@ import org.springframework.data.annotation.Id
  * History:
  */
 @Document(value = "characters")
+// 索引
+@HashIndex(fields = ["name","id"], unique = true)
 class Character {
 
     @Id
