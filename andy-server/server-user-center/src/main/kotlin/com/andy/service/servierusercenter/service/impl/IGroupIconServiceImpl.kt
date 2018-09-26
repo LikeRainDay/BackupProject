@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service
  * History:
  */
 @Service
-class IGroupIconServiceImpl: IGroupIconService {
+class IGroupIconServiceImpl : IGroupIconService {
+
 
     @Autowired
     private lateinit var groupIconDao: GroupIconDao
@@ -22,6 +23,26 @@ class IGroupIconServiceImpl: IGroupIconService {
     override fun addGroupIcon(url: String): Long {
         val groupIconEntity = GroupIconEntity()
         groupIconEntity.url = url
-       return groupIconDao.save(groupIconEntity).id!!
+        return groupIconDao.save(groupIconEntity).id!!
     }
+
+    override fun deleteGroupIcon(id: Long) {
+        groupIconDao.deleteById(id)
+    }
+
+    override fun findAll(): List<GroupIconEntity> {
+        return groupIconDao.findAll()
+    }
+
+    override fun modiftyGroupIcon(id: Long, url: String) {
+        val groupIcon = groupIconDao.findById(id)
+        groupIcon.map {
+            it.url = url
+            groupIconDao.save(it)
+        }.orElseThrow {
+            throw IllegalAccessException("not found $id")
+        }
+
+    }
+
 }
