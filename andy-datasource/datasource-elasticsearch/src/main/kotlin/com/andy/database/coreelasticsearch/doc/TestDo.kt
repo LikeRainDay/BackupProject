@@ -2,9 +2,13 @@ package com.andy.database.coreelasticsearch.doc
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.elasticsearch.annotations.Document
+import org.springframework.data.elasticsearch.annotations.Mapping
+import org.springframework.data.elasticsearch.annotations.Setting
 import java.util.*
 
 @Document(indexName = "company", type = "test", shards = 8, replicas = 1)
+//@Mapping(mappingPath = "")
+//@Setting(settingPath = "")
 class TestDo {
 
     @Id

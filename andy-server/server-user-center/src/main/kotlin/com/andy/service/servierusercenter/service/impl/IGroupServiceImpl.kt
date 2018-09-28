@@ -41,7 +41,7 @@ class IGroupServiceImpl : IGroupService {
                 throw IllegalAccessException("not find $parentId")
             }
         }
-        return groupDao.save(groupEntity).groupId!!
+        return groupDao.save(groupEntity).groupId
     }
 
     @Transactional
