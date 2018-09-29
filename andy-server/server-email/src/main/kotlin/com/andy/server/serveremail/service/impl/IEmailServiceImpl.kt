@@ -7,14 +7,12 @@ import com.andy.server.serveremail.entity.EmailEntity
 
 import com.andy.server.serveremail.service.IEmailService
 import com.andy.server.serveremail.service.IEmailTempletService
-import org.bouncycastle.asn1.iana.IANAObjectIdentifiers.mail
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.mail.SimpleMailMessage
 import org.springframework.mail.javamail.JavaMailSender
-import org.springframework.mail.javamail.MimeMailMessage
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
@@ -91,7 +89,7 @@ class IEmailServiceImpl : IEmailService {
         emailBean.receiver = receiver
         emailBean.sender = defaultSender
         emailBean.subject = "Andy"
-        emailBean.text = iEmailTempletService.getIdentityCodeTemplate(RandomUtil.generteSixNumber().toString())
+        emailBean.text = iEmailTempletService.templateIdentityCode(RandomUtil.generteSixNumber().toString())
         sendRichEmail(emailBean)
     }
 

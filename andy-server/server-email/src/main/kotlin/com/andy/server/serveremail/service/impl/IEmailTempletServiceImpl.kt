@@ -14,7 +14,7 @@ class IEmailTempletServiceImpl : IEmailTempletService {
     private val log: Logger = LoggerFactory.getLogger(IEmailTempletServiceImpl::class.java)
 
 
-    override fun getIdentityCodeTemplate(code: String): String {
+    override fun templateIdentityCode(code: String): String {
         val jsonString = getFileContent("templet/tp_idc.html")
         return jsonString.replaceFirst("#haizhi-code#", code)
     }
