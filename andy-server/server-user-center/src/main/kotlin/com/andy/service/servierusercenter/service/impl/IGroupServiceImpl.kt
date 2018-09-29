@@ -2,7 +2,7 @@ package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonutils.RandomUtil
 import com.andy.service.servierusercenter.bean.GroupBean
-import com.andy.service.servierusercenter.dao.GroupDao
+import com.andy.service.servicerusercenter.dao.dao.GroupDao
 import com.andy.service.servierusercenter.entity.GroupEntity
 import com.andy.service.servierusercenter.service.IGroupService
 import org.slf4j.Logger

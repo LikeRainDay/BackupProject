@@ -1,9 +1,7 @@
-package com.andy.service.servierusercenter.dao;
+package com.andy.service.servicerusercenter.dao.dao;
 
 
 import com.andy.service.servierusercenter.entity.RoleEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -13,6 +11,7 @@ import java.util.Optional;
  * 作者：候帅
  * 时间：2018:09:01-19:26
  * 描述： 角色ORM
+ * @author housh
  */
 
 public interface RoleDao extends JpaRepository<RoleEntity, String>, JpaSpecificationExecutor<RoleEntity> {

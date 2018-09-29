@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
-import com.andy.service.servierusercenter.dao.GroupIconDao
+import com.andy.service.servicerusercenter.dao.dao.GroupIconDao
 import com.andy.service.servierusercenter.entity.GroupIconEntity
 import com.andy.service.servierusercenter.service.IGroupIconService
 import org.springframework.beans.factory.annotation.Autowired

@@ -1,4 +1,4 @@
-package com.andy.service.servierusercenter.dao;
+package com.andy.service.servicerusercenter.dao.dao;
 
 
 import com.andy.service.servierusercenter.entity.UserEntity;
@@ -14,6 +14,7 @@ import java.util.Optional;
  * 作者：候帅
  * 时间：2018:09:20-15:52
  * 描述： 用户操作的dao
+ * @author housh
  */
 public interface UserDao extends JpaRepository<UserEntity, String>, JpaSpecificationExecutor<UserEntity> {
 

@@ -1,13 +1,8 @@
-package com.andy.service.servierusercenter.dao;
+package com.andy.service.servicerusercenter.dao.dao;
 
 
-import com.andy.service.servierusercenter.entity.GroupEntity;
 import com.andy.service.servierusercenter.entity.GroupIconEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * 作者：候帅

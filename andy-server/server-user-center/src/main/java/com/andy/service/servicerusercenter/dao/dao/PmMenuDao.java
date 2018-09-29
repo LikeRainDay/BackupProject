@@ -1,11 +1,9 @@
-package com.andy.service.servierusercenter.dao;
+package com.andy.service.servicerusercenter.dao.dao;
 
 
 import com.andy.service.servierusercenter.entity.PmMenuEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 

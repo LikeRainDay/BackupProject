@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
-import com.andy.service.servierusercenter.dao.UserDetailsDao
+import com.andy.service.servicerusercenter.dao.dao.UserDetailsDao
 import com.andy.service.servierusercenter.entity.UserDetailsEntity
 import com.andy.service.servierusercenter.service.IUserDetailsService
 import org.slf4j.Logger
