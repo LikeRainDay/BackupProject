@@ -40,16 +40,4 @@ class IEmailTempletServiceImpl : IEmailTempletService {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-//    /**
-//     * describe: 提取resource下的文件内容
-//     * author 候帅
-//     * date 2018/9/29 下午5:22
-//     */
-//    @Throws(IOException::class)
-//    private fun getFileContent(filePath: String): String {
-//        val resourceAsStream = this.javaClass.classLoader.getResourceAsStream(filePath)
-//        return String(ByteStreams.toByteArray(resourceAsStream))
-//    }
-
-
 }
