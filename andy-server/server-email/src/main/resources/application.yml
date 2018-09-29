@@ -53,3 +53,4 @@ spring:
             required: true
 email:
   activeTime: 6000
+  defaultSender: houshuai0816@126.com
