@@ -1,4 +1,4 @@
-package com.andy.service.servicerusercenter.dao.dao;
+package com.andy.service.servicerusercenter.dao;
 
 
 import com.andy.service.servierusercenter.entity.GroupIconEntity;

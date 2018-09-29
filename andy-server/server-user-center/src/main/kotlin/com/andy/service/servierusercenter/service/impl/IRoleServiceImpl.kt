@@ -1,7 +1,7 @@
 package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonbean.exception.RepeatParamException
-import com.andy.service.servicerusercenter.dao.dao.RoleDao
+import com.andy.service.servicerusercenter.dao.RoleDao
 import com.andy.service.servierusercenter.entity.RoleEntity
 import com.andy.service.servierusercenter.service.IRoleService
 import org.slf4j.Logger

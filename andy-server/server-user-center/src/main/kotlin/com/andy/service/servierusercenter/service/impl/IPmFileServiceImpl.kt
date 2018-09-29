@@ -2,7 +2,7 @@ package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
-import com.andy.service.servicerusercenter.dao.dao.PmFileDao
+import com.andy.service.servicerusercenter.dao.PmFileDao
 import com.andy.service.servierusercenter.entity.PmFileEntity
 import com.andy.service.servierusercenter.service.IPmFileService
 import org.slf4j.Logger

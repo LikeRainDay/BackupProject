@@ -6,7 +6,7 @@ import com.andy.andycommonfeign.SmsFeign
 import com.andy.service.servierusercenter.bean.UserDetailBean
 import com.andy.service.servierusercenter.bean.LoginEnableBean
 import com.andy.service.servierusercenter.bean.RegisterInfoBean
-import com.andy.service.servicerusercenter.dao.dao.UserDao
+import com.andy.service.servicerusercenter.dao.UserDao
 import com.andy.service.servierusercenter.entity.UserDetailsEntity
 import com.andy.service.servierusercenter.entity.UserEntity
 import com.andy.service.servierusercenter.enum.SupportLoginFun

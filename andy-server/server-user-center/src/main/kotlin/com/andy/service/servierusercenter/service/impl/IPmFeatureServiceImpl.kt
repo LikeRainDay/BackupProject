@@ -3,7 +3,7 @@ package com.andy.service.servierusercenter.service.impl
 import com.andy.andycommonbean.exception.RepeatParamException
 import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
-import com.andy.service.servicerusercenter.dao.dao.PmFeaturesDao
+import com.andy.service.servicerusercenter.dao.PmFeaturesDao
 import com.andy.service.servierusercenter.entity.PmFeaturesEntity
 import com.andy.service.servierusercenter.service.IPmFeatureService
 import org.slf4j.Logger

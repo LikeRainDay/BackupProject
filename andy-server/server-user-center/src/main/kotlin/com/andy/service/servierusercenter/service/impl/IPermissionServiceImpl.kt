@@ -3,7 +3,7 @@ package com.andy.service.servierusercenter.service.impl
 import com.andy.andycommonbean.exception.RepeatParamException
 import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
-import com.andy.service.servicerusercenter.dao.dao.PermissionDao
+import com.andy.service.servicerusercenter.dao.PermissionDao
 import com.andy.service.servierusercenter.entity.PermissionEntity
 import com.andy.service.servierusercenter.service.IPermissionService
 import org.slf4j.Logger
