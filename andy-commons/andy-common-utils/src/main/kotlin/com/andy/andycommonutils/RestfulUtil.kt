@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate
  */
 object RestfulUtil {
 
-
     /**
      * describe: Post请求
      * author 候帅

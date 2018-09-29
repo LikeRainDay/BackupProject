@@ -40,7 +40,18 @@ interface IEmailTempletService {
      */
     fun templateWelecome(): String
 
+    /**
+     * describe: 新闻模板
+     * author 候帅
+     * date 2018/9/29 下午6:02
+     */
+    fun templateNews(): String
 
-
+    /**
+     * describe: 新内容模板
+     * author 候帅
+     * date 2018/9/29 下午6:02
+     */
+    fun templateNewContent(): String
 
 }
