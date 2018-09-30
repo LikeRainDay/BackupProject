@@ -2,11 +2,9 @@ package com.andy.server.serveremail.service.impl
 
 import com.andy.andycommonutils.ResourceUril
 import com.andy.server.serveremail.service.IEmailTempletService
-import com.google.common.io.ByteStreams
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import java.io.IOException
 
 @Service
 class IEmailTempletServiceImpl : IEmailTempletService {
