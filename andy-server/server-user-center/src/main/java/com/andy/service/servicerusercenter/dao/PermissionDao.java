@@ -4,6 +4,7 @@ package com.andy.service.servicerusercenter.dao;
 import com.andy.service.servierusercenter.entity.PermissionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
  * 时间：2018:09:01-19:26
  * 描述： 权限数据库访问层
  */
-
+@Repository
 public interface PermissionDao extends JpaRepository<PermissionEntity, String>, JpaSpecificationExecutor<PermissionEntity> {
 
     /**
