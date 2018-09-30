@@ -24,6 +24,9 @@ class IGroupServiceImpl : IGroupService {
     private lateinit var groupDao: GroupDao
 
     override fun addGroup(groupEntity: GroupEntity): String {
+        val groupName = groupEntity.groupName
+        if (StringUtils.isEmpty(groupName))
+            throw IllegalAccessException("Group name cannot be null")
         val parentId = groupEntity.parentId
         if (StringUtils.isEmpty(parentId)) {
             groupEntity.organizeLevel = 1L
@@ -35,6 +38,11 @@ class IGroupServiceImpl : IGroupService {
                 groupEntity.organizeLevel = it.organizeLevel + 1L
                 groupEntity.organizeIndex = "${it.organizeIndex}${it.id}-"
                 groupEntity.groupId = RandomUtil.generteRandomUUID()
+                // 同级不允许重名
+                val hasRepeat = groupDao.findFirstByOrganizeIndexAndOrganizeLevelAndGroupName(groupEntity.organizeIndex, groupEntity.organizeLevel, groupEntity.groupName)
+                hasRepeat.ifPresent {
+                    throw IllegalAccessException("Group names must not be duplicated at the same level")
+                }
                 it.isNode = true
                 it.isLeaf = false
             }.orElseThrow {

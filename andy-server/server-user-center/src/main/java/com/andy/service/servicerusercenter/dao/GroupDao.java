@@ -60,5 +60,11 @@ public interface GroupDao extends JpaRepository<GroupEntity, Long> {
      */
     Optional<List<GroupEntity>> findByOrganizeLevel(Long orgLevel);
 
+    /**
+     * describe: 查询是否 有同级  同索引 和 通名的组信息
+     * author 候帅
+     * date 2018/9/30 上午11:08
+     */
+    Optional<GroupEntity> findFirstByOrganizeIndexAndOrganizeLevelAndGroupName(String orgIndex, Long orgLevel, String groupName);
 
 }
