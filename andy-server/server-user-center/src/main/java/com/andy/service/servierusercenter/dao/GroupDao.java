@@ -1,9 +1,10 @@
-package com.andy.service.servicerusercenter.dao;
+package com.andy.service.servierusercenter.dao;
 
 
 import com.andy.service.servierusercenter.entity.GroupEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import java.util.Optional;
  * 时间：2018:09:01-19:26
  * 描述： 组相关dao
  */
-
+@Repository
 public interface GroupDao extends JpaRepository<GroupEntity, Long> {
 
 

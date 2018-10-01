@@ -1,4 +1,4 @@
-package com.andy.service.servicerusercenter.dao;
+package com.andy.service.servierusercenter.dao;
 
 
 import com.andy.service.servierusercenter.entity.UserDetailsEntity;
