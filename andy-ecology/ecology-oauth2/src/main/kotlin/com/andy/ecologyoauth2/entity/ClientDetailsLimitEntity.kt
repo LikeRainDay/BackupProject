@@ -4,7 +4,7 @@ import javax.persistence.*
 
 
 @Entity
-@Table(name = "client_detail_limit")
+@Table(name = "auth_client_detail_limit")
 class ClientDetailsLimitEntity: AbstractAuditable<Long>() {
 
     @Column(name = "intervalInMills")

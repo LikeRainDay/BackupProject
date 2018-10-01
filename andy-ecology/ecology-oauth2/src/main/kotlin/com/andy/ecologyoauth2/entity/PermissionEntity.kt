@@ -9,7 +9,7 @@ import javax.persistence.*
  * date 2018/8/20 下午3:50
  */
 @Entity
-@Table(name = "permission")
+@Table(name = "auth_permission")
 class PermissionEntity: AbstractEntity<Long>() {
 
 

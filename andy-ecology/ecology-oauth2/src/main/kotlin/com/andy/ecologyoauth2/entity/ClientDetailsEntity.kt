@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "client_details")
+@Table(name = "auth_client_details")
 class ClientDetailsEntity: AbstractAuditable<Long>() {
 
     @NotNull

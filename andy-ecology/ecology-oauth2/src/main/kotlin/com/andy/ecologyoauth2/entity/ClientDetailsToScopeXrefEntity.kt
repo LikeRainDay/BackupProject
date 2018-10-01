@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "client_details_scope_xref")
+@Table(name = "auth_client_details_scope_xref")
 class ClientDetailsToScopeXrefEntity: AbstractAuditable<Long>() {
 
     @NotNull

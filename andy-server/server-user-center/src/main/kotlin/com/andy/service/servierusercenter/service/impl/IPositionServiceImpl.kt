@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
-import com.andy.service.servicerusercenter.dao.PositionsDao
+import com.andy.service.servierusercenter.dao.PositionsDao
 import com.andy.service.servierusercenter.entity.PositionsEntity
 import com.andy.service.servierusercenter.service.IPositionService
 import org.springframework.beans.factory.annotation.Autowired

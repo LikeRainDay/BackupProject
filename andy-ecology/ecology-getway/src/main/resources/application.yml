@@ -73,3 +73,6 @@ security:
     resource:
       user-info-uri: http://localhost:${server.port}/uaa/user
       prefer-token-info: false
+#      token-info-uri: http://localhost:${server.port}/uaa/oauth/check_token
+#    authorization:
+#      check-token-access: http://localhost:${server.port}/uaa/oauth/check_token

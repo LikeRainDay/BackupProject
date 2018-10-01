@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "scope")
+@Table(name = "auth_scope")
 class ScopeEntity: AbstractAuditable<Long>() {
 
 

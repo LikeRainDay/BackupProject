@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "resource")
+@Table(name = "auth_resource")
 class ResourceIdEntity: AbstractAuditable<Long>() {
 
 

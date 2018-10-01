@@ -70,4 +70,5 @@ class UserController : BaseController() {
         return ResultResponse.success(findUserInfo)
     }
 
+
 }
