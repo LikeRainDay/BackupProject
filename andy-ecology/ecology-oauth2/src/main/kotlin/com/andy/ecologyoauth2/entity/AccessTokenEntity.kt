@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @Entity
-@Table(name = "access_token")
+@Table(name = "auth_access_token")
 class AccessTokenEntity: AbstractAuditable<Long>(){
 
     // 对应的Token Id

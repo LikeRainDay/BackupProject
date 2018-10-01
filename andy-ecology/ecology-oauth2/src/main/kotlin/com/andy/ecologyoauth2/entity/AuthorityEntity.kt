@@ -9,7 +9,7 @@ import javax.validation.constraints.Size
 
 
 @Entity
-@Table(name = "authorities")
+@Table(name = "auth_authorities")
 class AuthorityEntity: AbstractAuditable<Long>() {
 
     @Size(min = 1, max = 50)

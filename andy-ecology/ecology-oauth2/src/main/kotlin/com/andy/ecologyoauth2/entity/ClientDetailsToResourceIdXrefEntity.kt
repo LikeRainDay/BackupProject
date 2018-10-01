@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "client_details_resource_xref")
+@Table(name = "auth_client_details_resource_xref")
 class ClientDetailsToResourceIdXrefEntity: AbstractAuditable<Long>() {
 
     @NotNull
