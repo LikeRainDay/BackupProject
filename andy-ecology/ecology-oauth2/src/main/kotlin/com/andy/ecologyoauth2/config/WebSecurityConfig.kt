@@ -59,12 +59,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
         return super.authenticationManagerBean()
     }
 
-
     override fun configure(http: HttpSecurity?) {
-//        http!!
-//                .cors().disable()
-//
-
         http!!
                 .authorizeRequests()
                 .antMatchers("/", "/auth/**", "/api/health", "/oauth/**", "/default/**", "/login","/user")

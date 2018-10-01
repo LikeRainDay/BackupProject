@@ -1,7 +1,9 @@
 package com.andy.ecologyoauth2.config
 
+import com.andy.ecologyoauth2.service.DatabaseTokenStoreService
 import com.andy.ecologyoauth2.service.OAuth2DatabaseClientDetailsService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
@@ -30,12 +32,13 @@ class AuthorizationServerConfig : AuthorizationServerConfigurerAdapter(){
     @Autowired
     private lateinit var authenticationManager: AuthenticationManager
 
-    @Autowired
-    private lateinit var redisFactory: RedisConnectionFactory
+//    @Autowired
+//    private lateinit var redisFactory: RedisConnectionFactory
 
     @Bean
+    @Qualifier(value = "custom_db_token_store")
     fun tokenStore(): TokenStore {
-       return RedisTokenStore(redisFactory)
+       return DatabaseTokenStoreService()
     }
 
     override fun configure(security: AuthorizationServerSecurityConfigurer?) {

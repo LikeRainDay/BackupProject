@@ -17,9 +17,16 @@ import java.util.*
 import java.util.stream.Collectors
 import java.util.stream.Collectors.*
 
+
+/**
+ * describe: Oauth2的Token管理
+ * author 候帅
+ * data 01/10/2018 17:58
+ */
 @Service
 class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrationService {
 
+    // TODO 此处需要获取的信息 都要从用户中心获取
     private val log: Logger = LoggerFactory.getLogger(OAuth2DatabaseClientDetailsService::class.java)
 
     @Autowired
@@ -251,9 +258,9 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
             return@map it.scope.value
         }.collect(toList()))
 
-        clientDetails.setAutoApproveScopes(it.scopeXrefs.stream().filter({
+        clientDetails.setAutoApproveScopes(it.scopeXrefs.stream().filter {
             return@filter it.autoApprove
-        }).map {
+        }.map {
             return@map it.scope.value
         }.collect(toList()))
 
