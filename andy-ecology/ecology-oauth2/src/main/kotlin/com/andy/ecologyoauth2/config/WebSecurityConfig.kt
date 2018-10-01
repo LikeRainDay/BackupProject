@@ -1,9 +1,8 @@
 package com.andy.ecologyoauth2.config
 
-import com.andy.ecologyoauth2.service.DataBaseUserDetailsService
+import com.andy.ecologyoauth2.service.impl.DataBaseUserDetailsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
@@ -19,8 +18,6 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event
-
 
 
 /**

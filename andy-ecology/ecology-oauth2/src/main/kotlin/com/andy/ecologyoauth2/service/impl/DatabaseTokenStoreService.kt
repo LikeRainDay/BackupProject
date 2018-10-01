@@ -1,4 +1,4 @@
-package com.andy.ecologyoauth2.service
+package com.andy.ecologyoauth2.service.impl
 
 import com.andy.ecologyoauth2.dao.AccessTokenRepository
 import com.andy.ecologyoauth2.dao.RefreshTokenRepository

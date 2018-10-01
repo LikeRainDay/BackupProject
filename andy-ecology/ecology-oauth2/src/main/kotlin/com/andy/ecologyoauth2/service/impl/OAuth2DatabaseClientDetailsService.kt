@@ -1,4 +1,4 @@
-package com.andy.ecologyoauth2.service
+package com.andy.ecologyoauth2.service.impl
 
 import com.andy.ecologyoauth2.dao.ClientDetailsRepository
 import com.andy.ecologyoauth2.dao.GrantTypeRepository

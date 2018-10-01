@@ -1,4 +1,4 @@
-package com.andy.ecologyoauth2.service
+package com.andy.ecologyoauth2.service.impl
 
 import com.andy.andycommonfeign.UserFeign
 import com.andy.ecologyoauth2.dao.AccessTokenRepository

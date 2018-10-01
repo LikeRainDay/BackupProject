@@ -7,7 +7,7 @@ import com.andy.ecologyoauth2.dao.ScopeRepository
 import com.andy.ecologyoauth2.entity.ClientDetailsLimitEntity
 import com.andy.ecologyoauth2.entity.GrantTypeEntity
 import com.andy.ecologyoauth2.entity.ScopeEntity
-import com.andy.ecologyoauth2.service.OAuth2DatabaseClientDetailsService
+import com.andy.ecologyoauth2.service.impl.OAuth2DatabaseClientDetailsService
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,8 +15,6 @@ import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
-import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.oauth2.provider.ClientAlreadyExistsException
 import org.springframework.security.oauth2.provider.client.BaseClientDetails
 import java.util.*
 import java.util.stream.Collectors
