@@ -69,4 +69,5 @@ class PermissionController : BaseController() {
         val page = iPermissionService.onPage(pageResult)
         return ResultResponse.success(page)
     }
+
 }

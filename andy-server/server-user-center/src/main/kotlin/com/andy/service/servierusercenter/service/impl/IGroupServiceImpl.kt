@@ -39,7 +39,11 @@ class IGroupServiceImpl : IGroupService {
                 groupEntity.organizeIndex = "${it.organizeIndex}${it.id}-"
                 groupEntity.groupId = RandomUtil.generteRandomUUID()
                 // 同级不允许重名
-                val hasRepeat = groupDao.findFirstByOrganizeIndexAndOrganizeLevelAndGroupName(groupEntity.organizeIndex, groupEntity.organizeLevel, groupEntity.groupName)
+                val hasRepeat = groupDao
+                        .findFirstByOrganizeIndexAndOrganizeLevelAndGroupName(
+                                groupEntity.organizeIndex,
+                                groupEntity.organizeLevel,
+                                groupEntity.groupName)
                 hasRepeat.ifPresent {
                     throw IllegalAccessException("Group names must not be duplicated at the same level")
                 }
