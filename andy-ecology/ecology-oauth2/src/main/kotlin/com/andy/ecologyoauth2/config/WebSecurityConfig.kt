@@ -58,11 +58,16 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     override fun configure(http: HttpSecurity?) {
         http!!
-                .authorizeRequests()
-                .antMatchers("/", "/auth/**", "/api/health", "/oauth/**", "/default/**", "/login","/user")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .httpBasic()
+                .and()
+                .csrf()
+                .disable()
+//        http!!
+//                .authorizeRequests()
+//                .antMatchers("/", "/auth/**", "/api/health", "/oauth/**", "/default/**", "/login","/user")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
     }
 
     override fun configure(web: WebSecurity?) {

@@ -33,7 +33,7 @@ class UserController {
     }
 
     @ApiOperation(value = "通过Access_token获取用户信息")
-    @ApiImplicitParam(name = "token",value = "AccessToken", dataType = "String", paramType = "query", required = true)
+    @ApiImplicitParam(name = "token", value = "AccessToken", dataType = "String", paramType = "query", required = true)
     @GetMapping(value = ["/oauth/check_token"])
     fun checkToken(@RequestParam(value = "token", required = true) token: String?): BaseResponse {
         if (token == null)
@@ -41,5 +41,10 @@ class UserController {
         // 进行通过AccessToken进行获取到用户的详细信息
         val checkToken = checkTokenService.checkToken(token)
         return ResultResponse.success(checkToken)
+    }
+
+    @GetMapping("/api/login")
+    fun loagin(): String {
+        return "ok"
     }
 }
