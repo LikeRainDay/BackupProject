@@ -14,7 +14,6 @@ class CustomAuthenticationEntryPoint : AuthenticationEntryPoint {
 
     override fun commence(request: HttpServletRequest?, response: HttpServletResponse?, ae: AuthenticationException?) {
         log.info("进行检测授权")
-
         response!!.sendError(HttpServletResponse.SC_UNAUTHORIZED, ae?.message)
     }
 }
