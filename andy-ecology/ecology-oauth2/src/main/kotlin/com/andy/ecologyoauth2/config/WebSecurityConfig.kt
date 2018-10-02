@@ -28,8 +28,6 @@ import org.springframework.security.crypto.password.PasswordEncoder
  * History:
  */
 @Configuration
-@EnableWebSecurity
-@Order(2)
 class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     private var log: Logger = LoggerFactory.getLogger(WebSecurityConfig::class.java)
