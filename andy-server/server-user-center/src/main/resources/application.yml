@@ -32,6 +32,9 @@ spring:
         max-idle: 10
         min-idle: 0
         max-wait: -1ms
+  rabbitmq:
+    host: 47.95.207.79
+    port: 5672
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://47.95.207.79:3306/andy?useSSL=false
