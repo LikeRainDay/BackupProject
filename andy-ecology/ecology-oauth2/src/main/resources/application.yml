@@ -3,7 +3,7 @@ server:
 spring:
   cloud:
     consul:
-      host: localhost
+      host: 47.95.207.79
       #  Consul监听端口8500
       port: 8500
       discovery:
@@ -22,7 +22,7 @@ spring:
   redis:
     # 设置数据库索引
     database: 0
-    host: localhost
+    host: 47.95.207.79
     port: 6379
     password:
     jedis:
@@ -33,7 +33,7 @@ spring:
         max-wait: -1ms
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/andy?useSSL=false
+    url: jdbc:mysql://47.95.207.79:3306/andy?useSSL=false
     username: root
     password: root
     dbcp2:

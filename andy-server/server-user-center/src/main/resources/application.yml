@@ -34,7 +34,7 @@ spring:
         max-wait: -1ms
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/account?useSSL=false
+    url: jdbc:mysql://localhost:3306/andy?useSSL=false
     username: root
     password: root
     dbcp2:

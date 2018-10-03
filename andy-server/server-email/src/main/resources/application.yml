@@ -3,7 +3,7 @@ server:
 spring:
   cloud:
     consul:
-      host: localhost
+      host: 47.95.207.79
       #  Consul监听端口8500
       port: 8500
       enabled: true
@@ -22,7 +22,7 @@ spring:
     name: service-email
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/account?useSSL=false
+      url: jdbc:mysql://47.95.207.79:3306/account?useSSL=false
       username: root
       password: root
       dbcp2:
