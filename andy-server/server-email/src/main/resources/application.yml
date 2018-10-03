@@ -36,6 +36,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  zipkin:
+    base-url: http://localhost:9411
 # 短信配置
   mail:
     host: smtp.126.com

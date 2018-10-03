@@ -43,6 +43,8 @@ spring:
       min-idle: 5
       # 最大连接数
       max-idle: 20
+  zipkin:
+    base-url: http://localhost:9411
   jpa:
     hibernate:
       ddl-auto: update
