@@ -23,7 +23,7 @@ spring:
   redis:
     # 设置数据库索引
     database: 0
-    host: localhost
+    host: 47.95.207.79
     port: 6379
     password:
     jedis:
