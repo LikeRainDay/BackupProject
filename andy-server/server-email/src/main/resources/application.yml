@@ -3,7 +3,7 @@ server:
 spring:
   cloud:
     consul:
-      host: 47.95.207.79
+      host: localhost
       #  Consul监听端口8500
       port: 8500
       enabled: true
