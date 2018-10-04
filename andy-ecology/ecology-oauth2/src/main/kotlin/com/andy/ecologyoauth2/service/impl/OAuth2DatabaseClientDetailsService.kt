@@ -87,7 +87,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                 val clientDetailToAuthorizedGrantTypeXrefEntity = ClientDetailsToAuthorizedGrantTypeXrefEntity()
                 clientDetailToAuthorizedGrantTypeXrefEntity.clientDetails = clientDetailsEntity
                 clientDetailToAuthorizedGrantTypeXrefEntity.grantType = it
-                return@map clientDetailToAuthorizedGrantTypeXrefEntity
+                clientDetailToAuthorizedGrantTypeXrefEntity
             }.orElseThrow {
                 ClientRegistrationException("Unsupported grant type: $it")
             }
@@ -100,7 +100,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                 clientDetailsToScopeXrefEntity.clientDetails = clientDetailsEntity
                 clientDetailsToScopeXrefEntity.scope = it
                 clientDetailsToScopeXrefEntity.autoApprove = clientDetails.isAutoApprove(scope)
-                return@map clientDetailsToScopeXrefEntity
+                clientDetailsToScopeXrefEntity
             }.orElseThrow {
                 ClientRegistrationException("Unsupported scope type: $it")
             }
@@ -111,7 +111,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                 val clientDetailsToResourceIdXrefEntity = ClientDetailsToResourceIdXrefEntity()
                 clientDetailsToResourceIdXrefEntity.clientDetails = clientDetailsEntity
                 clientDetailsToResourceIdXrefEntity.resourceId = it
-                return@map clientDetailsToResourceIdXrefEntity
+                clientDetailsToResourceIdXrefEntity
             }.orElseThrow {
                 ClientRegistrationException("Unsupported resource type: $it")
             }
@@ -152,7 +152,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                                 val xrefEntity = ClientDetailsToAuthorizedGrantTypeXrefEntity()
                                 xrefEntity.clientDetails = entity
                                 xrefEntity.grantType = it
-                                return@map xrefEntity
+                                xrefEntity
                             }.orElseThrow {
                                 ClientRegistrationException("Unsupported grant type: $it")
                             }
@@ -180,7 +180,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                         xrefEntity.clientDetails = entity
                         xrefEntity.scope = it
                         xrefEntity.autoApprove = clientDetails.isAutoApprove(scope)
-                        return@map xrefEntity
+                        xrefEntity
                     }.orElseThrow {
                         ClientRegistrationException("Unsupported scope type: $it")
                     }
@@ -209,7 +209,7 @@ class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrati
                         val xrefEntity = ClientDetailsToResourceIdXrefEntity()
                         xrefEntity.clientDetails = entity
                         xrefEntity.resourceId = it
-                        return@map xrefEntity
+                        xrefEntity
                     }.orElseThrow {
                         ClientRegistrationException("Unsupported resource type: $it")
                     }

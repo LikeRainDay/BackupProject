@@ -90,7 +90,7 @@ object VcUtil {
 
         val x = r.nextInt(4)
         val x1 = width - r.nextInt(4)
-        var y1 = 0
+        var y1: Int
         // 干扰线
         for (i in 0 until 10){
             g.color = Color.BLUE

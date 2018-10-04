@@ -47,7 +47,7 @@ class DataBaseUserDetailsService :UserDetailsService {
                 .map {
                     return@map User(it.account, it.password, it.roles.stream()
                             .map {
-                                return@map SimpleGrantedAuthority(prefixRoleName(it))
+                                SimpleGrantedAuthority(prefixRoleName(it))
                             }
                             .collect(Collectors.toList()))
                 }.orElseThrow {

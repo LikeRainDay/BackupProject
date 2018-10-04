@@ -2,8 +2,6 @@ package com.datasource.datasourcemongodb.service.impl
 
 import com.datasource.datasourcemongodb.entity.User
 import com.datasource.datasourcemongodb.service.UserService
-import jdk.nashorn.internal.runtime.regexp.joni.Config.log
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.slf4j.LoggerFactory

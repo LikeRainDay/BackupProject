@@ -125,7 +125,7 @@ class IGroupServiceImpl : IGroupService {
                 preData.ifPresent {
                     it.forEach {
                         // 进行替换当前的父信息
-                        val replace = it.organizeIndex.replace(childIndex, organizeIndex!!)
+                        val replace = it.organizeIndex.replace(childIndex, organizeIndex)
                         it.organizeLevel = replace.split("-").size.toLong()
                         if (it.parentId == parentId)
                             it.parentId = targetId
@@ -178,7 +178,7 @@ class IGroupServiceImpl : IGroupService {
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
                 groupBean.isNode = it.isNode
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
             return@map Optional.ofNullable(collect)
         }.orElseThrow {
@@ -204,7 +204,7 @@ class IGroupServiceImpl : IGroupService {
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
                 groupBean.isNode = it.isNode
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
         }
     }
@@ -233,7 +233,7 @@ class IGroupServiceImpl : IGroupService {
                 treeNodes.ifPresent {
                     groupBean.children = it
                 }
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
         }
     }
