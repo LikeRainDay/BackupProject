@@ -26,7 +26,6 @@ import java.util.stream.Collectors.*
 @Service
 class OAuth2DatabaseClientDetailsService: ClientDetailsService, ClientRegistrationService {
 
-    // TODO 此处需要获取的信息 都要从用户中心获取
     private val log: Logger = LoggerFactory.getLogger(OAuth2DatabaseClientDetailsService::class.java)
 
     @Autowired
