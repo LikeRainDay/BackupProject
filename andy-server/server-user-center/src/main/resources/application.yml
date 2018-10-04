@@ -13,7 +13,7 @@ spring:
         # 配置服务健康检测地址  供Consul 调用
         health-check-path: /api/health
         # consul 健康检测频率
-        health-check-interval: 15s
+        health-check-interval: 5s
         # 配置注册到consul 服务的id
         instance-id: ${spring.application.name}:${server.port}
         enabled: true
@@ -23,7 +23,7 @@ spring:
   redis:
     # 设置数据库索引
     database: 0
-    host: localhost
+    host: 47.95.207.79
     port: 6379
     password:
     jedis:
@@ -32,9 +32,12 @@ spring:
         max-idle: 10
         min-idle: 0
         max-wait: -1ms
+  rabbitmq:
+    host: 47.95.207.79
+    port: 5672
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/account?useSSL=false
+    url: jdbc:mysql://47.95.207.79:3306/andy?useSSL=false
     username: root
     password: root
     dbcp2:
@@ -49,6 +52,9 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    链路跟踪器
+  zipkin:
+    base-url: http://localhost:9411
 ribbon:
   eager-load:
     enabled: false

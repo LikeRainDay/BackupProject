@@ -1,0 +1,48 @@
+{
+
+    "dynamic": false,
+    "_all": {"enabled": false},
+    "properties": {
+        "ajrq": {
+            "type": "keyword"
+        },
+        "ajlxbh": {
+            "type": "keyword"
+        },
+        "ajbarq": {
+            "type": "keyword"
+        },
+        "ajmc": {
+            "type": "text",
+            "analyzer": "smartcn",
+            "fields": {
+                "raw": {
+                   "type": "keyword"
+                },
+                "standard": {
+                    "type": "text",
+                    "analyzer": "standard"
+                }
+            }
+        },
+        "ajqhnxxdd": {
+             "type": "text",
+             "analyzer": "smartcn",
+             "fields": {
+                 "raw": {
+                    "type": "keyword"
+                 },
+                 "standard": {
+                     "type": "text",
+                     "analyzer": "standard"
+                 }
+             }
+        },
+        "type": {
+            "type": "keyword"
+        },
+        "dt": {
+            "type": "keyword"
+        }
+    }
+}

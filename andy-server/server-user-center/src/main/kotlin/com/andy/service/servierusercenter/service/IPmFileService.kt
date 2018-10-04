@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service
 
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.service.servierusercenter.entity.PmFileEntity
 import org.springframework.data.domain.Page
 
@@ -19,5 +19,5 @@ interface IPmFileService : BasePermissionService<PmFileEntity> {
      * author 候帅
      * date 2018/9/20 下午4:53
      */
-    fun findPageByParam(pageRequest: PageRequest): Page<PmFileEntity>
+    fun findPageByParam(pageRequest: PageParams): Page<PmFileEntity>
 }

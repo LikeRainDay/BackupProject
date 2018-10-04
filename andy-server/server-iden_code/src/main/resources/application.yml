@@ -19,7 +19,7 @@ spring:
     name: service-iden_code
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/account?useSSL=false
+      url: jdbc:mysql://47.95.207.79:3306/account?useSSL=false
       username: root
       password: root
       dbcp2:

@@ -25,6 +25,8 @@ spring:
     name: ecology-getway
   thymeleaf:
     cache: true
+  zipkin:
+    base-url: http://localhost:9411
 zuul:
   host:
     connect-timeout-millis: 10000
@@ -73,3 +75,6 @@ security:
     resource:
       user-info-uri: http://localhost:${server.port}/uaa/user
       prefer-token-info: false
+      token-info-uri: http://localhost:${server.port}/uaa/oauth/check_token
+#    authorization:
+#      check-token-access: http://localhost:${server.port}/uaa/oauth/check_token

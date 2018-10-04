@@ -1,10 +1,13 @@
 package com.andy.service.servierusercenter.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
-@Table(name = "permission")
-class PermissionEntity: AbstractEntity() {
+@Table(name = "permission", indexes = [
+    (Index(name = "INDEX_NAME", columnList = "permission_name", unique = true))
+])
+class PermissionEntity : AbstractEntity() {
 
 
     // 权限名
@@ -16,6 +19,7 @@ class PermissionEntity: AbstractEntity() {
     lateinit var permissionType: String
 
     // 角色关联
+    @JsonIgnore
     @ManyToMany(mappedBy = "permission", cascade = [CascadeType.PERSIST, CascadeType.DETACH])
     lateinit var role: Set<RoleEntity>
 

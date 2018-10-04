@@ -1,8 +1,8 @@
 package com.andy.service.servierusercenter.service.impl
 
 import com.andy.andycommonutils.RandomUtil
-import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.dao.GroupDao
+import com.andy.service.servierusercenter.bean.GroupBean
 import com.andy.service.servierusercenter.entity.GroupEntity
 import com.andy.service.servierusercenter.service.IGroupService
 import org.slf4j.Logger
@@ -24,24 +24,36 @@ class IGroupServiceImpl : IGroupService {
     private lateinit var groupDao: GroupDao
 
     override fun addGroup(groupEntity: GroupEntity): String {
+        val groupName = groupEntity.groupName
+        if (StringUtils.isEmpty(groupName))
+            throw IllegalAccessException("Group name cannot be null")
         val parentId = groupEntity.parentId
         if (StringUtils.isEmpty(parentId)) {
-            groupEntity.organizeLevel = 1
+            groupEntity.organizeLevel = 1L
             groupEntity.organizeIndex = ""
             groupEntity.groupId = RandomUtil.generteRandomUUID()
         } else {
             val parentEntity = groupDao.findByGroupId(parentId)
             parentEntity.map {
-                groupEntity.organizeLevel = it.organizeLevel + 1
+                groupEntity.organizeLevel = it.organizeLevel + 1L
                 groupEntity.organizeIndex = "${it.organizeIndex}${it.id}-"
                 groupEntity.groupId = RandomUtil.generteRandomUUID()
+                // 同级不允许重名
+                val hasRepeat = groupDao
+                        .findFirstByOrganizeIndexAndOrganizeLevelAndGroupName(
+                                groupEntity.organizeIndex,
+                                groupEntity.organizeLevel,
+                                groupEntity.groupName)
+                hasRepeat.ifPresent {
+                    throw IllegalAccessException("Group names must not be duplicated at the same level")
+                }
                 it.isNode = true
                 it.isLeaf = false
             }.orElseThrow {
                 throw IllegalAccessException("not find $parentId")
             }
         }
-        return groupDao.save(groupEntity).groupId!!
+        return groupDao.save(groupEntity).groupId
     }
 
     @Transactional
@@ -113,7 +125,7 @@ class IGroupServiceImpl : IGroupService {
                 preData.ifPresent {
                     it.forEach {
                         // 进行替换当前的父信息
-                        val replace = it.organizeIndex.replace(childIndex, organizeIndex!!)
+                        val replace = it.organizeIndex.replace(childIndex, organizeIndex)
                         it.organizeLevel = replace.split("-").size.toLong()
                         if (it.parentId == parentId)
                             it.parentId = targetId
@@ -161,12 +173,12 @@ class IGroupServiceImpl : IGroupService {
             val collect = it.stream().map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
                 groupBean.isNode = it.isNode
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
             return@map Optional.ofNullable(collect)
         }.orElseThrow {
@@ -187,12 +199,12 @@ class IGroupServiceImpl : IGroupService {
             }.map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
                 groupBean.isNode = it.isNode
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
         }
     }
@@ -212,7 +224,7 @@ class IGroupServiceImpl : IGroupService {
             }.map {
                 val groupBean = GroupBean()
                 groupBean.groupId = it.groupId
-                groupBean.groupIcon = it.icon.url
+                groupBean.groupIcon = it.icon?.url
                 groupBean.groupLevel = it.organizeLevel
                 groupBean.groupName = it.groupName
                 groupBean.isLeaf = it.isLeaf
@@ -221,7 +233,7 @@ class IGroupServiceImpl : IGroupService {
                 treeNodes.ifPresent {
                     groupBean.children = it
                 }
-                return@map groupBean
+                groupBean
             }.collect(Collectors.toList())
         }
     }

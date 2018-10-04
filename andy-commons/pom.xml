@@ -16,6 +16,7 @@
         <module>andy-common-dao</module>
         <module>andy-common-feign</module>
         <module>andy-common-utils</module>
+        <module>andy-swagger</module>
     </modules>
     <parent>
         <groupId>com.andy</groupId>

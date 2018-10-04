@@ -3,7 +3,7 @@ import javax.persistence.*
 
 
 @Entity
-@Table(name = "grant_type")
+@Table(name = "auth_grant_type")
 class GrantTypeEntity: AbstractAuditable<Long>() {
 
 

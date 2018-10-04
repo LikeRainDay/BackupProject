@@ -1,26 +1,21 @@
 package com.andy.ecologyoauth2.config
 
-import com.andy.ecologyoauth2.service.DataBaseUserDetailsService
+import com.andy.ecologyoauth2.service.impl.DataBaseUserDetailsService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.annotation.Order
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.AuthenticationTrustResolverImpl
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event
-
 
 
 /**
@@ -31,8 +26,6 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event
  * History:
  */
 @Configuration
-@EnableWebSecurity
-@Order(2)
 class WebSecurityConfig : WebSecurityConfigurerAdapter(){
 
     private var log: Logger = LoggerFactory.getLogger(WebSecurityConfig::class.java)
@@ -59,18 +52,12 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter(){
         return super.authenticationManagerBean()
     }
 
-
     override fun configure(http: HttpSecurity?) {
-//        http!!
-//                .cors().disable()
-//
-
         http!!
-                .authorizeRequests()
-                .antMatchers("/", "/auth/**", "/api/health", "/oauth/**", "/default/**", "/login","/user")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .httpBasic()
+                .and()
+                .csrf()
+                .disable()
     }
 
     override fun configure(web: WebSecurity?) {

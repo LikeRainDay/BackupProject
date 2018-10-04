@@ -4,7 +4,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "redirect_url")
+@Table(name = "auth_redirect_url")
 class RedirectUrlEntity: AbstractAuditable<Long>() {
 
 

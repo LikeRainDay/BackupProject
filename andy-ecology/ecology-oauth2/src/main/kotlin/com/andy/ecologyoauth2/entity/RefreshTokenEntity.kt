@@ -7,7 +7,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "refresh_token")
+@Table(name = "auth_refresh_token")
 class RefreshTokenEntity: AbstractAuditable<Long>() {
 
 

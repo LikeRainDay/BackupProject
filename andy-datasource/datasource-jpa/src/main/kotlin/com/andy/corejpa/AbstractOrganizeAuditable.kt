@@ -36,7 +36,6 @@ abstract class AbstractOrganizeAuditable : AbstractIdAuditable() {
     lateinit var organizeIndex: String
 
     // 机构等级
-    @Size(max = 30)
     @Column(name = "organize_level", nullable = true, length = 30)
     var organizeLevel: Long = 1
 

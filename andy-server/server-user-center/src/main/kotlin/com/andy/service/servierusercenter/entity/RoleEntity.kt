@@ -4,8 +4,10 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "roles")
-class RoleEntity: AbstractEntity() {
+@Table(name = "roles", indexes = [
+    (Index(name = "", columnList = "", unique = true))
+])
+class RoleEntity : AbstractEntity() {
 
 
     // 角色名  eg: ROlE_ADMIN  等

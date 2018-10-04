@@ -1,6 +1,6 @@
 package com.andy.service.servierusercenter.service.impl
 
-import com.andy.andycommonbean.request.PageRequest
+import com.andy.andycommonbean.request.PageParams
 import com.andy.corejpa.utils.PageInfo
 import com.andy.service.servierusercenter.dao.PmFileDao
 import com.andy.service.servierusercenter.entity.PmFileEntity
@@ -13,10 +13,7 @@ import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
 import java.util.*
-import javax.persistence.criteria.CriteriaBuilder
-import javax.persistence.criteria.CriteriaQuery
 import javax.persistence.criteria.Predicate
-import javax.persistence.criteria.Root
 
 @Service
 class IPmFileServiceImpl : IPmFileService {
@@ -54,21 +51,20 @@ class IPmFileServiceImpl : IPmFileService {
 
     }
 
-    override fun findPageByParam(pageRequest: PageRequest): Page<PmFileEntity> {
+    override fun findPageByParam(pageRequest: PageParams): Page<PmFileEntity> {
         val sort = Sort(Sort.Direction.DESC, "createTime")
         val predicates = ArrayList<Predicate>()
         val pageable = PageInfo(pageRequest.currentPage, pageRequest.pageSize, sort)
-        val spec = Specification<PmFileEntity> { root, query, criteriaBuilder ->
+        val spec = Specification<PmFileEntity> { root, _, criteriaBuilder ->
             if ("" != pageRequest.searchValue) {
-                predicates.add(criteriaBuilder.like(root.get("newsLetter"), "%${pageRequest.searchValue}%"))
+                predicates.add(criteriaBuilder.like(root.get("file_url"), "%${pageRequest.searchValue}%"))
             }
             if (pageRequest.statis > -1) {
                 predicates.add(criteriaBuilder.equal(root.get<Any>("status"), pageRequest.statis))
             }
             return@Specification criteriaBuilder.and(*predicates.toTypedArray())
         }
-        val page = pmFileDao.findAll(spec, pageable)
-        return page
+        return pmFileDao.findAll(spec, pageable)
     }
 
 }

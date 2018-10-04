@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull
  * date 2018/8/20 下午2:10
  */
 @Entity
-@Table(name = "group")
+@Table(name = "auth_group")
 class GroupEntity: AbstractEntity<Long>() {
 
 
