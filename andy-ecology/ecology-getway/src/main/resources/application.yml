@@ -66,15 +66,15 @@ zuul:
   add-proxy-headers: true
   retryable: true
   sensitive-headers:
-security:
-  oauth2:
-    client:
-      access-token-uri: http://localhost:${server.port}/uaa/oauth/token
-      user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
-      client-id: open-api
-    resource:
-      user-info-uri: http://localhost:${server.port}/uaa/user
-      prefer-token-info: false
-      token-info-uri: http://localhost:${server.port}/uaa/oauth/check_token
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://localhost:${server.port}/uaa/oauth/token
+#      user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
+#      client-id: open-api
+#    resource:
+#      user-info-uri: http://localhost:${server.port}/uaa/user
+#      prefer-token-info: false
+#      token-info-uri: http://localhost:${server.port}/uaa/oauth/check_token
 #    authorization:
 #      check-token-access: http://localhost:${server.port}/uaa/oauth/check_token
